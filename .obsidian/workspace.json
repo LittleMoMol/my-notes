@@ -1,0 +1,238 @@
+{
+  "main": {
+    "id": "a6115591eccad9b5",
+    "type": "split",
+    "children": [
+      {
+        "id": "d4ab673b794adc50",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "30f303d09b284e82",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 数学/数学分析/数学分析词典/第 14 章 曲线积分、曲面积分与场论.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "第 14 章 曲线积分、曲面积分与场论"
+            }
+          },
+          {
+            "id": "978f20759cd5cba9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 数学/数学分析/数学分析词典/第 12 章 多元函数的微分学.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "第 12 章 多元函数的微分学"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5e9c2e68c9d883e2",
+    "type": "split",
+    "children": [
+      {
+        "id": "5c8b187deae5f7ec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "120c1288052a12e5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "4d56867fbc487cc7",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#代码",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "90d46f66a552f909",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "5b9e679af382aafb",
+    "type": "split",
+    "children": [
+      {
+        "id": "02dd6cfc6fa8972d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dc906700e2d71dc5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "未命名.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "未命名 的反向链接列表"
+            }
+          },
+          {
+            "id": "d96e6955e515860d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "高等代数/高等代数知识点罗列/第 5 章 线性空间.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "第 5 章 线性空间 的出链列表"
+            }
+          },
+          {
+            "id": "b8f288afd236f60c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "37bd1734f4582044",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "未命名.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "未命名 的大纲"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:查看关系图谱": false,
+      "switcher:打开快速切换": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
+    }
+  },
+  "active": "978f20759cd5cba9",
+  "lastOpenFiles": [
+    "1 数学/数学分析/数学分析词典/第 13 章 重积分.md",
+    "1 数学/数学分析/数学分析词典/第 14 章 曲线积分、曲面积分与场论.md",
+    "attachment/Pasted image 20250723110534.png",
+    "未命名 1.md",
+    "attachment/Pasted image 20250721160439.png",
+    "attachment/Pasted image 20250721160351.png",
+    "未命名.md",
+    "2 计算机/OI 备课/2B 2A 配套习题.md",
+    "2 计算机/OI 备课/2A 组合计数、概率与统计.md",
+    "2 计算机/OI 备课/1B 1A 配套习题.md",
+    "2 计算机/OI 备课/1A 数论基础.md",
+    "2 计算机/OI 备课/题面.md",
+    "No. 8.md",
+    "1 数学/数学分析/数学分析词典/第 12 章 多元函数的微分学.md",
+    "temp.md",
+    "attachment/Pasted image 20250717104413.png",
+    "attachment/Pasted image 20250716175014.png",
+    "1 数学/数学分析/数学分析词典/第 11 章 Euclid 空间上的极限和连续.md",
+    "attachment/Pasted image 20250716122337.png",
+    "attachment/Pasted image 20250716110807.png",
+    "3 生活/写作/No.7 幼稚故事（一）.md",
+    "1 数学/数学分析/数学分析词典/第 5 章 微分中值定理及其应用.md",
+    "1 数学/数学分析/数学分析词典/第 4 章 导数与微分.md",
+    "杂/资源库/2 计算机类/Linux 学习笔记.md",
+    "attachment/Pasted image 20250629115252.png",
+    "1 数学/数学分析/数学分析词典/第 3 章 函数极限与连续函数.md",
+    "3 生活/写作/2025 年回忆录.md",
+    "1 数学/数学分析/数学分析词典/第 7 章 定积分.md",
+    "1 数学/数学分析/数学分析专题/专题 2：背诵合集.md",
+    "1 数学/数学分析/数学分析词典/第 10 章 函数项级数.md",
+    "1 数学/数学分析/数学分析词典/第 9 章 数项级数.md",
+    "1 数学/数学分析/数学分析专题/专题 1：知识速查.md",
+    "1 数学/数学分析/数分背诵集.md",
+    "attachment/32c7f9c9db1aa92144235be5c3001062.jpg",
+    "attachment/Pasted image 20250621230043.png",
+    "attachment/未命名 1.pdf",
+    "attachment/未命名.pdf",
+    "1 数学/数学分析/数学分析习题",
+    "attachment",
+    "attachment/数字农业驱动农业高质量发展...基于动态SYS-GMM模型_段高静.pdf",
+    "attachment/云端助农挑稳“金扁担”——...农产品需求现状及意愿度调查_陈浩然.pdf",
+    "1 数学/数学分析/数学分析专题",
+    "1 数学/高等代数/高等代数专题",
+    "attachment/24级数学类专业排名.xls",
+    "事业",
+    "未命名.canvas"
+  ]
+}

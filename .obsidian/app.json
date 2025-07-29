@@ -1,0 +1,18 @@
+{
+  "alwaysUpdateLinks": true,
+  "readableLineLength": false,
+  "showLineNumber": false,
+  "showIndentGuide": true,
+  "rightToLeft": false,
+  "attachmentFolderPath": "attachment",
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "strictLineBreaks": false,
+  "tabSize": 3,
+  "smartIndentList": true
+}
