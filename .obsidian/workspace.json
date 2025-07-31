@@ -20,20 +20,6 @@
               "icon": "lucide-file",
               "title": "第 1 章 随机事件与概率"
             }
-          },
-          {
-            "id": "a6d4fdeea60c0d4a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2 计算机/OI 备课/2A 组合计数、概率与统计.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2A 组合计数、概率与统计"
-            }
           }
         ]
       }
