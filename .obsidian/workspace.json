@@ -8,35 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a4083c74dc2b8dc2",
+            "id": "39e57ba52903be15",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2 计算机/OI 备课/模拟赛/模拟赛 1（几何分布、数论、期望 dp、数论+搜索）.md",
+                "file": "1 数学/1 数学分析/数学分析词典/第 14 章 曲线积分、曲面积分与场论.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "模拟赛 1（几何分布、数论、期望 dp、数论+搜索）"
-            }
-          },
-          {
-            "id": "984fb9a52626075f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2 计算机/OI 备课/模拟赛/模拟赛 2（综合）.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "模拟赛 2（综合）"
+              "title": "第 14 章 曲线积分、曲面积分与场论"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -93,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "5b9e679af382aafb",
@@ -187,12 +171,14 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "984fb9a52626075f",
+  "active": "39e57ba52903be15",
   "lastOpenFiles": [
+    "2 计算机/OI 备课/讲义/数学专题练.md",
+    "2 计算机/OI 备课/模拟赛/模拟赛 2（二分答案、、线段树+期望、）.md",
     "2 计算机/OI 备课/模拟赛/模拟赛 1（几何分布、数论、期望 dp、数论+搜索）.md",
-    "2 计算机/OI 备课/模拟赛/模拟赛 2（综合）.md",
     "2 计算机/OI 备课/讲义/2B 2A 配套习题.md",
     "2 计算机/OI 备课/讲义/1B 1A 配套习题.md",
+    "2 计算机/OI 备课/讲义/2A 组合计数、概率与统计.md",
     "2 计算机/OI 备课/模拟赛/未命名",
     "2 计算机/OI 备课/模拟赛",
     "2 计算机/OI 备课/讲义",
@@ -216,8 +202,6 @@
     "2 计算机/c 语言/第 6 次作业 函数.md",
     "2 计算机/c 语言/c 语言笔记（菜鸟）.md",
     "2 计算机/c 语言/第 8 次作业 结构体.md",
-    "2 计算机/c 语言/第 5 次作业 数组.md",
-    "temp.md",
     "attachment/Pasted image 20250802171624.png",
     "未命名1.exe",
     "未命名1.cpp",
