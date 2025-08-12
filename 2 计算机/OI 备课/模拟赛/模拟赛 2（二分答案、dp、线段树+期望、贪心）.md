@@ -26,7 +26,6 @@
 - 对于 $60\%$ 的评测用例，$n \leq 5000$；
 - 对于所有评测用例，$1 \leq n \leq 3 \times 10^5$，$1 \leq m, L_i \leq 10^9$。
 # B 幸运（fortunate）
-5144蜈蚣
 ### 题目描述
 有 $N$ 个数字 $W_i(i=1,2,\cdots,N)$ 排成一列，现在把它们分为 $M$ 段
 对于一段数字 $(W_i, W_{i + 1}, \ldots, W_j)$ 的幸运值是 $W_i \mathbin{\mathrm{xor}} W_{i + 1} \mathbin{\mathrm{xor}} \cdots \mathbin{\mathrm{xor}} W_j$，这里的 $\mathbin{\mathrm{xor}}$ 代表按位异或操作。我们希望这 $N$ 个数字划分为 $M$ 段后的总幸运值 —— 也就是每一段数字的幸运值的和最大，请你求出这 $N$ 个数字的最大幸运值。
@@ -107,7 +106,6 @@ Q 1 4
 
 对于全部的测试点，保证 $1 \leq n, m \leq 10^5$，$c \in \{\texttt C, \texttt Q\}$，$1 \leq l \leq r \leq n$，$-10^4 \leq v \leq 10^4$，在任何时刻，$0\leq v_i \leq 10^4$。
 # D 最终决战（battle）
-P6187 最小环
 ### 题目描述
 最终决战！有 $n$ 位战士，每位战士用一个正整数 $a_i$ 表示其战力值，下标从 $1$ 开始编号。我们将所有战士视为一个首尾相邻的环，更具体地，两位战士 $i$, $j(i \leqslant j)$ 的距离为 $\min(j-i, i+n-j)$。
 现在再给定 $m$ 个整数 $k_1,k_2,\cdots,k_m$，对每个 $k_i(i=1,2,\cdots,m)$，你需要将战士的位置重新排列，使得环上任意两个距离为 $k_i$ 的战士的战力值的乘积之和最大。
@@ -143,14 +141,14 @@ P6187 最小环
 ### 样例 2
 见选手目录下的 $battle2.in$ 与 $battle2.ans$ 
 ### 数据规模与约定
-对于所有测试数据：$1 \leqslant m \leqslant n \leqslant 2 \times 10^5$，$0 \leqslant k \leqslant \lfloor n/2\rfloor$，$1 \leqslant a_i \leqslant 10^5$。
+对于所有测试数据：$1 \leqslant m \leqslant n \leqslant 2 \times 10^5$，$0 \leqslant k_i \leqslant \lfloor n/2\rfloor$，$1 \leqslant a_i \leqslant 10^5$。
 
-| 测试点编号 | $n \leqslant$   | 特殊性质                             |
-| :---- | :-------------- | :------------------------------- |
-| 1     | $10$            | 无                                |
-| 2     | $18$            | 无                                |
-| 3     | $36$            | $n$ 为偶数且 $m=1$，$k=2$             |
-| 4,5   | $1000$          | $m \leqslant 10$，$k=1$           |
-| 6     | $50$            | $m \leqslant 10$，$k \leqslant 2$ |
-| 7,8   | $3000$          | 无                                |
-| 9,10  | $2 \times 10^5$ | 无                                |
+| 测试点编号 | $n \leqslant$   | 特殊性质                               |
+| :---- | :-------------- | :--------------------------------- |
+| 1     | $10$            | 无                                  |
+| 2     | $18$            | 无                                  |
+| 3     | $36$            | $n$ 为偶数且 $m=1$，$k_i=2$             |
+| 4,5   | $1000$          | $m \leqslant 10$，$k_i=1$           |
+| 6     | $50$            | $m \leqslant 10$，$k_i \leqslant 2$ |
+| 7,8   | $3000$          | 无                                  |
+| 9,10  | $2 \times 10^5$ | 无                                  |
