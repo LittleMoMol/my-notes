@@ -107,4 +107,47 @@
 	假设 $x$ 是 $f(x)$ 的连续点或第一类不连续点，而上述积分的极限存在与否只涉及 $\dfrac{\varphi_\sigma(u,x)}u$ 当 $u\to0$ 时的性质
 	显然，要满足 Dini 条件首先必须有 $\lim\limits_{u\to 0} [f(x+u)+f(x-u)-2\sigma(x)]=0$，即必须有 $\sigma(x) = \dfrac{f(x+)+f(x-)}2$（显然当 $f(x)$ 在点 $x$ 连续时，有 $\sigma(x) = f(x)$）
 	于是问题最终化为研究使得 $\displaystyle \lim_{p\to+\infty} \int_0^\delta \left[ f(x+u) + f(x-u) - 2 \dfrac{f(x+)+f(x-)}2 \right] \dfrac{\sin pu}u \mathrm du = 0$ 成立的条件——这时探索 Fourier 级数收敛性的一把钥匙
-- 
+- **分段单调**：设函数 $f$ 在 $[a,b]$（或 $(a,b)$）上有定义，如果在 $[a,b]$（或 $(a,b)$）上存在有限个点 $a=x_0<x_1<x_2<\cdots<x_N=b$ 使得 $f$ 在每个区间 $(x_{i-1}, x_i)\ (i=1,2,\cdots,N)$ 上是单调函数，则称 $f$ 在 $[a,b]$（或 $(a,b)$）上**分段单调** 
+- **Holder 条件**：设点 $x$ 是函数 $f(x)$ 的连续点或第一类不连续点，若对于充分小的正整数 $\delta$，存在常数 $L>0$ 和 $\alpha \in (0,1]$，使得成立 $|f(x\pm u) - f(x\pm)| < Lu^\alpha\ (0<u<\delta)$，则称 $f(x)$ 在点 $x$ 处满足指数为 $\alpha \in (0,1]$ 的 **Holder 条件** 
+	- **Lipschitz 条件**：当 $\alpha=1$ 时 Holder 条件也成为 **Lipschitz 条件** 
+- **Dirichlet 引理**：设函数 $\psi(u)$ 在 $[0,\delta]$ 上单调，则成立 $\displaystyle \lim_{p\to+\infty} \int_0^\delta \dfrac{\psi(u) - \psi(0+)}u \sin pu \mathrm du = 0$ 
+	- *证明过程* 
+		不妨设 $\psi(x)$ 单调增加，于是对于任意给定的 $\varepsilon>0$，存在 $\eta\in(0,\delta)$，当 $u\in (0,\eta]$ 时，$0\le \psi(u) - \psi(0+)<\varepsilon$ 
+		将积分分成两部分：
+		$$
+		\begin{aligned}
+		&\int_0^\delta \dfrac{\psi(u) - \psi(0+)}u\sin pu\mathrm du \\
+		=& \int_0^\eta \dfrac{\psi(u) - \psi(0+)}u \sin pu\mathrm du + \int_\eta^\delta \dfrac{\psi(u) - \psi(0+)}u \sin pu\mathrm du
+		\end{aligned}
+		$$
+		对于等式右边第一项，由积分第二中值定理，存在 $\xi\in [0, \eta]$，使得：
+		$$
+		\begin{aligned}
+		& \left|\int_0^\eta \dfrac{\psi(u) - \psi(0+)}u \sin pu\mathrm du\right| \\
+		=& [\psi(\eta) - \psi(0+)] \cdot \left| \int_\xi^\eta \dfrac{\sin pu}u \mathrm du \right| \\
+		<& \left| \int_\xi^\eta \dfrac{\sin pu}u \mathrm du \right| \cdot \varepsilon = \left| \int_{p\xi}^{p\eta} \dfrac{\sin u}u \mathrm du \right| \cdot \varepsilon
+		\end{aligned}
+		$$
+		利用含参变量积分中已经得到的结论：$\displaystyle \int_0^{+\infty} \dfrac{\sin x}x \mathrm dx = \dfrac \pi 2$ 
+		可知存在与 $p$ 无关的常数 $K$，使得 $\displaystyle \left| \int_{p\xi}^{pq} \dfrac{\sin u}u \mathrm du \right| < K$，即 $\displaystyle \left| \int_0^\eta \dfrac{\psi(u) - \psi(0+)}u \sin pu\mathrm du \right| < K\varepsilon$ 
+		而对于右边的第二项，由于 $\dfrac{\psi(u) - \psi(0+)}u$ 在 $[\eta, \delta]$ 上显然是可积或绝对可积的
+		由 Riemann 引理，存在常数 $P>0$，当 $p>P$ 时，有 $\displaystyle \left| \int_\eta^\delta [\psi(u) - \psi(0+)] \dfrac{\sin pu}u \mathrm du \right| < \varepsilon$ 
+		综合上述两项估计，即知结论成立
+	- Dirichlet 引理也经常表达为等价形式 $\displaystyle \lim_{p\to+\infty} \int_0^\delta \psi(u) \dfrac{\sin pu}u \mathrm du = \dfrac \pi 2 \psi(0+)$ 
+	- 如果 $\psi(u)$ 时分段单调有界函数，Dirichlet 引理依然成立
+- **Dirichlet-Jordan 判别法**：设函数 $f(x)$ 在 $[-\pi, \pi]$ 上可积或绝对可积，且 $f(x)$ 在点 $x$ 的某个邻域 $O(x,\delta)$ 上是分段单调有界函数，则 $f(x)$ 的 Fourier 级数在点 $x$ 处收敛于 $\dfrac{f(x+)+f(x-)}2$ 
+	- *证明过程* 
+		由 **Dirichlet 引理**可知 $\begin{aligned} \lim_{p\to+\infty} \int_0^\delta \dfrac{f(x+u) - f(x+)}u \sin pu \mathrm du = 0 \\ \lim_{p\to+\infty} \int_0^\delta \dfrac{f(x-u) - f(x-)}u \sin pu \mathrm du = 0 \\  \end{aligned}$ 
+		两式相加，既有 $\displaystyle \lim_{p\to+\infty} \int_0^\delta \left[ f(x+u) + f(x-u) - 2\dfrac{f(x+)+f(x-)}2 \right] \dfrac{\sin pu}u\mathrm du = 0$，证毕！
+- **Dini-Lipschitz 判别法**：设函数 $f(x)$ 在 $[-\pi, \pi]$ 上可积或绝对可积，且 $f(x)$ 在点 $x$ 处满足指数为 $\alpha\in (0,1]$ 的 Holder 条件，则 $f(x)$ 的 Fourier 级数在点 $x$ 处收敛于 $\dfrac{f(x+)+f(x-)}2$ 
+	- *证明过程* 
+		在 $(0,\delta)$ 上有 $\dfrac{|f(x\pm u) - f(x\pm)|}u < \dfrac{L}{u^{1-\alpha}}\ (0<\alpha\le 1)$ 
+		所以 $\dfrac{\varphi_\alpha(u,x)}u = \dfrac{f(x+u)-f(x+)}u + \dfrac{f(x-u)-f(x-)}u$ 在 $[0,\delta]$ 可积或绝对可积
+		由 Riemann 引理，$\displaystyle \lim_{p\to+\infty} \int_0^\delta \left[ f(x+u) + f(x-u) - 2\dfrac{f(x+)+f(x-)}2 \right]\dfrac{\sin pu}u \mathrm du = 0$，证毕！
+	- 由于“可导”强于“满足 Lipschitz 条件”，且易于验证，因此实际中往往使用如下推论。
+- **推论**：若 $f(x)$ 在 $[-\pi, \pi]$ 上可积或绝对可积，在点 $x$ 处两个单侧导数 $f_+'(x)$ 和 $f_-'(x)$ 都存在，或更进一步，只要得到两个拟单侧导数 $\lim\limits_{h\to0+} \dfrac{f(x\pm h) - f(x\pm)}h$ 存在，则 $f(x)$ 的 Fourier 级数在点 $x$ 处收敛于 $\dfrac{f(x+)+f(x-)}2$ 
+- **注意**：Dirichlet-Jordan 判别法和 Dini-Lipschitz 判别法都是 Fourier 级数收敛的充分条件，直至今天，还没有找到一个判别 Fourier 级数敛散性的充要条件。
+- **应用**：Dirichlet-Jordan 判别法和 Dini-Lipschitz 判别法告诉我们，若收敛条件满足，则 $f(x)$ 的 Fourier 级数在连续点收敛于函数值本身，而在第一类不连续点收敛于它左右极限的算术平均值
+	- 对于连续的周期函数 $f(x)$，应将 $f(x)$ 与它的（收敛的）Fourier 级数间的“$\sim$”改为“$=$”
+	- 若周期函数 $f$ 含有第一类不连续点，那么展成 Fourier 级数后，要对这些点予以特殊说明
+## 16-3 Fourier 级数的性质
