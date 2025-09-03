@@ -151,3 +151,103 @@
 	- 对于连续的周期函数 $f(x)$，应将 $f(x)$ 与它的（收敛的）Fourier 级数间的“$\sim$”改为“$=$”
 	- 若周期函数 $f$ 含有第一类不连续点，那么展成 Fourier 级数后，要对这些点予以特殊说明
 ## 16-3 Fourier 级数的性质
+### 16-3-1 Fourier 级数的分析性质
+- 假定：$f(x)$ 的周期为 $2\pi$ 
+- **定理**：设 $f(x)$ 在 $[-\pi, \pi]$ 上可积或绝对可积，则对于 $f(x)$ 的 Fourier 系数 $a_n$ 与 $b_n$，有 $\lim\limits_{n\to\infty} a_n = 0,\ \lim\limits_{n\to\infty} b_n = 0$ 
+- **Fourier 级数的逐项积分定理**：设 $f(x)$ 在 $[-\pi, \pi]$ 上可积或绝对可积，$f(x) \sim \dfrac{a_0}2 + \sum\limits_{n=1}^\infty (a_n\cos nx + b_n\sin nx)$，则 $f(x)$ 的 Fourier 级数可以逐项积分，即对于任意 $c,x\in [-\pi, \pi]$ 有 $\displaystyle \int_c^x f(t)\mathrm dt = \int_c^x \dfrac{a_0}2 \mathrm dt + \sum_{n=1}^\infty \int_c^x (a_n\cos nt + b_n \sin nt)\mathrm dt$ 
+	- *证明过程* 
+		由于尚未具备足够的数学工具，这里仅对 $f(x)$ 在 $[-\pi, \pi]$ 上只有有限个第一类不连续点的情况加以证明
+		考虑函数 $\displaystyle F(x) = \int_c^x \left[f(t) - \dfrac{a_0}2 \right] \mathrm dt$，则 $F(x)$ 是周期为 $2\pi$ 的连续函数，且在 $f(x)$ 的连续点成立 $F'(x) = f(x) - \dfrac{a_0}2$，而在 $f(x)$ 的第一类不连续点，$F(x)$ 的两个单侧导数 $F_{\pm}'(x) = f(x\pm) - \dfrac{a_0}2$ 都存在
+		由 Dini-Lipschitz 判别法的推论，$F(x)$ 可展开为收敛的 Fourier 级数 $F(x) = \dfrac{A_0}2 + \sum\limits_{n=1}^\infty (A_n\cos nx + B_n \sin nx)$ 
+		利用分部积分法，即有：
+		$$
+		\begin{aligned}
+		A_n = & \dfrac 1\pi \int_{-\pi}^\pi F(x)\cos nx \mathrm dx = \dfrac 1\pi \left. \left[ \dfrac{\sin nx}n F(x) \right] \right|_{-\pi}^\pi - \dfrac 1{n\pi}\int_{-\pi}^\pi F'(x)\sin nx \mathrm dx \\
+		= & -\dfrac 1{n\pi} \int_{-\pi}^\pi \left[ f(x) - \dfrac{a_0}2 \right]\sin nx\mathrm dx = - \dfrac{b_n}n
+		\end{aligned}
+		$$
+		类似可知 $B_n = \dfrac{a_n}n$ 
+		于是 $F(x) = \dfrac{A_0}2 + \sum\limits_{n=1}^\infty \left( -\dfrac{b_n}n \cdot nx + \dfrac{a_n}n \sin nx \right)$ 
+		令 $x=c$，有 $0 = \dfrac{A_0}2 + \sum\limits_{n=1}^\infty \left( -\dfrac{b_n}n \cos nc + \dfrac{a_n}n \sin nc \right)$ 
+		两式相减并整理，得到：
+		$$
+		\begin{aligned}
+		F(x) = & \int_c^x \left[ f(t) - \dfrac{a_0}2 \right] \mathrm dt = \sum_{n=1}^\infty \left( a_n \dfrac{\sin nx - \sin nc} + b_n \dfrac{-\cos nx + \cos nc}n \right) \\
+		= & \sum_{n=1}^\infty \int_c^x (a_n\cos nt + b_n\sin nt)\mathrm dt
+		\end{aligned}
+		$$
+	- 关于逐项积分，Fourier 级数有非常好的性质
+	- **注意**：只要 $f(x)$ 可以展成 Fourier 级数 $\dfrac{a_0}2 + \sum\limits_{n=1}^\infty(a_n\cos nx + b_n\sin nx)$，哪怕这个级数并不表示 $f(x)$，甚至根本不收敛，它的逐项积分级数也一定能收敛于 $f(x)$ 的积分
+	- **推论**：$\dfrac{a_0}2 + \sum\limits_{n=1}^\infty(a_n\cos nx + b_n\sin nx)$ 是某个在 $[-\pi, \pi]$ 上可积或绝对可积函数的 Fourier 级数的必要条件是 $\sum\limits_{n=1}^\infty \dfrac{b_n}n$ 收敛
+		- **注意**：因此，并不是随便拿来一个收敛的三角级数就能说它一定是某个函数的 Fourier 级数的。
+		- **例子**：如三角级数 $\sum\limits_{n=2}^\infty \dfrac{\sin nx}{\ln n}$，由 Dirichlet 判别法可知它是点点收敛的，但由于 $\sum\limits_{n=2}^\infty \dfrac 1{n\ln n}$ 发散，它不可能是某个可积或绝对可积函数的 Fourier 级数
+- **Fourier 级数的逐项微分定理**：设 $f(x)$ 在 $[-\pi, \pi]$ 上连续，$f(x) \sim \dfrac{a_0}2 + \sum\limits_{n=1}^\infty(a_n\cos nx + b_n\sin nx)$，$f(-\pi) = f(\pi)$，且除了有限个点外 $f(x)$ 可导。进一步假设 $f'(x)$ 在 $[-\pi, \pi]$ 上可积或绝对可积（注意：$f'(x)$ 在有限个点可能无定义，但这并不影响其可积性），则 $f'(x)$ 的 Fourier 级数可由 $f(x)$ 的 Fourier 级数逐项微分得到，即 $f'(x) \sim \dfrac{\mathrm d}{\mathrm dx} \left( \dfrac{a_0}2 \right) + \sum\limits_{n=1}^\infty \dfrac{\mathrm d}{\mathrm dx}(a_n\cos nx + b_n\sin nx) = \sum\limits_{n=1}^\infty (-a_n n \sin nx + b_n n \cos nx)$ 
+	- *证明过程* 
+		由所给条件，此时 $f'(x)$ 可展开为 Fourier 级数，记 $f'(x)$ 的 Fourier 系数为 $a_n', b_n'$，则有：
+		$$
+		\begin{aligned}
+		a_0' = & \dfrac 1\pi \int_{-\pi}^\pi f'(x)\mathrm dx = \dfrac 1\pi[f(\pi) - f(-\pi)] = 0 \\ 
+		a_n' = & \dfrac 1\pi \int_{-\pi}^\pi f'(x)\cos nx\mathrm dx \\
+		= & \left.\dfrac{f(x)\cos nx}\pi\right|_{-\pi}^\pi+ \dfrac n\pi \int_{-\pi}^\pi f(x)\sin nx\mathrm dx = nb_n & \quad(n=1,2,\cdots) \\
+		b_n' = & \dfrac 1\pi \int_{-\pi}^\pi f'(x)\sin nx\mathrm dx = -na_n & \quad (n=1,2,\cdots)
+		\end{aligned}
+		$$
+		于是 $f'(x)\sim \sum\limits_{n=1}^\infty (-a_n n\sin nx + b_n n\cos nx)$ 
+	- Fourier 级数逐项微分的结果远没有逐项积分那么好了。一般来说，Fourier 级数是不能逐项积分的，除非加上特别的条件
+### 16-3-2 Fourier 级数的逼近性质
+- **最佳平方逼近元素**：设 $S$ 是一个定义了内积运算 $(\cdot, \cdot)$ 的线性空间，令 $S$ 中的范数为 $\| \cdot \| = \sqrt{(\cdot, \cdot)}$。$T$ 是 $S$ 的一个 $n$ 维子空间，记 $T$ 的一组正交基为 $\varphi_1, \varphi_2, \cdots, \varphi_n$，即 $T = \mathrm{span}\{\varphi_1, \varphi_2, \cdots, \varphi_n\}$。若对于 $x\in S$，有 $x_T = c_1\varphi_1 + c_2\varphi_2 + \cdots + c_n\varphi_n \in T$ 使得 $\| x-x_T \| = \min\limits_{y\in T} \| x-y \|$，则称 $x_T$ 是 $x$ 在 $T$ 中的**最佳平方逼近元素** 
+- **引理**：在上述假定下，有下面 3 条结论成立
+	(1) 对于任意 $x\in S$，$x$ 在 $T$ 中的最佳平方逼近元素 $x_T$ 存在且唯一
+	(2) $x_T\in T$ 是 $x$ 在 $T$ 中的最佳平方逼近元素 $\iff$ $x-x_T\perp T$（即 $(x-x_T, \varphi_k) = 0,\ (k=1,2,\cdots,n)$）$\iff$ $x_T$ 的组合系数 $c_k = \dfrac{(x,\varphi_k)}{(\varphi_k,\varphi_k)},\ (k=1,2,\cdots,n)$ 
+	(3) 最佳平方逼近的余项满足估计式 $\| x-x_T \|^2 = \|x\|^2 - \|x_T\|^2 = \|x\|^2 - \sum\limits_{k=1}^n c_k^2 \| \varphi_k \|^2$ 
+	- *证明过程* 
+		**对于 (1) 和 (3)** 
+		令 $c_k = \dfrac{(x,\varphi_k)}{(\varphi_k, \varphi_k)}$，则对于任意的 $y=d_1\varphi_1 + d_2\varphi_2 + \cdots + d_n\varphi_n \in T$，利用 $(\varphi_j, \varphi_k) = 0\ (j\not=k)$ 得到：
+		$$
+		\begin{aligned}
+		\| x-y\|^2 = & \left(x - \sum_{k=1}^n d_k\varphi_k, x - \sum_{k=1}^n d_k\varphi_k \right) \\
+		= & (x,x) - 2\sum_{k=1}^n d_k(x,\varphi_k) + \sum_{k=1}^n d_k^2(\varphi_k, \varphi_k) \\
+		= & \| x \|^2 - 2\sum_{k=1}^n c_kd_k \| \varphi_k \|^2 + \sum_{k=1}^n d_k^2 \| \varphi_k \|^2 \\
+		= & \| x \|^2 - \sum_{k=1}^n c_k^2 \|\varphi_k\|^2 + \sum_{k=1}^n (c_k-d_k)^2 \|\varphi_k\|^2
+		\end{aligned}
+		$$
+		于是，当且仅当 $d_k=c_k\ (k=1,2,\cdots,n)$ 时，$\| x-y\|$ 达到最小值
+		因此取 $x_T = \sum\limits_{k=1}^n c_k\varphi_k$，则 $\|x-x_T\| = \min\limits_{y\in T} \|x-y\|$，且 $\| x-x_T\|^2 = \|x \|^2 - \sum\limits_{k=1}^n c_k^2 \| \varphi_k \|^2 = \| x \|^2 - \| x_T \|^2$，证毕！
+		**对于 (2)** 
+		对于每个 $k=1,2,\cdots,n$，$x$ 在 $T$ 中的最佳平方逼近元素 $x_T = \sum\limits_{k=1}^n c_k\varphi_k$ 满足：
+		$$
+		\begin{aligned}
+		(x-x_T, \varphi_k) = & \left(x - \sum_{j=1}^n c_j\varphi_j, \varphi_k \right) = (x-\varphi_k) - \sum_{j=1}^n c_j(\varphi_j, \varphi_k) \\
+		= & c_k \| \varphi_k \|^2 - c_k\|\varphi_k\|^2 = 0
+		\end{aligned}
+		$$
+		反之，若 $y=d_1\varphi_1 + d_2\varphi_2 + \cdots + d_n\varphi_n \in T$ 满足 $(x-y, \varphi_k) = 0,\ (k=1,2,\cdots,n)$ 
+		那么 $0=(x,\varphi_k) - (y,\varphi_k) = (x,\varphi_k) - \left( \sum\limits_{j=1}^n d_j\varphi_j, \varphi_k \right) = (x,\varphi_k) - d_k(\varphi_k, \varphi_k),\ (k=1,2,\cdots,n)$ 
+		因此 $d_k = \dfrac{(x,\varphi_k)}{(\varphi_k, \varphi_k)} = c_k$，即 $y=x_T$，证毕！
+- **$n$ 阶三角多项式**：即为 $\dfrac{A_0}2 + \sum\limits_{k=1}^n (A_k\cos kx + B_k\sin kx)$ 
+- 定义 $S$、可积或平方可积、$S$ 的内积和范数、$T$：现在，具体地取  为 $[-\pi, \pi]$ 上 Riemann 可积或在反常积分意义下平方可积（简称为“**可积或平方可积**”）的函数 $f(x)$ 全体；$S$ 中的内积 $(\cdot, \cdot)$ 和范数 $\| \cdot \|$ 定义为 $\displaystyle (f,g) = \dfrac 1\pi \int_{-\pi}^\pi f(x)g(x)\mathrm dx$ 和 $\| f\| = \sqrt{(f,f)}$。$T$ 为 $n$ 阶三角多项式 $\dfrac{A_0}2 + \sum\limits_{k=1}^n (A_k\cos kx + B_k\sin kx)$ 的全体，利用前面已经得到的正交性，可将 $T$ 表示为 $T = \mathrm{span} \{1, \cos x, \sin x, \cos 2x, \sin 2x, \cdots, \cos nx, \sin nx\}$ 
+	- 故有 $\|1\|^2=2$ 和 $\|\cos kx\|^2 = \|\sin kx \|^2 = 1,\ (k=1,2,\cdots,n)$ 
+	- 由 Fourier 系数的 Euler-Fourier 公式，得到 $\begin{aligned} &(f, \cos kx) = \dfrac 1\pi \int_{-\pi}^\pi f(x)\cos kx \mathrm dx = a_k,\ (k=0,1,2,\cdots,n) \\ &(f, \sin kx) = \dfrac 1\pi \int_{-\pi}^\pi f(x)\sin kx \mathrm dx = b_k,\ (k=1,2,\cdots,n)  \end{aligned}$ 
+- **Fourier 级数的平方逼近性质**：设 $f(x)$ 在 $[-\pi, \pi]$ 上可积或平方可积，则 $f(x)$ 在 $T$ 中的最佳平方逼近元素恰为 $f(x)$ 的 Fourier 级数的部分和函数 $S_n(x) = \dfrac{a_0}2 + \sum\limits_{k=1}^n (a_k\cos kx + b_k\sin kx)$，逼近的余项为 $\displaystyle \| f - S_n\|^2 = \dfrac 1\pi \int_{-\pi}^\pi f^2(x)\mathrm dx - \left[ \dfrac{a_0^2}2 + \sum_{k=1}^n (a_k^2 + b_k^2) \right]$ 
+- **Bessel 不等式**：设 $f(x)$ 在 $[-\pi, \pi]$ 上可积或平方可积，则 $f(x)$ 的 Fourier 系数满足不等式 $\displaystyle \dfrac{a_0^2}2 + \sum_{k=1}^\infty (a_k^2 + b_k^2) \le \dfrac 1\pi \int_{-\pi}^\pi f^2(x)\mathrm dx$ 
+	- *证明过程* 
+		因为 $\| f-S_n\|^2\ge 0$，在余项中令 $n\to\infty$ 即证
+	- 这表明 Fourier 系数的平方组成了一个收敛的级数
+- **Parseval 等式**（**能量恒等式**）：设 $f(x)$ 在 $[-\pi, \pi]$ 上可积或平方可积，则成立等式 $\displaystyle \dfrac{a_0^2}2 + \sum_{k=1}^\infty(a_k^2+b_k^2) = \dfrac 1\pi \int_{-\pi}^\pi f^2(x)\mathrm dx$ 
+- **平方收敛**：若函数序列 $\{\psi_n(x)\}$ 满足 $\lim\limits_{n\to\infty} \| f(x) - \psi_n(x)\|^2 = 0$，这里 $f(x)$ 是某一个固定函数，则称 $\{\psi_n(x)\}$ 按范数 $\| \cdot \|$ **平方收敛于** $f(x)$，简称 $\psi_n(x)$ **平方收敛于** $f(x)$ 
+- **Fourier 级数的平方收敛性质**：设 $f(x)$ 在 $[-\pi, \pi]$ 上可积或平方可积，则 $f(x)$ 的 Fourier 级数的部分和函数序列平方收敛于 $f(x)$ 
+	- *证明过程* 
+		由 Parseval 等式 $\displaystyle \lim_{n\to\infty} \| f - S_n \|^2 = \dfrac 1\pi \int_{-\pi}^\pi f^2(x)\mathrm dx - \left[ \dfrac{a_0^2}2 + \sum_{k=1}^\infty (a_k^2 + b_k^2) \right] = 0$，证毕！
+- **Weierstrass 第二逼近定理**：对周期为 $2\pi$ 的任意一个连续函数 $f(x)$，都存在三角多项式序列 $\left\{ \psi_n(x) = \dfrac{A_0}2 + \sum_{k=1}^n (A_k\cos kx + B_k \sin kx) \right\}$ 使得 $\{\psi_n(x)\}$ 一致收敛于 $f(x)$ 
+### 16-3-3 等周问题
+- **等周问题**：在平面上周长相等的所有简单闭曲线中，怎样的曲线所围图形的面积最大？这就是著名的**等周问题** 
+- **Wirtinger 引理**：设 $f(x)$ 在 $[-\pi, \pi]$ 上连续，$f(-\pi) = f(\pi)$，$\displaystyle \int_{-\pi}^\pi f(x)\mathrm dx = 0$，且除了有限个点外 $f(x)$ 可导，但在不可导的点，$f(x)$ 的单侧导数存在。进一步假设，$f(x)$ 的导数 $f'(x)$ 在 $[-\pi, \pi]$ 上可积或平方可积，则 $\displaystyle \int_{-\pi}^\pi f^2(x)\mathrm dx \le \int_{-\pi}^\pi f'^2(x)\mathrm dx$，等号成立当且仅当 $f(x) = a\cos x + b\sin x\ (a,b\text{ 为常数})$ 
+	- *证明过程* 
+		可知 $f(x)$ 的 Fourier 级数在 $[-\pi, \pi]$ 上点点收敛于 $f(x)$ 
+		由于 $\displaystyle a_0 = \dfrac 1\pi \int_{-\pi}^\pi f(x)\mathrm dx = 0$，所以 $f(x) = \sum\limits_{n=1}^\infty(a_n\cos nx + b_n\sin nx),\ x\in[-\pi, \pi]$ 
+		进一步，由 **Fourier 级数的逐项微分定理**可知 $f'(x) \sim \sum\limits_{n=1}^\infty (-a_n n\sin nx + b_n n\cos nx)$ 
+		于是，由 **Parseval 等式**得到：$\begin{aligned} &\dfrac 1\pi \int_{-\pi}^\pi f^2(x)\mathrm dx = \sum_{k=1}^\infty (a_k^2 + b_k^2) \\ & \dfrac 1\pi \int_{-\pi}^\pi f'^2(x)\mathrm dx = \sum_{k=1}^\infty n^2(a_k^2+b_k^2) \end{aligned}$ 及 $\displaystyle \int_{-\pi}^\pi f'^2(x)\mathrm dx - \int_{-\pi}^\pi f^2(x)\mathrm dx = \pi \sum_{k=2}^\infty (n^2-1)(a_k^2 + b_k^2)$ 
+		上式说明 $\displaystyle \int_{-\pi}^\pi f'^2(x)\mathrm dx - \int_{-\pi}^\pi f^2(x)\mathrm dx \ge 0$，并且等号成立当且仅当 $a_n=0, b_n=0\ (n=2,3,\cdots)$，即 $f(x) = a_1\cos x + b_1\sin x$，证毕！
+- **定理**：平面上具有定长的所有简单闭曲线中，圆周所围的面积最大。换言之，若 $L$ 是平面上简单闭曲线 $C$ 的长度，$A$ 是曲线 $C$ 所围图形的面积，则 $A\le \dfrac{L^2}{4\pi}$，且等号成立时，$C$ 必须是圆周。
+	- *证明过程* 
+		仅限于对平面上分段光滑的简单闭曲线讨论此问题
