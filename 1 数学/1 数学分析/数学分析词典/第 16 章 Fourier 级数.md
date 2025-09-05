@@ -251,3 +251,107 @@
 - **定理**：平面上具有定长的所有简单闭曲线中，圆周所围的面积最大。换言之，若 $L$ 是平面上简单闭曲线 $C$ 的长度，$A$ 是曲线 $C$ 所围图形的面积，则 $A\le \dfrac{L^2}{4\pi}$，且等号成立时，$C$ 必须是圆周。
 	- *证明过程* 
 		仅限于对平面上分段光滑的简单闭曲线讨论此问题
+		设曲线 $C$ 以弧长为参数的方程为 $x=x(s),\ y=y(s),\ s\in[0,L]$，且参数 $s$ 从 $0$ 变到 $L$ 时，点 $(x(s), y(s))$ 沿逆时针方向画出曲线 $C$ 
+		因为 $C$ 是闭曲线，所以 $x(0) = x(L),\ y(0) = y(L)$ 
+		作变量代换 $s = \dfrac{L}{2\pi}t + \dfrac L2$，可将该曲线的方程改写为 $x=\varphi(t),\ y=\psi(t),\ t\in[-\pi, \pi]$ 且成立 $\varphi(-\pi) = \varphi(\pi),\ \psi(-\pi) = \psi(\pi)$ 
+		不妨假设 $\displaystyle \int_{-\pi}^\pi \varphi(t)\mathrm dt = 0$，若 $\displaystyle \int_{-\pi}^\pi \varphi(t)\mathrm dt = k\not= 0$，则闭曲线 $\widetilde C: \tilde x = x - \dfrac{k}{2\pi} = \varphi(t) - \dfrac{k}{2\pi},\ \tilde y = y = \psi(t),\ (t\in[-\pi, \pi])$ 是 $C$ 的一个平移，其所围图形的面积与 $C$ 所围图形的面积相同，于是考虑 $C$ 即可
+		由于 $s=\dfrac{L}{2\pi}t + \dfrac L2$，所以 $\dfrac{\mathrm ds}{\mathrm dt} = \dfrac L{2\pi}$，再由弧长的微分公式得 $\dfrac{L^2}{4\pi^2} = \left( \dfrac{\mathrm ds}{\mathrm dt} \right)^2 = \varphi'^2(t) + \psi'^2(t),\ t\in[-\pi, \pi]$ 
+		对上式在 $[-\pi, \pi]$ 上取定积分得 $\displaystyle \dfrac{L^2}{2\pi} = \int_{-\pi}^\pi [\varphi'^2(t) + \psi'^2(t)]\mathrm dt$ 
+		其次，$C$ 所围图形的面积 $A$ 可用曲线积分表示 $\displaystyle A = \int_C x\mathrm dy = \int_{-\pi}^\pi \varphi(t)\psi'(t)\mathrm dt$，因此：
+		$$
+		\begin{aligned}
+		\dfrac{L^2}{2\pi} - 2A = & \int_{-\pi}^\pi [\varphi'^2(t) + \psi'^2(t) - 2\varphi(t)\psi'(t)] \mathrm dt \\
+		= & \int_{-\pi}^\pi [\varphi'^2(t) - \varphi^2(t)]\mathrm dt + \int_{-\pi}^\pi [\psi'(t) - \varphi(t)]^2\mathrm dt
+		\end{aligned}
+		$$
+		由于 $C$ 是分段光滑曲线，所以 $\varphi(t)$ 满足 **Bessel 不等式**的条件，因此 $\displaystyle \int_{-\pi}^\pi [\varphi'^2(t) - \varphi^2(t)]\mathrm dt \ge 0$，又显然 $\displaystyle \int_{-\pi}^\pi [\psi'(t) - \varphi(t)]^2 \mathrm dt \ge 0$，所以 $A\le \dfrac{L^2}{4\pi}$ 等号成立当且仅当 $\displaystyle \int_{-\pi}^\pi [\varphi'^2(t) - \varphi^2(t)]\mathrm dt = 0,\ \int_{-\pi}^\pi [\psi'(t) - \varphi(t)]^2\mathrm dt = 0$ 
+		等价地，就是 $\varphi(t) = a\cos t + b\sin t,\ \psi'(t) = \varphi(t),\ t\in[-\pi, \pi]$ 
+		这时 $C$ 的参数方程为 $\begin{cases} x = \varphi(t) = a\cos t + b\sin t \\ y = \psi(t) = a\sin t - b\cos t + c \end{cases}$，即 $C$ 是一个圆周
+## 16-4 Fourier 变换和 Fourier 积分
+### 16-4-1 Fourier 变换及其逆变换
+- **问题**：以上关于 Fourier 级数的论述都是对周期函数而言的，现在考虑不具备周期性的函数
+	- **大致过程**：在 $(-\infty, +\infty)$ 上可积的非周期函数 $f(x)$ 可以看成是周期函数的极限情况，处理思想如下：
+		(1) 先取 $f(x)$ 在 $[-T, T]$ 上的部分（即把它视为仅定义在 $[-T, T]$ 上的函数），再以 $2T$ 为周期，将它延拓为 $(-\infty, +\infty)$ 上的周期函数 $f_T(x)$ 
+		(2) 对得到的周期函数 $f_T(x)$ 作 Fourier 展开
+		(3) 令 $T$ 趋于无穷大
+	- **具体过程** 
+		将 Euler 公式 $\cos\theta = \dfrac{e^{i\theta} + e^{-i\theta}}2,\ \sin\theta = \dfrac{e^{i\theta} - e^{-i\theta}}{2i} = -\dfrac i2(e^{i\theta} - e^{-i\theta})$ 代入周期为 $2T$ 的函数 $f_T(x)$ 的 Fourier 级数
+		记 $\dfrac \pi T$ 是**圆频率**（下面简称为频率），$\omega_n = \dfrac{n\pi}T$，得到 $f_T(x) \sim \dfrac{a_0}2 + \sum\limits_{n=1}^\infty (a_n\cos \omega_n x + b_n \sin \omega_n x) = \dfrac{a_0}2 + \sum\limits_{n=1}^\infty \left( \dfrac{a_n - ib_n}2 e^{i\omega_nx} + \dfrac{a_n + ib_n}2 e^{-i\omega_nx} \right)$ 
+		记 $\begin{aligned} & c_0 = a_0 \\ & c_n = a_n-ib_n = \dfrac 1T \int_{-T}^T f_T(t)e^{-i\omega_nt}\mathrm dt\ (n=1,2,\cdots) \\ & c_{-n} = a_n + ib_n = \overline c_n \end{aligned}$，则得到 $f_T(x) \sim \dfrac{c_0}2 + \dfrac 12 \sum\limits_{n=1}^{+\infty} (c_ne^{i\omega_nx} + c_{-n}e^{-i\omega_nx}) = \dfrac 12 \sum\limits_{n=-\infty}^{n=+\infty} c_ne^{i\omega_nx}$，这称为 **Fourier 级数的复数形式** 
+		将 $c_n$ 的表达式代入，即有 $\displaystyle f_T(x) \sim \dfrac 1{2T} \sum_{n=-\infty}^{+\infty} \left[ \int_{-T}^T f_T(t) e^{-i\omega_nt}\mathrm dt \right] e^{i\omega_nx}$ 
+		记 $\Delta \omega = \omega_n - \omega_{n-1} = \dfrac \pi T$，于是当 $T\to +\infty$ 时 $\Delta \omega \to 0$，即得到 $\displaystyle f(x) = \lim_{T\to +\infty} f_T(x) \sim \lim_{\Delta \omega\to 0} \dfrac 1{2\pi} \sum_{n=-\infty}^{+\infty} \left[ \int_{-T}^T f_T(t)e^{-i\omega_nt}\mathrm dt \right] e^{i\omega_nx}\Delta \omega$ 
+		记 $\displaystyle \varphi_T(\omega) = \dfrac 1{2\pi} \int_{-T}^T f_T(t) e^{-i\omega t}\mathrm dt e^{i\omega x}$，则上式可写成 $f(x) \sim \lim\limits_{\Delta \omega\to 0} \sum\limits_{n=-\infty}^{+\infty} \varphi_T(\omega_n)\Delta \omega$ 
+		它看上去很像 Riemann 和的极限形式，不过由于 $\Delta \omega\to 0$ 时函数 $\varphi_T(\omega)$ 将随之趋于 $\displaystyle \varphi(\omega) = \dfrac 1{2\pi} \int_{-\infty}^{+\infty} f(t)e^{-i\omega t}\mathrm dte^{i\omega x}$，因此这并非真正的 Riemann 和
+		但是，我们暂且不理会这些，就将它看成 $\varphi(\omega)$ 在 $(-\infty, +\infty)$ 上的“积分”，于是形式上有 $\displaystyle f(x) \sim \dfrac 1{2\pi} \int_{-\infty}^{+\infty} \left[ \int_{-\infty}^{+\infty} f(t)e^{-i\omega t}\mathrm dt \right]e^{i\omega x}\mathrm d\omega$ 
+- **Fourier 变换**（**像函数**）：我们称方括号中的函数 $\displaystyle \hat f(\omega) = \int_{-\infty}^{+\infty} f(x)e^{-i\omega x}\mathrm dx,\ (\omega \in (-\infty, +\infty))$ 为 $f$ 的 **Fourier 变换**（或**像函数**），记为 $F[f]$，即 $\displaystyle F[f](\omega) = \hat f(\omega) = \int_{-\infty}^{+\infty} f(x)e^{-i\omega x}\mathrm dx$（这里假设了像函数存在）
+- **Fourier 逆变换**（**像原函数**）：称函数 $\displaystyle \dfrac 1{2\pi} \int_{-\infty}^{+\infty} \hat f(\omega) e^{i\omega x}\mathrm d\omega,\ (x\in(-\infty, +\infty))$ 为 $\hat f$ 的 **Fourier 逆变换**（或称**像原函数**），记为 $F^{-1}[\hat f]$，即 $\displaystyle F^{-1}[\hat f](x) = \dfrac 1{2\pi} \int_{-\infty}^{+\infty} \hat f(\omega)e^{i\omega x}\mathrm d\omega$（这里假设了像原函数存在）
+- **Fourier 积分**：称函数 $\displaystyle \dfrac 1{2\pi} \int_{-\infty}^{+\infty} \left[ \int_{-\infty}^{+\infty} f(t)e^{-i\omega t}\mathrm dt \right] e^{i\omega x}\mathrm d\omega = \dfrac 1{2\pi} \int_{-\infty}^{+\infty} \mathrm d\omega \int_{-\infty}^{+\infty} f(t)e^{i\omega (x-t)}\mathrm dt$ 为 $f$ 的 **Fourier 积分** 
+- **分段可导**：设函数 $f$ 在 $[a,b]$ 上除有限个点 $a=x_0<x_1<x_2<\cdots<x_N=b$ 外均可导，而在 $x_i\ (i=0,1,2,\cdots,N)$ 处 $f$ 的左右极限 $f(x_i-)$ 和 $f(x_i+)$ 都存在（在 $x_0=a$ 只要求右极限存在，在 $x_N=b$ 只要求左极限存在），并且极限 $\lim\limits_{h\to 0-} \dfrac{f(x_i+h)-f(x_i-)}h$ 和 $\lim\limits_{h\to 0+} \dfrac{f(x_i+h)-f(x_i+)}h$ 都存在（在 $x_0=a$ 只要求上述第二个极限存在，在 $x_N=b$ 只要求上述第一个极限存在），那么称 $f$ 在 $[a,b]$ 上**分段可导** 
+- **定理**：设函数 $f$ 在 $(-\infty, +\infty)$ 上绝对可积，且在 $(-\infty, +\infty)$ 中的任何闭区间上分段可导，则 $f$ 的 Fourier 积分满足：对于任意 $x\in (-\infty, +\infty)$ 成立 $\displaystyle \dfrac{1}{2\pi} \int_{-\infty}^{+\infty} \mathrm d\omega \int_{-\infty}^{+\infty} f(t)e^{i\omega(x-t)}\mathrm dt = \dfrac{f(x+)+f(x-)}2$ 
+	- 若 $x$ 是 $f$ 的连续点，该定理已经蕴含了 $\displaystyle \dfrac 1{2\pi}\int_{-\infty}^{+\infty} \mathrm d\omega \int_{-\infty}^{+\infty} f(t)e^{i\omega(x-t)}\mathrm dt = f(x)$ 
+- **Fourier 积分的三角形式**（**实形式**）、**Fourier 余弦变换**、**Fourier 正弦变换** 
+	设 $f(x)$ 在 $(-\infty, +\infty)$ 上连续，且满足上面定理的条件，则将 $f$ 的 Fourier 积分的实部和虚部分开，得到 $\displaystyle f(x) = \dfrac 1{2\pi} \int_{-\infty}^{+\infty} \mathrm d\omega \int_{-\infty}^{+\infty} f(t)\cos \omega (x-t)\mathrm dt + \dfrac i{2\pi} \int_{-\infty}^{+\infty} \mathrm d\omega \int_{-\infty}^{+\infty} f(t)\sin \omega (x-t)\mathrm dt$ 
+	因为 $\displaystyle g_c(\omega) \overset{\text{def}}= \int_{-\infty}^{+\infty} f(t)\cos\omega(x-t)\mathrm dt$ 是偶函数，由此得到 $f(x)$ 的 **Fourier 积分的三角形式**（也成为**实形式**）$\displaystyle f(x) = \dfrac 1\pi \int_0^{+\infty} \mathrm d\omega \int_{-\infty}^{+\infty} f(t)\cos \omega(x-t)\mathrm dt$ 
+	当 $f(x)$ 本身是偶函数时，上式又可化成 $\displaystyle f(x) = \dfrac 2\pi \int_0^{+\infty} \left[ \int_0^{+\infty} f(t)\cos \omega t\mathrm dt \right] \cos\omega x\mathrm d\omega$，它可以看成是由 **Fourier 余弦变换** $\displaystyle F_c[f] = \hat f_c(\omega) = \int_0^{+\infty} f(x)\cos \omega x\mathrm dx$ 及其逆变换 $\displaystyle F_c^{-1}[\hat f_c] = \dfrac 2\pi \int_0^{+\infty} \hat f_c(\omega) \cos \omega x\mathrm d\omega$ 复合而成的
+	当 $f(x)$ 本身是奇函数时，上式又可化成 $\displaystyle f(x) = \dfrac 2\pi \int_0^{+\infty} \left[ \int_0^{+\infty} f(t)\sin \omega t\mathrm dt \right] \sin\omega x\mathrm d\omega$，它可以看成是由 **Fourier 正弦变换** $\displaystyle F_s[f] = \hat f_s(\omega) = \int_0^{+\infty} f(x)\sin \omega x\mathrm dx$ 及其逆变换 $\displaystyle F_s^{-1}[\hat f_s] = \dfrac 2\pi \int_0^{+\infty} \hat f_s(\omega) \sin \omega x\mathrm d\omega$ 复合而成的
+### 16-4-2 Fourier 变换的性质
+- **线性性质**：设 $c_1, c_2$ 是常数，若 $f,g$ 的 Fourier 变换存在，则 $F[c_1f + c_2g] = c_1F[f] + c_2F[g]$；若 $\hat f = F[f],\ \hat g = F[g]$ 的 Fourier 逆变换存在，则 $F^{-1}[c_1\hat f + c_2\hat g] = c_1F^{-1}[\hat f] + c_2F^{-1}[\hat g]$ 
+- **位移性质**：若函数 $f$ 的 Fourier 变换存在，则 $F[f(x\pm x_0)](\omega) = F[f](\omega) e^{\pm i\omega x_0}$；若 $\hat f = F[f]$ 的 Fourier 逆变换存在，则 $F^{-1}[\hat f (\omega \pm \omega_0)](x) = F^{-1}[\hat f](x) e^{\mp i\omega_0x}$ 
+	- 以上两式常简记为 $F[f(x\pm x_0)] = F[f] e^{\pm i\omega x_0}$ 和 $F^{-1}[\hat f(\omega \pm \omega_0)] = F^{-1}[\hat f]e^{\mp i\omega_0 x}$，今后类似情况也用此记号，不再一一明确指出变换的函数取值
+	- *证明过程* 
+		$$
+		\begin{aligned}
+		& F[f(x\pm x_0)](\omega) = \int_{-\infty}^{+\infty} f(x\pm x_0)e^{-i\omega x}\mathrm dx \\
+		=& \int_{-\infty}^{+\infty} f(u)e^{-i\omega(u\mp x_0)}\mathrm du = e^{\pm \omega x_0} \int_{-\infty}^{+\infty} f(u) e^{-i\omega u}\mathrm du \\
+		=& e^{\pm i\omega x_0} F[f](\omega)
+		\end{aligned}
+		$$
+		另一部分类似
+- **时间尺度性**：$F[f(ax)] = \dfrac 1{|a|}\hat f \left( \dfrac \omega a \right)$ 
+- **频率尺度性**：$F\left[ \dfrac 1a f\left( \dfrac xa \right) \right] = \hat f(a\omega)$ 
+- **微分性质 1**：设函数 $f(x)$ 在 $(-\infty, +\infty)$ 上有连续的导数，且 $f(x)$ 与 $f'(x)$ 在 $(-\infty, +\infty)$ 上绝对可积，若 $\lim\limits_{x\to\infty} f(x) = 0$，则有 $F[f'] = i\omega \cdot F[f]$ 
+	- *证明过程* 
+		由分布积分公式得：
+		$\displaystyle F[f'](\omega) = \int_{-\infty}^{+\infty} f'(x)e^{-i\omega x} = f(x)e^{-i\omega x} |_{-\infty}^{+\infty} + i\omega \int_{-\infty}^{+\infty} f(x) e^{-i\omega x} \mathrm dx = i\omega \cdot F[f](\omega)$ 
+- **微分性质 2**：若 $f(x)$ 和 $xf(x)$ 在 $(-\infty, +\infty)$ 上绝对可积，则 $F[-ix\cdot f] = (F[f])'$ 
+	- *证明过程* 
+		$$
+		\begin{aligned}
+		F[-ix \cdot f](\omega) = & \int_{-\infty}^{+\infty} (-ixf(x))e^{-i\omega x} \mathrm dx = \int_{-\infty}^{+\infty} \dfrac{\mathrm d}{\mathrm d\omega} (f(x)e^{-i\omega x})\mathrm dx \\
+		=& \dfrac{\mathrm d}{\mathrm d\omega} \int_{-\infty}^{+\infty} f(x)e^{-i\omega x}\mathrm dx = \dfrac{\mathrm d}{\mathrm d\omega} [F(f)](\omega)
+		\end{aligned}
+		$$
+		可以证明，这里得求导运算与积分运算可以交换次序
+- **积分性质**：设函数 $f(x)$ 和 $\displaystyle \int_{-\infty}^x f(t)\mathrm dt$ 在 $(-\infty, +\infty)$ 上绝对可积，则 $\displaystyle F\left[ \int_{-\infty}^x f(t)\mathrm dt \right] = \dfrac 1{i\omega} F[f]$ 
+	- *证明过程* 
+		因为 $\displaystyle \dfrac{\mathrm d}{\mathrm dx} \int_{-\infty}^x f(t)\mathrm dt = f(x)$，且由 $\displaystyle \int_{-\infty}^x f(t)\mathrm dt$ 和 $f(x)$ 在 $(-\infty, +\infty)$ 上的绝对可积性，易知 $\displaystyle \lim_{x\to\infty} \int_{-\infty}^x f(t)\mathrm dt=0$ 
+		所以由 Fourier 变换和微分性质得：$\displaystyle F[f](\omega) = F\left[ \dfrac{\mathrm d}{\mathrm dx} \int_{-\infty}^x f(t)\mathrm dt \right](\omega) = i\omega F\left[ \int_{-\infty}^x f(t)\mathrm dt \right](\omega)$ 
+		即 $\displaystyle F\left[ \int_{-\infty}^x f(t)\mathrm dt \right] = \dfrac 1{i\omega} F[f](\omega)$，证毕！
+### 16-4-3 卷积
+- **卷积**：设函数 $f$ 和 $g$ 在 $(-\infty, +\infty)$ 上定义，且积分 $\displaystyle (f*g)(x) = \int_{-\infty}^{+\infty} f(t)g(x-t)\mathrm dt$ 存在，则称函数 $f*g$ 为 $f$ 和 $g$ 的**卷积** 
+	- 卷积具有对称性：$f*g=g*f$ 
+- **卷积的 Fourier 变换**：设函数 $f$ 和 $g$ 在 $(-\infty, +\infty)$ 上绝对可积，则有 $F[f*g] = F[f] \cdot F[g]$ 
+- **Parseval 等式**：设函数 $f$ 在 $(-\infty, +\infty)$ 上绝对可积，且 $\displaystyle \int_{-\infty}^{+\infty} [f(x)]^2\mathrm dx$ 收敛。记 $f$ 的 Fourier 变换为 $\hat f$，则 $\displaystyle \int_{-\infty}^{+\infty} [f(x)]^2 \mathrm dx = \dfrac 1{2\pi} \int_{-\infty}^{+\infty} |\hat f(\omega)|^2 \mathrm d\omega$ 
+### 16-4-X 一些解释
+1. Fourier 积分的三角形式 $\displaystyle f(x) = \dfrac 1\pi \int_0^{+\infty} \mathrm d\omega \int_{-\infty}^{+\infty} f(t)\cos \omega(x-t)\mathrm dt$ 本可以由实数形式的 Fourier 级数按上述思想直接导出。这里之所以舍近求远，先化成复数形式再兜回来，是因为复数形式的 Fourier 级数和 Fourier 积分具有重要的实际应用价值
+2. 周期函数实际上就是频率为 $\omega = \dfrac \pi T$ 的震荡函数。Fourier 级数 $f(x) \sim \dfrac{a_0}2 + \sum\limits_{n=1}^\infty(a_n\cos n\omega x + b_n\sin n\omega x) = \dfrac 12 \sum\limits_{n=-\infty}^{+\infty} c_n e^{in\omega x}$ 揭示了 $f(x)$ 可以通过频率为 $\omega$（称为**基频**）的正弦波 $\sin\omega x$ 和余弦波 $\cos \omega x$（称为**基波**）及其 $n$ 次谐波 $\sin n\omega x, \cos n\omega x$ 叠加来得到，而谐频为 $n\omega$ 的谐波的振幅 $\displaystyle \sqrt{a_n^2 + b_n^2} = |c_n|  = \dfrac 1T \left| \int_{-T}^T f(x) e^{-in\omega x}\mathrm dx \right|$ 可以理解成该谐波在整体中的强度
+3. 对于非周期函数，即 $T\to +\infty$ 的情况，这时基频 $\omega\to 0$，因此谐频由离散的 $\{n\omega\}$ 趋向于布满整个实数轴，或者可以说，此时任何一个实数（仍记为 $\omega$）都是它的“谐频”。因此，Fourier 逆变换 $\displaystyle f(x) \sim \dfrac 1{2\pi} \int_{-\infty}^{+\infty} \hat f(\omega) e^{i\omega x}\mathrm d\omega = \dfrac 12\int_{-\infty}^{+\infty} \dfrac{\hat f(\omega)}{\pi} e^{i\omega x}\mathrm d\omega$ 同样表示 $f(x)$ 可由频率为 $\omega$ 的“谐波”叠加而成，$\dfrac{|\hat f(\omega)|}\pi$ 也应是相应的振幅
+4. 换一个角度，从 Fourier 变换的定义来看，由于 $\displaystyle \dfrac{|\hat f(\omega)|}\pi = \dfrac 1\pi \left| \int_{-\infty}^{+\infty} f(x)e^{-i\omega x} \mathrm dx \right| = \lim_{T\to+\infty} \dfrac{\dfrac 1T \left| \displaystyle\int_{-T}^T f(x)e^{-i\omega x}\mathrm dx \right|}{\Delta \omega}$，与 $|c_n|$ 的表达式比较，说明它确实能看成相应于频率 $\omega$ 的谐波在整体中的某种“强度”，与上面的结论相吻合
+
+这些解释有助于理解 Fourier 变换的物理意义
+## 16-5 快速 Fourier 变换
+### 16-5-1 离散 Fourier 变换
+- 传输信号时可将数据序列 $x(0), x(1), \cdots, x(N-1)$ 施以**离散 Fourier 变换** $X(j) = \sum\limits_{n=0}^{N-1} x(n) e^{-2\pi i \frac{nj}N},\ (j=0,1,2,\cdots,N-1,\ i=\sqrt{-1})$ 
+	- 离散 Fourier 变换可以看成是 Fourier 变换 $\displaystyle \hat f(\omega) = \int_{-\infty}^{+\infty} f(x)e^{-i\omega x}\mathrm dx$ 的一种离散的近似形式的推广
+- 利用正交关系式 $\dfrac 1N \sum\limits_{n=0}^{N-1} e^{-2\pi i\frac{nj}N}e^{2\pi i\frac{nk}N} = \delta_{j,k} = \begin{cases} 1 & j=k \\ 0 & j\not=k \end{cases}$ 可以导出**离散 Fourier 逆变换** $x(k) = \dfrac 1N \sum\limits_{j=0}^{N-1} X(j) e^{2\pi i \frac{jk}N},\ (k=0,1,2,\cdots,N-1)$ 
+	- *证明过程* 
+		$$
+		\begin{aligned}
+		\dfrac 1N \sum_{j=0}^{N-1} X(j) e^{2\pi i \frac{jk}N} = & \dfrac 1N \sum_{j=0}^{N-1} \sum_{n=0}^{N-1} x(n) e^{-2\pi i \frac{nj}k} e^{2\pi i \frac{jk}N} \\
+		= & \sum_{n=0}^{N-1} x(n) \left[ \dfrac 1N \sum_{j=0}^{N-1} e^{-2\pi i \frac{nj}N} e^{2\pi i \frac{jk}N} \right] \\
+		= & \sum_{n=0}^{N-1} x(n)\delta_{n,k} = x(k)
+		\end{aligned}
+		$$
+		证毕！
+- 若发送方将 $x(0), x(1), \cdots, x(N-1)$ 作了离散 Fourier 变换后传输出去，接收方可以对收到的数据进行离散 Fourier 逆变换，再现原始信号。
+### 16-5-2 快速 Fourier 变换
