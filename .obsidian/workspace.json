@@ -1,56 +1,41 @@
 {
   "main": {
-    "id": "a6115591eccad9b5",
+    "id": "1b96928adc78fbb7",
     "type": "split",
     "children": [
       {
-        "id": "b2882fd3a9a56e2a",
+        "id": "906273bf56b5d7e0",
         "type": "tabs",
         "children": [
           {
-            "id": "8c08b70b56832a46",
+            "id": "2b34ef6bec813226",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 数学/1 数学分析/数学分析词典/第 13 章 重积分.md",
+                "file": "2 计算机/1 C++面向对象编程基础/词典/第 2 章 类和对象的特性.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 13 章 重积分"
-            }
-          },
-          {
-            "id": "9d417610a8733412",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2 计算机/1 C++面向对象编程基础/1 前置知识与简易介绍.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "1 前置知识与简易介绍"
+              "title": "第 2 章 类和对象的特性"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "5e9c2e68c9d883e2",
+    "id": "da2694c58cfe01b9",
     "type": "split",
     "children": [
       {
-        "id": "5c8b187deae5f7ec",
+        "id": "3561d721fd3de2e0",
         "type": "tabs",
         "children": [
           {
-            "id": "120c1288052a12e5",
+            "id": "2086414741402f5b",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -63,12 +48,12 @@
             }
           },
           {
-            "id": "4d56867fbc487cc7",
+            "id": "9d241d6f7b4241cc",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#代码",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -80,7 +65,7 @@
             }
           },
           {
-            "id": "90d46f66a552f909",
+            "id": "1898283072ea7b59",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -93,23 +78,24 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
-    "id": "5b9e679af382aafb",
+    "id": "07889765dd437b1e",
     "type": "split",
     "children": [
       {
-        "id": "02dd6cfc6fa8972d",
+        "id": "c74f136169b637de",
         "type": "tabs",
         "children": [
           {
-            "id": "dc906700e2d71dc5",
+            "id": "f550608cfa0f69fb",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1 数学/1 数学分析/数学分析词典/第 14 章 曲线积分、曲面积分与场论.md",
+                "file": "2 计算机/1 C++面向对象编程基础/词典/1 前置知识与简易介绍.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,25 +105,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "第 14 章 曲线积分、曲面积分与场论 的反向链接列表"
+              "title": "1 前置知识与简易介绍 的反向链接列表"
             }
           },
           {
-            "id": "d96e6955e515860d",
+            "id": "92083fb9f1878aab",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "1 数学/1 数学分析/数学分析词典/第 14 章 曲线积分、曲面积分与场论.md",
+                "file": "2 计算机/1 C++面向对象编程基础/词典/1 前置知识与简易介绍.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "第 14 章 曲线积分、曲面积分与场论 的出链列表"
+              "title": "1 前置知识与简易介绍 的出链列表"
             }
           },
           {
-            "id": "b8f288afd236f60c",
+            "id": "9bcb4064c75d0fd3",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -152,18 +138,18 @@
             }
           },
           {
-            "id": "37bd1734f4582044",
+            "id": "131dba197df3b338",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "1 数学/1 数学分析/数学分析词典/第 14 章 曲线积分、曲面积分与场论.md",
-                "followCursor": true,
+                "file": "2 计算机/1 C++面向对象编程基础/词典/1 前置知识与简易介绍.md",
+                "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "第 14 章 曲线积分、曲面积分与场论 的大纲"
+              "title": "1 前置知识与简易介绍 的大纲"
             }
           }
         ]
@@ -175,65 +161,21 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:创建新数据库": false,
-      "graph:查看关系图谱": false,
       "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "markdown-importer:打开 Markdown 格式转换器": false,
+      "bases:创建新数据库": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "9d417610a8733412",
+  "active": "2b34ef6bec813226",
   "lastOpenFiles": [
-    "未命名 2.md",
-    "2 计算机/1 C++面向对象编程基础/1 前置知识与简易介绍.md",
-    "2 计算机/1 C++面向对象编程基础",
-    "1 数学/1 数学分析/数学分析词典/第 13 章 重积分.md",
-    "1 数学/1 数学分析/数学分析词典/第 16 章 Fourier 级数.md",
-    "1 数学/1 数学分析/数学分析词典/数学分析词典.md",
-    "1 数学/1 数学分析/数学分析词典/第 15 章 含参变量积分.md",
-    "1 数学/1 数学分析/数学分析词典/第 14 章 曲线积分、曲面积分与场论.md",
-    "1 数学/1 数学分析/数学分析词典/第 12 章 多元函数的微分学.md",
-    "1 数学/1 数学分析/数学分析词典/第 8 章 反常积分.md",
-    "未命名 1.md",
-    "1 数学/3 概率论与数理统计/概率论与数理统计词典/第 1 章 随机事件与概率.md",
-    "1 数学/1 数学分析/数学分析词典/第 7 章 定积分.md",
-    "1 数学/3 概率论与数理统计/概率论与数理统计词典/第 2 章 随机变量及其分布.md",
-    "未命名.md",
-    "1 数学/1 数学分析/数学分析词典/第 11 章 Euclid 空间上的极限和连续.md",
-    "3 生活/写作/No.9 回顾自己的大一生活——生命自己，就能找到蓬勃之路.md",
-    "2 计算机/OI 备课/讲义/字符串.md",
-    "attachment/Pasted image 20250205114102.png",
-    "3 生活/写作/No.5 2024 年回忆录.md",
-    "3 生活/写作/No.8 安静的春与夏.md",
-    "3 生活/旅行规划/2025 年杭州旅途.md",
-    "1 数学/1 数学分析/数学分析词典/第 10 章 函数项级数.md",
-    "1 数学/1 数学分析/数学分析词典/第 9 章 数项级数.md",
-    "temp.md",
-    "README.md",
-    "attachment/Pasted image 20250828221012.png",
-    "attachment/Pasted image 20250828173959.png",
-    "attachment/bbd8322b15d2a8f9eaadbc7d67237987.png",
-    "attachment/Pasted image 20250824124011.png",
-    "例题.md",
-    "2 计算机/OI 备课/讲义/2A 组合计数、概率与统计.md",
-    "2 计算机/OI 备课/lectures/DAY3 Simulated Contest And Homework/题面.pdf",
-    "2 计算机/OI 备课/模拟赛/未命名",
-    "2 计算机/OI 备课/模拟赛",
-    "2 计算机/OI 备课/讲义",
-    "attachment/Pasted image 20250802171624.png",
-    "未命名1.exe",
-    "未命名1.cpp",
-    "2 计算机/Manim",
-    "attachment/Pasted image 20250727161311.png",
-    "1 数学/4 常微分方程/常微分方程词典",
-    "1 数学/4 常微分方程",
-    "attachment/Pasted image 20250723110534.png",
-    "attachment/Pasted image 20250721160439.png",
-    "attachment/Pasted image 20250721160351.png",
-    "未命名.canvas"
+    "1 数学/4 常微分方程/词典/第 1 章 绪论.md",
+    "2 计算机/1 C++面向对象编程基础/词典/第 1 章 前置知识与简易介绍.md",
+    "1 数学/3 概率论与数理统计/词典/第 1 章 随机事件与概率.md"
   ]
 }
