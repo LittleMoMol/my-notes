@@ -65,6 +65,7 @@
 		**充分性** 
 		对任意 $\boldsymbol x\in S^c$，由于 $S^c$ 是开集，因此存在 $\boldsymbol x$ 的邻域 $O(\boldsymbol x, \delta)$，使得 $O(\boldsymbol x, \delta) \in S^c$，即 $\boldsymbol x$ 不是 $S$ 的聚点
 		所以如果 $S$ 有聚点，它就一定属于 $S$，因此 $S$ 为闭集。
+- **定理**：$\mathbb R^n$ 上的点集 $S$ 为闭集 $\iff$ $S^c$ 是开集
 - **定理**：$\mathbb R^n$ 上的点集 $S$ 为开集 $\iff$ $S^c$ 是闭集
 - **De Morgan 公式**：设 $\{S_\alpha\}$ 是 $\mathbb R^n$ 中的一组（有限或无限多个）子集，则：
 	1. $\left(\bigcup\limits_\alpha S_\alpha\right)^c = \bigcap\limits_\alpha S_\alpha^c$ 
