@@ -8,58 +8,37 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "tag:#数学合集下的笔记  ",
+      "query": "path:\"1 数学\"  ",
       "color": {
         "a": 1,
-        "rgb": 14048348
+        "rgb": 14701138
       }
     },
     {
-      "query": "tag:#数学类下的合集  ",
+      "query": "path:\"2 计算机\"  ",
       "color": {
         "a": 1,
-        "rgb": 14069084
+        "rgb": 14725458
       }
     },
     {
-      "query": "tag:#资源库下的大类  ",
+      "query": "path:\"3 生活\"  ",
       "color": {
         "a": 1,
-        "rgb": 11392604
-      }
-    },
-    {
-      "query": "tag:#代码  ",
-      "color": {
-        "a": 1,
-        "rgb": 6084188
-      }
-    },
-    {
-      "query": "tag:#紫薯丸  ",
-      "color": {
-        "a": 1,
-        "rgb": 6062550
-      }
-    },
-    {
-      "query": "tag:#资源库  ",
-      "color": {
-        "a": 1,
-        "rgb": 0
+        "rgb": 11657298
       }
     }
   ],
   "collapse-display": false,
   "showArrow": true,
   "textFadeMultiplier": -3,
-  "nodeSizeMultiplier": 2.30049316960103,
-  "lineSizeMultiplier": 5,
+  "nodeSizeMultiplier": 3.00161336437528,
+  "lineSizeMultiplier": 3.00161336437528,
   "collapse-forces": false,
-  "centerStrength": 0.496495956873315,
-  "repelStrength": 9.67900024503798,
-  "linkStrength": 0.621906395491301,
-  "linkDistance": 30,
-  "scale": 0.6168730393474946,
-  "close": true
+  "centerStrength": 0.730711105665155,
+  "repelStrength": 17.5427847894457,
+  "linkStrength": 0.816975043908018,
+  "linkDistance": 217,
+  "scale": 0.3334358937993466,
+  "close": false
 }

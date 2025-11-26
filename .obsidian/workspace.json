@@ -95,17 +95,16 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2 计算机/1 C++面向对象编程基础/词典/1 前置知识与简易介绍.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
+                "unlinkedCollapsed": false
               },
               "icon": "links-coming-in",
-              "title": "1 前置知识与简易介绍 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -114,12 +113,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2 计算机/1 C++面向对象编程基础/词典/1 前置知识与简易介绍.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "1 前置知识与简易介绍 的出链列表"
+              "title": "出链"
             }
           },
           {
@@ -143,16 +141,16 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2 计算机/1 C++面向对象编程基础/词典/1 前置知识与简易介绍.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "1 前置知识与简易介绍 的大纲"
+              "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -174,45 +172,47 @@
   },
   "active": "8febfb66391a443e",
   "lastOpenFiles": [
-    "未命名.md",
-    "1 数学/6 实变函数与泛函分析基础/词典/第 1 章 集合.md",
-    "2 计算机/1 C++面向对象编程基础/词典/第 6 章 多态性与基函数.md",
-    "2 计算机/1 C++面向对象编程基础/词典/第 8 章 C++ 工具.md",
+    "attachment/Pasted image 20251126112153.png",
     "1 数学/1 数学分析/词典/第 14 章 曲线积分、曲面积分与场论.md",
-    "2 计算机/1 C++面向对象编程基础/词典/第 1 章 前置知识与简易介绍.md",
-    "2 计算机/1 C++面向对象编程基础/词典/第 5 章 继承与派生.md",
-    "2 计算机/1 C++面向对象编程基础/词典/第 4 章 对运算符进行重载.md",
-    "2 计算机/1 C++面向对象编程基础/词典/第 7 章 输入输出流.md",
-    "2 计算机/1 C++面向对象编程基础/词典/第 3 章 怎样使用类和对象.md",
-    "2 计算机/1 C++面向对象编程基础/词典/第 2 章 类和对象的特性.md",
+    "1 数学/1 数学分析/专题/专题 1：背诵合集.md",
+    "大二上期末周备考/练习 4.md",
+    "大二上期末周备考/练习 3.md",
+    "1 数学/1 数学分析/词典/第 12 章 多元函数的微分学.md",
     "大二上期末周备考/大学物理下册.md",
-    "大二上期末周备考/数据结构选择题、应用题.md",
-    "attachment/Pasted image 20251121141900.png",
-    "attachment/Pasted image 20251121141820.png",
-    "attachment/Pasted image 20251121141810.png",
-    "attachment/Pasted image 20251121141712.png",
-    "attachment/Pasted image 20251121141641.png",
-    "attachment/Pasted image 20251121141632.png",
-    "attachment/Pasted image 20251121141317.png",
-    "attachment/Pasted image 20251121141247.png",
-    "attachment/Pasted image 20251121141234.png",
-    "attachment/Pasted image 20251121141136.png",
+    "attachment/Pasted image 20251125142647.png",
+    "attachment/Pasted image 20251125142434.png",
+    "attachment/Pasted image 20251125142326.png",
+    "attachment/Pasted image 20251125142028.png",
+    "attachment/Pasted image 20251125141721.png",
+    "attachment/Pasted image 20251125141556.png",
+    "attachment/Pasted image 20251125141243.png",
+    "attachment/Pasted image 20251125141039.png",
+    "attachment/Pasted image 20251125140646.png",
+    "attachment/Pasted image 20251125140503.png",
+    "1 数学/2 高等代数/高等代数专题/专题 1：背诵合集.md",
+    "1 数学/【数学类】.md",
+    "1 数学/6 实变函数与泛函分析基础/【实变函数与泛函分析基础】.md",
+    "1 数学/5 概率论与数理统计/【概率论与数理统计】.md",
+    "1 数学/4 常微分方程/【常微分方程】.md",
+    "1 数学/3 解析几何/【解析几何】.md",
+    "1 数学/2 高等代数/【高等代数】.md",
+    "1 数学/1 数学分析/【数学分析】.md",
+    "1 数学/1 数学分析/专题/【数学分析专题】.md",
+    "1 数学/4 常微分方程/专题/专题 1：背诵合集.md",
+    "1 数学/5 概率论与数理统计/专题/专题 1：背诵合集.md",
+    "3 生活/写作/2024 年写作/No.1 大学前的作文旅途.md",
+    "3 生活/写作/2024 年写作/【2024年写作】.md",
+    "3 生活/写作/2025 年写作/【2025 年写作】.md",
+    "3 生活/【生活类】.md",
+    "2 计算机/【计算机类】.md",
+    "2 计算机/1 C++面向对象编程基础/【C++面向对象编程基础】.md",
+    "3 生活/写作/【写作】.md",
+    "3 生活/写作/2025 年写作/No.7 幼稚故事（一）.md",
+    "3 生活/写作/2025 年写作",
+    "3 生活/写作/2024 年写作",
     "1 数学/6 实变函数与泛函分析基础/词典",
     "1 数学/6 实变函数与泛函分析基础",
-    "大学物理下册.md",
-    "add.md",
-    "aaa.md",
-    "1 数学/5 概率论与数理统计/词典/第 4 章 大数定律与中心极限定理.md",
-    "1 数学/1 数学分析/专题/专题 1：背诵合集.md",
-    "1 数学/1 数学分析/词典/第 13 章 重积分.md",
-    "1 数学/5 概率论与数理统计/专题/专题 1：背诵合集.md",
-    "1 数学/5 概率论与数理统计/词典/第 3 章 多维随机变量及其分布.md",
-    "3 生活/写作/No.10 2025 年回忆录.md",
     "2 计算机/2 git 项目管理",
-    "大二上期末周备考/练习 4.md",
-    "1 数学/1 数学分析/词典/第 6 章 不定积分.md",
-    "1 数学/4 常微分方程/词典/第 3 章 一阶微分方程的解的存在定理.md",
-    "1 数学/4 常微分方程/词典/第 4 章 高阶微分方程.md",
     "1 数学/3 解析几何",
     "大二上期末周备考",
     "1 数学/4 常微分方程/专题",
