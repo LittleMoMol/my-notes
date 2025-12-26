@@ -24,7 +24,7 @@
 	- 将等式两边同时乘以 $\sin mx\ (m=1,2,\cdots)$ 后在 $[-\pi, \pi]$ 上积分，同理可得到 $\displaystyle b_n = \dfrac 1\pi \int_{-\pi}^\pi f(x)\sin nx\mathrm dx,\ (n=1,2,\cdots)$ 
 - **Euler-Fourier 公式**：$\displaystyle a_n = \dfrac 1\pi \int_{-\pi}^\pi f(x)\cos nx\mathrm dx,\ (n=0,1,2,\cdots)$ 和 $\displaystyle b_n = \dfrac 1\pi \int_{-\pi}^\pi f(x)\sin nx\mathrm dx,\ (n=1,2,\cdots)$ 称为 **Euler-Fourier 公式** 
 	- 我们将三角级数的常数项写成 $\dfrac{a_0}2$ 而不是 $a_0$，就是为了使系数 $a_n(n=0,1,2,\cdots)$ 有上述统一的表达式
-- **Fourier 级数**、**Fourier 系数**：设周期为 $2\pi$ 的函数 $f(x)$ 在 $[-\pi, \pi]$ 上可积或绝对可积，则利用 Euler-Fourier 公式就可求出系数 $a_n,b_n$，并记 $f(x) \sim \dfrac{a_0}2 + \sum_{n=1}^\infty (a_n\cos nx + b_n\sin nx)$，右端的三角级数称为 $f(x)$ 的 **Fourier 级数**，相应的 $a_n$ 和 $b_n$ 称为 $f(x)$ 的 **Fourier 系数** 
+- **Fourier 级数**、**Fourier 系数**：设周期为 $2\pi$ 的函数 $f(x)$ 在 $[-\pi, \pi]$ 上可积或绝对可积，则利用 Euler-Fourier 公式就可求出系数 $a_n,b_n$，并记 $f(x) \sim \dfrac{a_0}2 + \sum\limits_{n=1}^\infty (a_n\cos nx + b_n\sin nx)$，右端的三角级数称为 $f(x)$ 的 **Fourier 级数**，相应的 $a_n$ 和 $b_n$ 称为 $f(x)$ 的 **Fourier 系数** 
 	- **注意**：目前在 $f(x)$ 和它的 Fourier 级数之间不能用等号而只能用 “$\sim$”，因为我们不知道右端的三角级数是否收敛；即使收敛，也不知道它是否收敛到 $f(x)$ 本身
 - **Fourier 级数的部分和**：$S_m(x) = \dfrac{a_0}2 + \sum\limits_{n=1}^m (a_n \cos nx + b_n\sin nx)$ 就是 $f(x)$ 的 **Fourier 级数的部分和** 
 ### 16-1-3 正弦级数和余弦级数
