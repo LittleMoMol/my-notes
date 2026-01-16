@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "6126e1d4afe76450",
+        "id": "3db3ff632fa79e27",
         "type": "tabs",
         "children": [
           {
-            "id": "d9592f5e54b2e33c",
+            "id": "db9d6924ef67789f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 数学/4 常微分方程/专题/专题 1：背诵合集.md",
+                "file": "1 数学/【数学类】.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "专题 1：背诵合集"
-            }
-          },
-          {
-            "id": "2132616a41cc02d0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2 计算机/1 C++面向对象编程基础/词典/第 1 章 前置知识与简易介绍.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "第 1 章 前置知识与简易介绍"
+              "title": "【数学类】"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -173,6 +158,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:新建数据库": false,
       "graph:查看关系图谱": false,
       "switcher:打开快速切换": false,
       "canvas:新建白板": false,
@@ -180,48 +166,47 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "markdown-importer:打开 Markdown 格式转换器": false,
-      "bases:创建新数据库": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "2086414741402f5b",
+  "active": "db9d6924ef67789f",
   "lastOpenFiles": [
-    "大二上期末周备考/【常微分小测】.md",
-    "2 计算机/1 C++面向对象编程基础/词典/第 1 章 前置知识与简易介绍.md",
-    "大二上期末周备考/【概率论小测】.md",
-    "大二上期末周备考/练习 2.md",
-    "1 数学/4 常微分方程/词典/第 3 章 一阶微分方程的解的存在定理.md",
-    "1 数学/4 常微分方程/专题/专题 1：背诵合集.md",
-    "3 生活/写作/2025 年写作/No.11 2025 年回忆录.md",
-    "1 数学/4 常微分方程/词典/第 5 章 线性微分方程组.md",
+    "attachment/32c7f9c9db1aa92144235be5c3001062.jpg",
+    "1 数学/【数学类】.md",
+    "大二上期末周备考/备考题-数学分析.md",
+    "1 数学/1 数学分析/词典/第 15 章 含参变量积分.md",
+    "大二上期末周备考/数分速背.md",
+    "1 数学/1 数学分析/词典/第 16 章 Fourier 级数.md",
+    "1 数学/1 数学分析/词典/第 14 章 曲线积分、曲面积分与场论.md",
     "1 数学/1 数学分析/专题/专题 1：背诵合集.md",
+    "attachment/Pasted image 20260112194147.png",
+    "1 数学/1 数学分析/词典/第 8 章 反常积分.md",
+    "attachment/Pasted image 20260112163622.png",
+    "attachment/Pasted image 20260112124945.png",
+    "attachment/Pasted image 20260112124933.png",
+    "attachment/Pasted image 20260112124907.png",
+    "attachment/Pasted image 20260112124853.png",
+    "attachment/Pasted image 20260112124843.png",
+    "attachment/Pasted image 20260112120802.png",
+    "attachment/Pasted image 20260112120720.png",
+    "attachment/Pasted image 20260112120537.png",
+    "1 数学/1 数学分析/词典/第 13 章 重积分.md",
+    "1 数学/1 数学分析/词典/第 12 章 多元函数的微分学.md",
+    "大二上期末周备考/数据结构选择题、应用题.md",
+    "大二上期末周备考/数据结构野生卷子.md",
+    "1 数学/5 概率论与数理统计/专题/专题 1：背诵合集.md",
     "1 数学/5 概率论与数理统计/词典/第 6 章 参数估计.md",
-    "1 数学/5 概率论与数理统计/词典/第 7 章 假设检验.md",
-    "1 数学/4 常微分方程/词典/第 4 章 高阶微分方程.md",
-    "1 数学/4 常微分方程/词典/【常微分方程词典】.md",
+    "大二上期末周备考/概率论速背.md",
     "1 数学/5 概率论与数理统计/词典/第 5 章 统计量及其分布.md",
     "大二上期末周备考/备考题-概率论.md",
-    "attachment/Pasted image 20251229172621.png",
-    "attachment/Pasted image 20251229172558.png",
-    "3 生活/写作/2025 年写作/No.10 潦草的秋与冬.md",
-    "3 生活/写作/2025 年写作/No.8 安静的春与夏.md",
-    "1 数学/5 概率论与数理统计/专题/专题 1：背诵合集.md",
-    "1 数学/4 常微分方程/词典/第 6 章 非线性微分方程.md",
-    "1 数学/4 常微分方程/专题/专题 3：计算题方法与例题.md",
+    "1 数学/5 概率论与数理统计/词典/第 7 章 假设检验.md",
     "1 数学/5 概率论与数理统计/词典/【概率论与数理统计词典】.md",
+    "1 数学/5 概率论与数理统计/【概率论与数理统计】.md",
+    "大二上期末周备考/备考题-ODE.md",
+    "1 数学/5 概率论与数理统计/专题/专题 2：基础知识默写.md",
     "1 数学/5 概率论与数理统计/词典/第 4 章 大数定律与中心极限定理.md",
-    "attachment/Pasted image 20251226095220.png",
-    "attachment/Pasted image 20251226095142.png",
-    "attachment/Pasted image 20251226095133.png",
-    "attachment/Pasted image 20251226095024.png",
-    "attachment/Pasted image 20251226094940.png",
-    "attachment/Pasted image 20251226094811.png",
-    "attachment/Pasted image 20251226094757.png",
-    "attachment/Pasted image 20251226094742.png",
-    "1 数学/5 概率论与数理统计/词典/第 3 章 多维随机变量及其分布.md",
-    "1 数学/5 概率论与数理统计/词典/第 2 章 随机变量及其分布.md",
-    "1 数学/5 概率论与数理统计/词典/第 1 章 随机事件与概率.md",
-    "大二上期末周备考/备考题-数学分析.md",
+    "1 数学/1 数学分析/词典/第 5 章 微分中值定理及其应用.md",
+    "1 数学/4 常微分方程/专题/专题 2：考前背诵.md",
     "1 数学/8 运筹与优化/词典",
     "1 数学/8 运筹与优化",
     "1 数学/7 数值计算方法/词典",
