@@ -1,10 +1,19 @@
-证明 $\left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil = \left\lceil \dfrac{a+bc}{bd} \right\rceil$ 
+![[1.jpg]]
+![[2.jpg]]
 
-可知 $\begin{cases} \dfrac{\dfrac ab + c}d \le \left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil  < \dfrac{\dfrac ab + 1 + c}d + 1 \\ \dfrac{a+bc}{bd} \le \left\lceil \dfrac{a+bc}{bd} \right\rceil < \dfrac{a+bc}{bd}+1 \end{cases}$，即 $\begin{cases} \dfrac{a + bc}{bd} \le \left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil  < \dfrac{a + bc}{bd} + 1 + \dfrac 1d \\ \dfrac{a+bc}{bd} \le \left\lceil \dfrac{a+bc}{bd} \right\rceil < \dfrac{a+bc}{bd}+1 \end{cases}$ 
-故有 $\begin{cases} \dfrac{a + bc}{bd} \le \left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil  < \dfrac{a + bc}{bd} + 1 + \dfrac 1d \\ -\dfrac{a+bc}{bd}-1 < -\left\lceil \dfrac{a+bc}{bd} \right\rceil \le -\dfrac{a+bc}{bd} \end{cases}$ 
-两式相加可知 $-1 < \left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil - \left\lceil \dfrac{a+bc}{bd} \right\rceil < 1 + \dfrac 1d$，由于 $d$ 是正整数，所以 $\left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil - \left\lceil \dfrac{a+bc}{bd} \right\rceil$ 只可能取 $0,1$ 
-现在用反证法，假设 $\left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil - \left\lceil \dfrac{a+bc}{bd} \right\rceil=1$，即 $\left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil = \left\lceil \dfrac{\dfrac ab+c}{d} \right\rceil+1$ 
-那么 $\left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil = \left\lceil \dfrac{\dfrac ab+c}{d} + 1 \right\rceil = k$，又由于 $\left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil \le \left\lceil \dfrac{\dfrac ab + c}d + \dfrac 1d \right\rceil \le \left\lceil \dfrac{\dfrac ab+c}{d} + 1 \right\rceil$ 
-故 $\left\lceil \dfrac{\dfrac ab + c}d + \dfrac 1d \right\rceil = \left\lceil \dfrac{\dfrac ab+c}{d} + 1 \right\rceil = k$ 
-若 $\dfrac{\dfrac ab + c}d$ 是整数，上式显然不成立。若 $\dfrac{\dfrac ab + c}d$ 不是整数，由于 $\lim\limits_{d\to\infty} \dfrac 1d = 0$，故可以取一个充分大的 $d$ 使得 $\left\lceil \dfrac{\dfrac ab + c}d + \dfrac 1d \right\rceil \not= \left\lceil \dfrac{\dfrac ab+c}{d} + 1 \right\rceil$，这与 $\left\lceil \dfrac{\dfrac ab + c}d + \dfrac 1d \right\rceil = \left\lceil \dfrac{\dfrac ab+c}{d} + 1 \right\rceil = k$ 矛盾，故假设不成立
-所以 $\left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil - \left\lceil \dfrac{a+bc}{bd} \right\rceil$ 只可能取 $0$，故$\left\lceil \dfrac{\left\lceil \dfrac ab \right\rceil + c}{d} \right\rceil = \left\lceil \dfrac{a+bc}{bd} \right\rceil$，证毕！
+![[3.jpg]]
+
+![[4.jpg]]
+
+![[5.jpg]]
+
+![[6.jpg]]
+
+![[7.jpg]]
+
+![[8.jpg]]
+
+![[9.jpg]]
+![[10.jpg]]
+
+![[11.jpg]]
