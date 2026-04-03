@@ -157,3 +157,142 @@
 - **定理 4.2.1**：设 $f: \mathbb{R}^n \to \mathbb{R}$ 连续可微，水平集 $\Omega(x^{(0)})$ 有界，设 $B_0$ 对称正定，则采用精确线性搜索的 Broyden 族算法 $(\phi_k \in [0,1])$ 产生的点列 $\{x^{(k)}\}$ 与 $\phi_k$ 无关
 	- 该定理考察了采用精确线性搜索的拟 Newton 法的收敛性
 	- 该定理表明：从同一初始点和同一初始对称正定矩阵出发，采用精确线性搜索的 Broyden 族算法 $(\phi_k \in [0,1])$ 中的所有算法产生相同的点列。因此，只要其中的算法之一收敛，则 Broyden 族算法中的任何一个算法都收敛
+- **定理 4.2.2**：设*假设条件*成立，则采用精确线性搜索或 Wolfe - Powell 型线性搜索的 BFGS 算法产生的点列 $\{x^{(k)}\}$ 收敛于问题 $\min f(x),\ (x\in \mathbb R^n)$ 的唯一极小点值 $x^*$ 
+	- 该定理为 Broyden 族算法中的 BFGS 算法 ($\phi_k = 1$) 的全局收敛性定理
+	- 为证明定理 4.2.2，我们先证明几个引理。
+- **引理 4.2.2**：设*假设条件*成立，则存在常数 $C > 0$ 使得 $\mathrm{tr}(B_k) \leqslant C k, \ (\forall\ k \geqslant 0)$，$\dfrac{1}{k + 1} \sum\limits_{i=0}^k \dfrac{\|B_i s^{(i)}\|^2}{s^{(i)\mathrm{T}} B_i s^{(i)}} \leqslant C,\ (\forall\ k \geqslant 0)$，其中 $\mathrm{tr}(A)$ 表示矩阵 $A$ 的迹
+	- *证明过程* 
+		设 $C_1 > 0$ 是**引理 4.2.1** 中序列的上界。在 $B_{k+1} = B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}$ 两端求矩阵的迹得  
+		$$
+		\begin{aligned}
+		\mathrm{tr}(B_{k + 1}) &= \mathrm{tr}(B_k) - \frac{\|B_k s^{(k)}\|^2}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \frac{\|y^{(k)}\|^2}{y^{(k)\mathrm{T}} s^{(k)}} \\
+		&\leqslant \mathrm{tr}(B_k) - \frac{\|B_k s^{(k)}\|^2}{s^{(k)\mathrm{T}} B_k s^{(k)}} + C_1 \\
+		&\vdots \\
+		&\leqslant \mathrm{tr}(B_0) - \sum_{i=0}^k \frac{\|B_i s^{(i)}\|^2}{s^{(i)\mathrm{T}} B_i s^{(i)}} + C_1(k + 1)
+		\end{aligned}
+		$$
+		令 $C = \mathrm{tr}(B_0) + C_1$，则得 $\mathrm{tr}(B_k) \leqslant C k, \ (\forall\ k \geqslant 0)$，而且由 $B_{k + 1}$ 的对称正定性，$\mathrm{tr}(B_{k + 1}) > 0$ 
+		故得 $\dfrac{1}{k + 1} \sum\limits_{i=0}^k \dfrac{\|B_i s^{(i)}\|^2}{s^{(i)\mathrm{T}} B_i s^{(i)}} \leqslant \mathrm{tr}(B_0) + C_1 = C, \ (\forall\ k \geqslant 0)$ 
+		因此 $\dfrac{1}{k + 1} \sum\limits_{i=0}^k \dfrac{\|B_i s^{(i)}\|^2}{s^{(i)\mathrm{T}} B_i s^{(i)}} \leqslant C,\ (\forall\ k \geqslant 0)$ 也成立，证毕！
+- **引理 4.2.3**：设*假设条件*成立，点列 $\{x^{(k)}\}$ 由采用精确线性搜索或 Wolfe-Powell 型线性搜索的 BFGS 算法产生，则存在常数 $C_2 > 0$，使得 $\|d^{(k)}\| \leqslant C_2 \alpha_k^{-1} \|\nabla f(x^{(k)})\| \cos\theta_k$，其中 $\theta_k$ 表示 $d^{(k)}$ 与 $-\nabla f(x^{(k)})$ 间的夹角。而且，存在常数 $\alpha > 0$，使得算法产生的步长 $\alpha_k$ 满足 $\prod\limits_{i=0}^k \alpha_i \geqslant \alpha^{k+1},\ (\forall\ k \geqslant 0)$ 
+	- *证明过程* 
+		*第 1 步*：先证明 $\|d^{(k)}\| \leqslant C_2 \alpha_k^{-1} \|\nabla f(x^{(k)})\| \cos\theta_k$ 
+		由*假设条件*中第二点，存在常数 $m_2 > 0$，使得 $y^{(k)\mathrm{T}} s^{(k)} \geqslant m_2 \|s^{(k)}\|^2,\ (\forall k \geqslant 0)$ 
+		若采用精确线性搜索，我们有
+		$$
+		\begin{aligned}
+		m_2 \|s^{(k)}\|^2 &\leqslant y^{(k)\mathrm{T}} s^{(k)} = \left[ \nabla f(x^{(k+1)}) - \nabla f(x^{(k)}) \right]^{\mathrm{T}} s^{(k)} \\
+		&= -\nabla f(x^{(k)})^{\mathrm{T}} s^{(k)} = \|\nabla f(x^{(k)})\| \|s^{(k)}\| \cos\theta_k
+		\end{aligned}
+		$$
+		此式包含了式 $\|d^{(k)}\| \leqslant C_2 \alpha_k^{-1} \|\nabla f(x^{(k)})\| \cos\theta_k$ 
+		若采用 Wolfe-Powell 型线性搜索，利用 Taylor 展开得  
+		$$
+		\begin{aligned}
+		f(x^{(k+1)}) &= f(x^{(k)}) + \nabla f(x^{(k)})^{\mathrm{T}} s^{(k)} + \frac{1}{2} s^{(k)\mathrm{T}} \nabla^2 f\bigl(x^{(k)} + \mu_k s^{(k)}\bigr) s^{(k)} \\
+		&\geqslant f(x^{(k)}) + \nabla f(x^{(k)})^{\mathrm{T}} s^{(k)} + \frac{1}{2} m_1 \|s^{(k)}\|^2
+		\end{aligned}
+		$$
+		其中，$\mu_k \in (0,1)$ 
+		上式代入 $\begin{cases} f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^{\mathrm{T}} d^{(k)} \\ \nabla f(x^{(k)} + \alpha_k d^{(k)})^{\mathrm{T}} d^{(k)} \geqslant \sigma_2 \nabla f(x^{(k)})^{\mathrm{T}} d^{(k)} \end{cases}$ 的第一个不等式得 $\dfrac{1}{2} m_1 \|s^{(k)}\|^2 \leqslant -\bigl(1 - \sigma_1\bigr) \nabla f(x^{(k)})^{\mathrm{T}} s^{(k)} = \bigl(1 - \sigma_1\bigr) \|\nabla f(x^{(k)})\| \, \|s^{(k)}\| \cos\theta_k$，由此亦得 $\|d^{(k)}\| \leqslant C_2 \alpha_k^{-1} \|\nabla f(x^{(k)})\| \cos\theta_k$  
+		*第 2 步*：再证明式 $\prod\limits_{i=0}^k \alpha_i \geqslant \alpha^{k+1},\ (\forall\ k \geqslant 0)$ 
+		在 $B_{k+1} = B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}$ 两端取行列式，利用公式 $\det(I + u_{1} v_{1}^{\mathrm{T}} + u_{2} v_{2}^{\mathrm{T}}) = (1 + u_{1}^{\mathrm{T}} v_{1})(1 + u_{2}^{\mathrm{T}} v_{2}) - (u_{1}^{\mathrm{T}} v_{2})(v_{1}^{\mathrm{T}} u_{2})$ 得 $\det(B_{k+1}) = \det(B_k) \cdot \dfrac{y^{(k)\mathrm{T}} s^{(k)}}{s^{(k)\mathrm{T}} B_k s^{(k)}} = \det(B_0) \prod\limits_{i=0}^k \dfrac{y^{(i)\mathrm{T}} s^{(i)}}{s^{(i)\mathrm{T}} B_i s^{(i)}}$ 
+		若采用精确线性搜索，我们有 $y^{(k)\mathrm{T}} s^{(k)} = \bigl[\nabla f(x^{(k+1)}) - \nabla f(x^{(k)})\bigr]^{\mathrm{T}} s^{(k)} = -\nabla f(x^{(k)})^{\mathrm{T}} s^{(k)} = \alpha_k^{-1} s^{(k)\mathrm{T}} B_k s^{(k)}$ 
+		若采用 Wolfe-Powell 型线性搜索，由 $\begin{cases} f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^{\mathrm{T}} d^{(k)} \\ \nabla f(x^{(k)} + \alpha_k d^{(k)})^{\mathrm{T}} d^{(k)} \geqslant \sigma_2 \nabla f(x^{(k)})^{\mathrm{T}} d^{(k)} \end{cases}$ 中的第二个不等式得  
+		$$
+		\begin{aligned}
+		y^{(k)\mathrm{T}} s^{(k)} &= \bigl[\nabla f(x^{(k+1)}) - \nabla f(x^{(k)})\bigr]^{\mathrm{T}} s^{(k)} \geqslant -\bigl(1 - \sigma_2\bigr) \nabla f(x^{(k)})^{\mathrm{T}} s^{(k)} \\
+		&= \bigl(1 - \sigma_2\bigr) \alpha_k^{-1} s^{(k)\mathrm{T}} B_k s^{(k)}
+		\end{aligned}
+		$$
+		总之，存在常数 $\beta > 0$，使得 $y^{(k)\mathrm{T}} s^{(k)} \geqslant \beta \alpha_k^{-1} s^{(k)\mathrm{T}} B_k s^{(k)}$ 
+		将上式代入到 $\det(B_{k+1}) = \det(B_k) \cdot \dfrac{y^{(k)\mathrm{T}} s^{(k)}}{s^{(k)\mathrm{T}} B_k s^{(k)}} = \det(B_0) \prod\limits_{i=0}^k \dfrac{y^{(i)\mathrm{T}} s^{(i)}}{s^{(i)\mathrm{T}} B_i s^{(i)}}$ 得 $\det(B_{k+1}) \geqslant \det(B_0) \beta^{k+1} \prod_{i=0}^k \alpha_i^{-1}$ 
+		另一方面，由行列式的性质及 $\mathrm{tr}(B_k) \leqslant C k, \ (\forall\ k \geqslant 0)$ 知 $\det(B_{k+1}) \leqslant \left[ \dfrac{1}{n} \mathrm{tr}(B_{k+1}) \right]^n \leqslant \left[ \dfrac{C(k+1)}{n} \right]^n$ 
+		因此，存在常数 $\beta_1 > 0$，使得 $\det(B_{k+1}) \leqslant \beta_1^{k+1}$ 
+		由此及 $\det(B_{k+1}) \geqslant \det(B_0) \beta^{k+1} \prod_{i=0}^k \alpha_i^{-1}$ 得 $\prod\limits_{i=0}^k \alpha_i \geqslant \det(B_0) \bigl( \beta \beta_1^{-1} \bigr)^{k+1}$ 
+		不难看出，上式包含了 $\prod\limits_{i=0}^k \alpha_i \geqslant \alpha^{k+1},\ (\forall\ k \geqslant 0)$，证毕！
+- *定理 4.2.2 的证明* 
+	先证明$\lim\limits_{k \to \infty}\inf \bigl\| \nabla f(x^{(k)}) \bigr\| = 0$ 
+	由 $\dfrac{1}{k + 1} \sum\limits_{i=0}^k \dfrac{\|B_i s^{(i)}\|^2}{s^{(i)\mathrm{T}} B_i s^{(i)}} \leqslant C,\ (\forall\ k \geqslant 0)$ 及几何不等式得：对任何 $k \geqslant 0$，$\prod\limits_{i=0}^{k} \left( \dfrac{\| B_i s^{(i)} \|^2}{s^{(i)\mathrm{T}} B_i s^{(i)}} \right)^{\frac{1}{k+1}} \leqslant \dfrac{1}{k+1} \sum\limits_{i=0}^{k} \dfrac{\| B_i s^{(i)} \|^2}{s^{(i)\mathrm{T}} B_i s^{(i)}} \leqslant C$ 
+	记 $\theta_k$ 为 $d^{(k)}$ 与 $-\nabla f(x^{(k)})$ 的夹角
+	由上面的不等式可得 $C^{-(k+1)} \leqslant \prod\limits_{i=0}^{k} \dfrac{s^{(i)\mathrm{T}} B_i s^{(i)}}{\| B_i s^{(i)} \|^2} = \prod\limits_{i=0}^{k} \dfrac{-\nabla f(x^{(i)})\mathrm{T} d^{(i)}}{\| \nabla f(x^{(i)}) \|^2} = \prod\limits_{i=0}^{k} \dfrac{\| d^{(i)} \| \cos \theta_i}{\| \nabla f(x^{(i)}) \|} \leqslant \prod\limits_{i=0}^{k} \dfrac{C_2 \cos^2 \theta_i}{\alpha_i}$ 
+	其中最后一个不等式由 $\|d^{(k)}\| \leqslant C_2 \alpha_k^{-1} \|\nabla f(x^{(k)})\| \cos\theta_k$ 得到。
+	从而，由 $\prod\limits_{i=0}^k \alpha_i \geqslant \alpha^{k+1},\ (\forall\ k \geqslant 0)$ 及上式得 $\prod\limits_{i=0}^{k} \cos^2 \theta_i \geqslant (\alpha C^{-1} C_2^{-1})^{k+1}$，即**定理 2.4.4** 中的不等式 $\prod\limits_{i=0}^{k-1} \cos \theta_i \geqslant \eta^k$ 成立
+	于是，由**定理 2.4.4** 得 $\lim\limits_{k \to \infty}\inf \bigl\| \nabla f(x^{(k)}) \bigr\| = 0$ 
+	进而，由第二章习题知 $\{x^{(k)}\}$ 收敛于 $f$ 的唯一最小值点。证毕！
+---
+- **定理 4.2.3**：设**定理 4.2.2** 中的条件成立，则采用精确搜索线性搜索 Broyden 族算法 ($\phi_k \in [0,1]$) 产生的点列 $\{x^{(k)}\}$ 收敛于 $\min f(x),\ (x\in \mathbb R^n)$ 在 $\Omega(x^{(0)})$ 上的唯一极小值点
+	- 该定理为：由**定理 4.2.1** 和**定理 4.2.2** 直接建立采用精确线性搜索的 Broyden 族算法的全局收敛性定理
+- **定理 4.2.4**：设*假设条件*成立，则采用 Wolfe-Powell 型线性搜索的 Broyden 族算法 ($\phi_k \in (0,1]$) 产生的点列 $\{x^{(k)}\}$ 收敛于问题 $\min f(x),\ (x\in \mathbb R^n)$ 在 $\Omega(x^{(0)})$ 上的唯一极小值点。
+	- 该定理为：对采用 Wolfe-Powell 型线性搜索的 Broyden 族算法的收敛性定理。
+	- 上面的全局收敛性定理中的条件可放宽为 $f$ 是凸函数，相应的定理如下。
+- **定理 4.2.5**：设 $f$ 是二次连续可微的凸函数，$f$ 在水平集 $\Omega(x^{(0)})$ 上有界，且存在常数 $M > 0$，使得 $\|\nabla^2 f(x)\| \leqslant M,\ (\forall\ x \in \Omega(x^{(0)}))$，则采用 Wolfe-Powell 型线性搜索的 Broyden 族算法当 $\phi_k \in (0,1]$ 时产生的点列 $\{x^{(k)}\}$ 满足 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+---
+- *注意*：上面的关于拟 Newton 法的全局收敛性定理只考虑采用精确线性搜索或 Wolfe-Powell 型线性搜索的算法。
+- *缺陷*：如前所述，若采用Armijo型线性搜索，当 $\nabla^2 f(x)$ 不正定时，算法不能保证 $y^{(k)\mathrm{T}} s^{(k)} > 0$。此时，BFGS 法或 Broyden 族算法产生的矩阵 $B_{k+1}$ 不一定对称正定，因而，相应的拟 Newton 方向可能不是 $f$ 在 $x^{(k)}$ 处的下降方向。
+- *修正形式*：为了克服缺陷，可采用如下的修正形式：$B_{k+1} = \begin{cases} B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}, & \text{若 } y^{(k)\mathrm{T}} s^{(k)} > 0 \\ B_k, & \text{若 } y^{(k)\mathrm{T}} s^{(k)} \leqslant 0  \end{cases}$ 
+- **定理 4.2.6**：设*假设条件*成立，则采用 Armijo 型线性搜索的 BFGS 算法产生的点列 $\{x^{(k)}\}$ 收敛于问题 $\min f(x),\ (x\in \mathbb R^n)$ 的唯一极小值点 $x^*$ 
+	- 类似于**定理 4.2.2** 的证明，该定理建立了采用 Armijo 型线性搜索的 BFGS 算法的全局收敛性定理。
+- **定理 4.2.7**：设*假设条件*成立，并设函数 $f$ 的 Hessian 阵 $\nabla^2 f$ 在 $x^*$ 处 Hölder 连续，即存在 $x^*$ 的一个邻域 $U(x^*)$ 以及正常数 $\nu, H$，使得不等式 $\|\nabla^2 f(x) - \nabla^2 f(x^*)\| \leqslant H\|x - x^*\|^\nu$ 对所有 $x \in U(x^*)$ 成立。则由采用 Armijo 型线性搜索或 Wolfe-Powell 型线性搜索的 Broyden 族算法 ($\phi_k \in (0,1]$) 产生的点列 $\{x^{(k)}\}$ 超线性收敛于 $x^*$。而且，当 $k$ 充分大时，$\alpha_k = 1$ 
+	- 该定理为：Broyden 族算法的超线性收敛性定理
+## 4-3 拟 Newton 法的修正形式
+- *缺陷*：上一节中介绍的 BFGS 算法以及 Broyden 族算法的全局收敛性要求目标函数 $f$ 是凸函数。当用于非凸函数极小值问题求解时，有例子说明，采用精确线性搜索或 Wolfe-Powell 搜索的 BFGS 算法不收敛。
+- **MBFGS 算法**、**CBFGS 算法**：为了克服 BFGS 算法的这种缺陷，本节，我们介绍**修正的 BFGS 算法**——**MBFGS (Modified BFGS) 算法**以及**保守 BFGS 修正算法**——**CBFGS (Cautious BFGS) 算法** 
+- 我们将简要介绍相应的算法及其收敛性质
+- *为什么要修正* 
+	由于**Newton 法的收敛性定理** (**定理 3.2.2**) 要求 $f$ 是凸函数。因此，作为其近似算法——**拟 Newton 法**的全局收敛性也要求函数 $f$ 是凸的。
+	另一方面，在修正 Newton **算法 3.3** 的全局收敛性定理 (**定理 3.2.4**) 中，不必要求 $f$ 是凸函数。
+	基于上述观察，我们考虑对拟 Newton 算法进行修改，使其是修正 Newton 法的近似算法。
+- *前置分析* 
+	设 $f$ 二次连续可微。注意到 $\nabla^2 f(x^{(k+1)})$ 满足 $\nabla^2 f(x^{(k+1)})(x^{(k+1)} - x^{(k)}) \approx \nabla f(x^{(k+1)}) - \nabla f(x^{(k)}) \triangleq \gamma^{(k)}$ 
+	令 $\bar{G}_{k+1} = \nabla^2 f(x^{(k+1)}) + \nu_k I$，其中 $I \in \mathbb{R}^{n \times n}$ 是单位矩阵，$\nu_k > 0$ 
+	当 $\nu_k$ 充分小时，有 $\bar{G}_{k+1} \approx \nabla^2 f(x^{(k+1)})$ 
+	易知，$\bar{G}_{k+1}$ 满足如下近似关系：$\bar{G}_{k+1}(x^{(k+1)} - x^{(k)}) = [\nabla^2 f(x^{(k+1)}) + \nu_k I](x^{(k+1)} - x^{(k)}) \approx \gamma^{(k)} + \nu_k (x^{(k+1)} - x^{(k)})$ 
+	令 $s^{(k)} = x^{(k+1)} - x^{(k)}$，$y^{(k)} = \gamma^{(k)} + \nu_k s^{(k)}$，则得如下近似关系：$\bar{G}_{k+1} s^{(k)} \approx y^{(k)}$ 
+	对拟 Newton 法进行修正的一种合理的方式是令 $B_{k+1}$ 作为 $\bar{G}_{k+1}$ 的一种近似，使得上面的近似式成立等式，即 $B_{k+1} s^{(k)} = y^{(k)}$ 
+	我们先考虑修正的 BFGS 算法——MBFGS 算法，其修正公式如下：$B_{k+1} = B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}$ 
+	其中，$s^{(k)} = x^{(k+1)} - x^{(k)}$，$y^{(k)} = \gamma^{(k)} + \nu_k s^{(k)} = \nabla f(x^{(k+1)}) - \nabla f(x^{(k)}) + \nu_k (x^{(k+1)} - x^{(k)})$ 
+	不难发现，MBFGS 修正公式与标准的 BFGS 修正公式的唯一区别在于 $y^{(k)}$ 的定义。若 $\nu_k = 0$，则修正的 BFGS 公式与标准 BFGS 公式完全一致。  
+	在修正的 BFGS 算法中，参数 $\nu_k$ 的确定十分重要。
+	由**定理 3.2.4**，若 $\nu_k$ 满足 $\nu_k \leqslant C\|\nabla f(x^{(k)})\|$，则相应的修正 Newton 算法具有二次收敛速度。
+	因此，作为修正 Newton 算法的近似算法，修正的 BFGS 算法中的参数 $\nu_k$ 也应满足 $\nu_k \leqslant C\|\nabla f(x^{(k)})\|$ 
+	确定 $\nu_k$ 的另一个原则是使得算法产生的矩阵序列 $\{B_k\}$ 具有对称正定性。
+	由**命题 4.1.1** 后的说明知，若采用精确线性搜索或 Wolfe-Powell 型线性搜索，则只要 $B_k$ 对称正定，就可保证 $B_{k+1}$ 对称正定。
+	但精确线性搜索或 Wolfe-Powell 型线性搜索的计算量较大。若采用计算量较小的 Armijo 型线性搜索，则 $B_{k+1}$ 的正定性不能保证。
+	为了保证 $B_{k+1}$ 的对称正定性，我们可以通过对参数 $\nu_k$ 的调整，使得 $y^{(k)\mathrm{T}} s^{(k)} > 0,\ (\forall k \ge 0)$ 
+	满足上式的 $\nu_k$ 的取法有许多，例如，$\nu_k$ 可由下式确定：$\nu_k = C t_k \|\nabla f(x^{(k)})\|^\mu, \ t_k = 1 + \max\left\{ -\dfrac{\gamma^{(k)\mathrm{T}} s^{(k)}}{\|s^{(k)}\|^2}, 0 \right\} C^{-1} \|\nabla f(x^{(k)})\|^{-\mu}$ 
+	其中，$\mu > 0$ 和 $C > 0$ 是常数。
+	此时，我们有
+	$$
+	\begin{aligned}
+	y^{(k)\mathrm{T}} s^{(k)} &= \gamma^{(k)\mathrm{T}} s^{(k)} + C t_k \|\nabla f(x^{(k)})\|^\mu \|s^{(k)}\|^2 \\
+	&= C \|\nabla f(x^{(k)})\|^\mu \|s^{(k)}\|^2 + \gamma^{(k)\mathrm{T}} s^{(k)} + \|s^{(k)}\|^2 \max\left\{ -\frac{\gamma^{(k)\mathrm{T}} s^{(k)}}{\|s^{(k)}\|^2}, 0 \right\} \\
+	&\ge C \|\nabla f(x^{(k)})\|^\mu \|s^{(k)}\|^2
+	\end{aligned}
+	$$
+	在上面的基础上，利用**命题 4.1.1** 可得如下定理。
+- **定理 4.3.1**：设 $\{B_k\}$ 由修正 BFGS 公式 $B_{k+1} = B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}$ 产生，其中 $\nu_k$ 由 $\nu_k = C t_k \|\nabla f(x^{(k)})\|^\mu, \ t_k = 1 + \max\left\{ -\dfrac{\gamma^{(k)\mathrm{T}} s^{(k)}}{\|s^{(k)}\|^2}, 0 \right\} C^{-1} \|\nabla f(x^{(k)})\|^{-\mu}$ 确定。若 $B_0$ 对称正定，则对所有 $k \geqslant 0$，矩阵 $B_k$ 对称正定。
+	- 值得注意的是，上面的定理与算法的线性搜索以及函数 $f$ 的凸性无关。
+- **MBFGS 算法**：若将**算法 4.1** 中*第 5 步*的修正方式改为 MBFGS 公式 $B_{k+1} = B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}$，则相应的算法称为 **MBFGS 算法** 
+- **定理 4.3.2**：设水平集 $\Omega(x^{(0)}) = \{x \in \mathbb{R}^n \mid f(x) \leqslant f(x^{(0)})\}$ 有界。$D$ 是包含了 $\Omega(x^{(0)})$ 的某个有界闭凸集。函数 $f$ 在 $D$ 上连续可微且其梯度 $\nabla f$ Lipschitz 连续。则采用精确线性搜索或 Armijo 型或 Wolfe-Powell 型线性搜索的 MBFGS 算法产生的点列 $\{x^{(k)}\}$ 满足 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+	- 该定理为 MBFGS 算法的全局收敛性定理
+- **定理 4.3.3** 
+	设下列条件成立  
+	(1) 由 MBFGS 算法产生的点列 $\{x^{(k)}\}$ 收敛于 $x^*$ 
+	(2) 函数 $f$ 在 $x^*$ 的某邻域内二次连续可微且 $\nabla f(x^*) = 0$，$\nabla^2 f(x^*)$ 对称正定
+	(3) 函数 $f$ 的 Hessian 矩阵 $\nabla^2 f$ 在 $x^*$ 处 Hölder 连续
+	则采用 Armijo 型或 Wolfe-Powell 型线性搜索的 MBFGS 算法产生的点列 $\{x^{(k)}\}$ 超线性收敛于 $x^*$。而且，当 $k$ 充分大时，$\alpha_k = 1$ 
+	- 该定理为 MBFGS 算法的超线性收敛性定理如下
+- *MBFGS 算法的优缺点*：该算法用于求解非凸函数极小值问题时也具有全局收敛性。而且，$\{B_k\}$ 的对称正定性与算法的线性搜索以及目标函数的凸性无关。但该算法破坏了 BFGS 算法的仿射不变性质，即**定理 4.1.2** 的结论对 MBFGS 算法不成立
+- **保守 BFGS 修正**：为了克服 MBFGS 算法的这一缺陷，同时，保持算法对求解非凸函数极小值问题的全局收敛性及其超线性收敛速度，可采用**保守 BFGS 修正**——**CBFGS (Cautious BFGS) 修正方式** 
+	- CBFGS 修正方式如下：$B_{k+1} = \begin{cases} B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}, & \text{若 } \dfrac{y^{(k)\mathrm{T}} s^{(k)}}{\|s^{(k)}\|^2} > \delta \|\nabla f(x^{(k)})\|^\mu \\ B_k, & \text{若 } \dfrac{y^{(k)\mathrm{T}} s^{(k)}}{\|s^{(k)}\|^2} \leqslant \delta \|\nabla f(x^{(k)})\|^\mu  \end{cases}$，其中 $\delta > 0,\ \mu > 0$ 是常数，$s^{(k)} = x^{(k+1)} - x^{(k)}$，$y^{(k)} = \nabla f(x^{(k+1)}) - \nabla f(x^{(k)})$ 
+	- *注意*：比较 $B_{k+1} = \begin{cases} B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}, & \text{若 } \dfrac{y^{(k)\mathrm{T}} s^{(k)}}{\|s^{(k)}\|^2} > \delta \|\nabla f(x^{(k)})\|^\mu \\ B_k, & \text{若 } \dfrac{y^{(k)\mathrm{T}} s^{(k)}}{\|s^{(k)}\|^2} \leqslant \delta \|\nabla f(x^{(k)})\|^\mu  \end{cases}$ 与 $B_{k+1} = \begin{cases} B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}, & \text{若 } y^{(k)\mathrm{T}} s^{(k)} > 0 \\ B_k, & \text{若 } y^{(k)\mathrm{T}} s^{(k)} \leqslant 0  \end{cases}$ 不难看出，两者在形式上类似，但 CBFGS 公式较 $B_{k+1} = \begin{cases} B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}, & \text{若 } y^{(k)\mathrm{T}} s^{(k)} > 0 \\ B_k, & \text{若 } y^{(k)\mathrm{T}} s^{(k)} \leqslant 0  \end{cases}$ 公式保守。
+	- *进一步分析* 
+		容易看出，若 $B_0$ 对称正定，则由 CBFGS 公式产生的矩阵序列 $\{B_k\}$ 满足 $y^{(k)\mathrm{T}} s^{(k)} > 0$。因此，对所有 $k \geqslant 0$，矩阵 $B_k$ 对称正定。该性质与算法的线性搜索以及函数 $f$ 的凸性无关。
+		此外，若不等式 $\dfrac{y^{(k)\mathrm{T}} s^{(k)}}{\|s^{(k)}\|^2} > \delta \|\nabla f(x^{(k)})\|^\mu$ 成立，则算法还原为标准的 BFGS 算法。因而，算法的仿射不变性成立。
+		事实上由后面的**定理 4.3.5** 可以看出，在一定的条件下，当 $k$ 充分大时，CBFGS 算法还原为标准的 BFGS 算法。
+- **CBFGS 算法**：若将**算法 4.1** 中*第 5 步*的修正方式改为 CBFGS 公式 $B_{k+1} = \begin{cases} B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}, & \text{若 } \dfrac{y^{(k)\mathrm{T}} s^{(k)}}{\|s^{(k)}\|^2} > \delta \|\nabla f(x^{(k)})\|^\mu \\ B_k, & \text{若 } \dfrac{y^{(k)\mathrm{T}} s^{(k)}}{\|s^{(k)}\|^2} \leqslant \delta \|\nabla f(x^{(k)})\|^\mu  \end{cases}$，则相应的算法称为 **CBFGS 算法** 
+- **定理 4.3.4**：设**定理 4.3.2** 的条件成立。则采用精确线性搜索或 Armijo 型或 Wolfe-Powell 型线性搜索的 CBFGS 算法产生的点列 $\{x^{(k)}\}$ 满足 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+	- 该定理为 CBFGS 算法的全局收敛性定理
+- **定理 4.3.5**：设**定理 4.3.3** 的条件成立，则采用 Armijo 型或 Wolfe-Powell 型线性搜索的 CBFGS 算法产生的点列 $\{x^{(k)}\}$ 超线性收敛于$x^*$。此外，当 $k$ 充分大时，$\alpha_k = 1$，而且，算法还原为标准的 BFGS 算法，即不等式 $y^{(k)\mathrm{T}} s^{(k)} > \delta \|\nabla f(x^{(k)})\|^\mu \|s^{(k)}\|^2$ 对充分大的 $k$ 均成立。
+	- 该定理为 CBFGS 算法的超线性收敛性定理
