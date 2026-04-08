@@ -1,28 +1,14 @@
 {
   "main": {
-    "id": "1b96928adc78fbb7",
+    "id": "85b3db3101c15fea",
     "type": "split",
     "children": [
       {
-        "id": "5da73e5eba59dbed",
+        "id": "09f935b5be5ae902",
         "type": "tabs",
         "children": [
           {
-            "id": "a428f7e735751ef0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "1 数学/10 数值最优化算法与理论/词典/第 2 章 无约束问题的下降算法与线性搜索.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "第 2 章 无约束问题的下降算法与线性搜索"
-            }
-          },
-          {
-            "id": "053b70926f7b488d",
+            "id": "818281b7cce7c9ac",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -36,31 +22,17 @@
             }
           },
           {
-            "id": "9f45c576fbfd8771",
+            "id": "db9b78690454300d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "python 第 5 周作业.md",
+                "file": "1 数学/10 数值最优化算法与理论/词典/第 5 章 无约束问题算法 (III).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "python 第 5 周作业"
-            }
-          },
-          {
-            "id": "1f2c1daa88a27a2c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "1 数学/10 数值最优化算法与理论/词典/第 1 章 引言.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "第 1 章 引言"
+              "title": "第 5 章 无约束问题算法 (III)"
             }
           }
         ],
@@ -70,15 +42,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "da2694c58cfe01b9",
+    "id": "8ec29869db4f27e9",
     "type": "split",
     "children": [
       {
-        "id": "3561d721fd3de2e0",
+        "id": "236ec81df307c77b",
         "type": "tabs",
         "children": [
           {
-            "id": "2086414741402f5b",
+            "id": "589e4b59043e5674",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -91,7 +63,7 @@
             }
           },
           {
-            "id": "9d241d6f7b4241cc",
+            "id": "985eac9fe0604c71",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -108,7 +80,7 @@
             }
           },
           {
-            "id": "1898283072ea7b59",
+            "id": "c134ebe731f2dda0",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -121,51 +93,52 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200.50469589233398,
+    "width": 200,
     "collapsed": true
   },
   "right": {
-    "id": "07889765dd437b1e",
+    "id": "0ec3758fbffb8fbe",
     "type": "split",
     "children": [
       {
-        "id": "c74f136169b637de",
+        "id": "22f425eadb1eec90",
         "type": "tabs",
         "children": [
           {
-            "id": "f550608cfa0f69fb",
+            "id": "6451e94e6b4a9e6c",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "1 数学/7 数值计算方法/词典/第 1 章 引论.md",
+                "file": "1 数学/10 数值最优化算法与理论/词典/第 5 章 无约束问题算法 (III).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": false
+                "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "第 1 章 引论 的反向链接列表"
+              "title": "第 5 章 无约束问题算法 (III) 的反向链接列表"
             }
           },
           {
-            "id": "92083fb9f1878aab",
+            "id": "92ae9d1874292992",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "1 数学/10 数值最优化算法与理论/词典/第 5 章 无约束问题算法 (III).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "出链"
+              "title": "第 5 章 无约束问题算法 (III) 的出链列表"
             }
           },
           {
-            "id": "9bcb4064c75d0fd3",
+            "id": "2e246cbf47800129",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -180,17 +153,18 @@
             }
           },
           {
-            "id": "131dba197df3b338",
+            "id": "44186e3995bf9cc3",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
+                "file": "1 数学/10 数值最优化算法与理论/词典/第 5 章 无约束问题算法 (III).md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "第 5 章 无约束问题算法 (III) 的大纲"
             }
           }
         ]
@@ -202,64 +176,21 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:新建数据库": false,
-      "graph:查看关系图谱": false,
       "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "markdown-importer:打开 Markdown 格式转换器": false,
+      "bases:新建数据库": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "053b70926f7b488d",
+  "active": "db9b78690454300d",
   "lastOpenFiles": [
-    "python 第 5 周作业.md",
+    "attachment/Pasted image 20260408092326.png",
     "1 数学/10 数值最优化算法与理论/词典/第 4 章 无约束问题算法 (II).md",
-    "1 数学/10 数值最优化算法与理论/词典/第 2 章 无约束问题的下降算法与线性搜索.md",
-    "1 数学/10 数值最优化算法与理论/词典/第 1 章 引言.md",
-    "1 数学/10 数值最优化算法与理论/词典/第 3 章 无约束问题算法 (I).md",
-    "1 数学/7 数值计算方法/词典/第 4 章 线性代数方程组求解.md",
-    "zhao_mo_han_mathematical_analysis_Chapter_1_research.md",
-    "1 数学/1 数学分析/词典/第 1 章 集合与映射.md",
-    "1 数学/1 数学分析/词典/第 0 章 前置知识.md",
-    "attachment/Pasted image 20260401091412.png",
-    "1 数学/9 运筹学基础/词典/第 3 章 非线性规划.md",
-    "1 数学/7 数值计算方法/词典/第 3 章 函数基本逼近（二）——最佳逼近.md",
-    "作业.md",
-    "杂/Python 第 4 周作业.md",
-    "1 数学/1 数学分析/词典/第 7 章 定积分.md",
-    "1 数学/1 数学分析/词典/第 6 章 不定积分.md",
-    "1 数学/1 数学分析/词典/第 5 章 微分中值定理及其应用.md",
-    "1 数学/1 数学分析/词典/第 4 章 导数与微分.md",
-    "1 数学/1 数学分析/词典/第 3 章 函数极限与连续函数.md",
-    "1 数学/1 数学分析/词典/第 2 章 数列极限.md",
-    "attachment/Pasted image 20260330090216.png",
-    "1 数学/8 数学建模/词典/第 3 章 规划模型.md",
-    "杂/Python 第 3 周作业.md",
-    "1 数学/9 运筹学基础/词典/第 2 章 线性规划的对偶理论与对偶单纯形法.md",
-    "1 数学/9 运筹学基础/词典/第 1 章 线性规划及单纯形法.md",
-    "1 数学/7 数值计算方法/词典/第 2 章 函数基本逼近（一）——插值逼近.md",
-    "1 数学/7 数值计算方法/词典/第 7 章 常微分方程数值解法.md",
-    "attachment/Pasted image 20260326152840.png",
-    "attachment/Pasted image 20260325091922.png",
-    "attachment/Pasted image 20260325091035.png",
-    "1 数学/10 数值最优化算法与理论/词典",
-    "10 数值最优化算法/未命名.md",
-    "1 数学/10 数值最优化算法与理论",
-    "attachment/Pasted image 20260324091318.png",
-    "attachment/Pasted image 20260324090634.png",
-    "attachment/Pasted image 20260324084428.png",
-    "attachment/Pasted image 20260322141912.png",
-    "attachment/Pasted image 20260319150734.png",
-    "1 数学/10 离散数学/词典",
-    "1 数学/8 数学建模/词典",
-    "1 数学/10 离散数学",
-    "1 数学/8 数学建模",
-    "Excalidraw",
-    "1 数学/9 运筹学基础/词典",
-    "1 数学/9 运筹学基础",
-    "1 数学/7 数值计算方法/词典"
+    "1 数学/10 数值最优化算法与理论/词典/第 5 章 无约束问题算法 (III).md"
   ]
 }
