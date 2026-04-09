@@ -135,5 +135,289 @@
 	- *第 4 步*：令 $x^{(k+1)} = x^{(k)} + \alpha_k d^{(k)}$ 
 	- *第 5 步*：由 $d^{(k)} = \begin{cases}  -\nabla f(x^{(0)}), & \text{若 } k = 0 \\ -\nabla f(x^{(k)}) + \beta_k d^{(k-1)}, & \text{若 } k \geqslant 1  \end{cases}$ 确定 $d^{(k+1)}$，其中 $\beta_k = \beta_k^{\text{HS}}$。令 $k := k + 1$，转*第 2 步* 
 - *注意*：当 HS 算法用于求解严格凸二次函数极小化问题时具有有限步终止性
-
-事实上，下面的定理表明，当用于严格凸二次函数极小化问题的求解时，HS 算法产生的方向关于目标函数的Hessian矩阵相互共轭。
+- **定理 5.2.1**：设 $\{ x^{(k)}\}$ 表示由采用精确线性搜索的 HS 算法求解问题 $\min f(x) = \dfrac{1}{2} x^T Q x + q^T x$ 产生的点列。则向量组 $\{d^{(i)}\}_{i=0}^{n-1}$ 关于 $Q$ 相互共轭。而且，对任何 $k\le n$，有 $\nabla f(x^{(k)})^T d^{(j)} = 0,\ \nabla f(x^{(k)})^T \nabla f(x^{(j)}) = 0,\ (\forall\ j<k)$ 
+	- *证明过程* 
+		对 $k$ 用归纳法。$k = 1$ 时，由 $\beta_k^{\text{HS}}$ 和 $d^{(0)}$ 的定义及线性搜索条件，定理成立。
+		设定理对 $k$ 成立，即 $d^{(i)} \ (i = 0, 1, \cdots, k)$ 关于 $Q$ 相互共轭且 $\nabla f(x^{(k)})^T d^{(j)} = 0,\ \nabla f(x^{(k)})^T \nabla f(x^{(j)}) = 0,\ (\forall\ j<k)$ 对 $k$ 成立。下证定理对 $k + 1$ 成立，即 $d^{(i)} \ (i = 0, 1, \cdots, k + 1)$ 关于 $Q$ 相互共轭且 $\nabla f(x^{(k)})^T d^{(j)} = 0,\ \nabla f(x^{(k)})^T \nabla f(x^{(j)}) = 0,\ (\forall\ j<k)$ 对 $k + 1$ 成立
+		由于 $d^{(i)} \ (i = 0, 1, \cdots, k)$ 关于 $Q$ 相互共轭，类似于定理 5.1.2 中 $\nabla f(x^{(k+1)})^\top d^{(i)} = 0,\ (\forall\ i = 0,1,\cdots,k)$ 可以证明 $\nabla f(x^{(k)})^T d^{(j)} = 0,\ (\forall\ j<k)$ 对 $k + 1$ 成立。
+		由此及 $d^{(k)} = \begin{cases}  -\nabla f(x^{(0)}), & \text{若 } k = 0 \\ -\nabla f(x^{(k)}) + \beta_k d^{(k-1)}, & \text{若 } k \geqslant 1  \end{cases}$ 得，对任意 $j \leqslant k$，$\nabla f(x^{(k+1)})^T \nabla f(x^{(j)}) = \nabla f(x^{(k+1)})^T (-d^{(j)} + \beta_j^{\text{HS}} d^{(j-1)}) = 0$ 
+		即 $\nabla f(x^{(k)})^T \nabla f(x^{(j)}) = 0,\ (\forall\ j<k)$ 对 $k + 1$ 成立
+		由 $\beta_k^{\text{HS}}$ 的取法易知 $d^{(k+1)}$ 和 $d^{(k)}$ 关于 $Q$ 相互共轭，而且对任意 $j \leqslant k - 1$ 有
+		$$
+		\begin{aligned}
+		d^{(k+1)T} Q d^{(j)} &= -\nabla f(x^{(k+1)})^T Q d^{(j)} + \beta_{k+1} d^{(k+1)T} Q d^{(j)} \\
+		&= -\nabla f(x^{(k+1)})^T Q d^{(j)} \\
+		&= -\alpha_j^{-1} \nabla f(x^{(k+1)})^T [\nabla f(x^{(j+1)}) - \nabla f(x^{(j)})] = 0
+		\end{aligned}
+		$$
+		即 $d^{(i)} \ (i = 0, 1, \cdots, k + 1)$ 关于 $Q$ 相互共轭。
+		由归纳原理，定理的结论成立。证毕！
+	- 该定理表明：当用于严格凸二次函数极小化问题的求解时，HS 算法产生的方向关于目标函数的 Hessian 矩阵相互共轭。
+	- 从该定理不难看出，采用精确线性搜索时，下面各公式中的参数值对二次函数是相等的：
+		$$
+		\begin{aligned}
+		& \beta_k = \beta_k^{\text{HS}} \triangleq \dfrac{\nabla f(x^{(k)})^T \left[ \nabla f(x^{(k)}) - \nabla f(x^{(k-1)}) \right]}{d^{(k-1)T} \left[ \nabla f(x^{(k)}) - \nabla f(x^{(k-1)}) \right]}, \quad & Hestenes-Stiefel (1952) \\
+		& \beta_k = \beta_k^{\text{FR}} \triangleq \dfrac{\left\| \nabla f(x^{(k)}) \right\|^2}{\left\| \nabla f(x^{(k-1)}) \right\|^2}, \quad & Fletcher-Reeves (1964) \\
+		& \beta_k = \beta_k^{\text{PRP}} \triangleq \dfrac{\nabla f(x^{(k)})^T \left[ \nabla f(x^{(k)}) - \nabla f(x^{(k-1)}) \right]}{\left\| \nabla f(x^{(k-1)}) \right\|^2}, \quad & Polak-Ribière-Polyak (1969) \\
+		& \beta_k = \beta_k^{\text{CD}} \triangleq -\dfrac{\left\| \nabla f(x^{(k)}) \right\|^2}{d^{(k-1)T} \nabla f(x^{(k-1)})}, \quad & Fletcher (1987) \\
+		& \beta_k = \beta_k^{\text{DY}} \triangleq \dfrac{\left\| \nabla f(x^{(k)}) \right\|^2}{d^{(k-1)T} \left[ \nabla f(x^{(k)}) - \nabla f(x^{(k-1)}) \right]} \quad & Dai-Yuan (1995)
+		\end{aligned}
+		$$
+- **FR 算法**、**PRP 算法**、**CD 算法**、**DY 算法**：若将**算法 5.2** 的*第 5 步*中的 $\beta_k = \beta_k^{\text{HS}}$ 改为 $\beta_k = \beta_k^{\text{FR}}$ 或 $\beta_k = \beta_k^{\text{PRP}}$ 或 $\beta_k = \beta_k^{\text{CD}}$ 或 $\beta_k = \beta_k^{\text{DY}}$，我们称相应的算法为 **FR 算法**、**PRP 算法**、**CD 算法**和 **DY 算法** 
+	- 由**定理 5.2.1** 知，当用于求解凸二次函数极小化问题 $\min f(x) = \dfrac{1}{2} x^T Q x + q^T x$ 时，若采用精确线性搜索，则 FR 算法、PRP 算法、HS 算法、CD 算法以及 DY 算法等价
+- **定理5.2.2**：采用精确线性搜索的**算法 5.2** 用于求解凸二次函数极小化问题 $\min f(x) = \dfrac{1}{2} x^T Q x + q^T x$ 时具有如下性质：
+	(1) 算法产生的方向 $\{d^{(k)}\}_{k=0}^{n-1}$ 关于矩阵 $Q$ 相互共轭。
+	(2) 若矩阵 $Q$ 只有 $r$ 个不同的特征值，则算法最多经过 $r$ 次迭代达到问题的最优解。
+	(3) 设 $\lambda_{\max}$ 和 $\lambda_{\min}$ 是矩阵 $Q$ 的最大特征值和最小特征值，$\kappa = \lambda_{\max} / \lambda_{\min}$。则 $\| x^{(k)} - x^* \|_Q \leqslant 2 \left( \dfrac{\sqrt{\kappa} - 1}{\sqrt{\kappa} + 1} \right)^k \| x^{(0)} - x^* \|_Q$，其中 $\| x \|_Q = (x^T Q x)^{1/2}$ 
+---
+- 下面介绍非线性共轭梯度法的全局收敛性。为此，我们作如下假设。
+- *假设条件* 
+	(1) 水平集 $\Omega = \{ x \in \mathbb{R}^n \mid f(x) \leqslant f(x^{(0)}) \}$ 有界。  
+	(2) 存在 $\Omega$ 的某个邻域 $N$，使得 $f$ 在该邻域上连续可微且 $\nabla f$ 满足 Lipschitz 条件，即存在常数 $L > 0$ 使得 $\| \nabla f(x) - \nabla f(y) \| \leqslant L \| x - y \|,\ (\forall\ x, y \in N)$ 
+- **定理 5.2.3**：设*假设条件*成立，则采用精确线性搜索的 FR 算法产生的点列 $\{ x^{(k)} \}$ 满足 $\lim\limits_{k \to \infty} \inf \| \nabla f(x^{(k)}) \| = 0$ 
+	- *证明过程* 
+		由精确线性搜索的条件得 $\nabla f(x^{(k)})^T d^{(k-1)} = 0, \ (\forall k \geqslant 1)$ 
+		从而，由 $d^{(k)} = \begin{cases}  -\nabla f(x^{(0)}), & \text{若 } k = 0 \\ -\nabla f(x^{(k)}) + \beta_k d^{(k-1)}, & \text{若 } k \geqslant 1  \end{cases}$ 得 $\nabla f(x^{(k)})^T d^{(k)} = - \| \nabla f(x^{(k)}) \|^2 < 0$ 
+		即 $d^{(k)}$ 是 $f$ 在 $x^{(k)}$ 处的下降方向，而且 $\| d^{(k+1)} \|^2 = \| \nabla f(x^{(k+1)}) \|^2 + \beta_{k+1}^2 \| d^{(k)} \|^2 = \| \nabla f(x^{(k+1)}) \|^2 + \dfrac{\| \nabla f(x^{(k+1)}) \|^4}{\| \nabla f(x^{(k)}) \|^4} \| d^{(k)} \|^2$ 
+		两端同除以 $\| \nabla f(x^{(k+1)}) \|^4$ 得
+		$$
+		\begin{aligned}
+		\dfrac{\| d^{(k+1)} \|^2}{\| \nabla f(x^{(k+1)}) \|^4} &= \dfrac{1}{\| \nabla f(x^{(k+1)}) \|^2} + \dfrac{\| d^{(k)} \|^2}{\| \nabla f(x^{(k+1)}) \|^4} \\
+		&= \dfrac{1}{\| \nabla f(x^{(k+1)}) \|^2} + \dfrac{1}{\| \nabla f(x^{(k)}) \|^2} + \dfrac{\| d^{(k-1)} \|^2}{\| \nabla f(x^{(k)}) \|^4} \\
+		&\vdots \\
+		&= \sum_{i=1}^{k+1} \dfrac{1}{\| \nabla f(x^{(i)}) \|^2} + \dfrac{\| d^{(0)} \|^2}{\| \nabla f(x^{(0)}) \|^4} = \sum_{i=0}^{k+1} \dfrac{1}{\| \nabla f(x^{(i)}) \|^2}
+		\end{aligned}
+		$$
+		令 $\theta_k$ 表示 $d^{(k)}$ 与 $-\nabla f(x^{(k)})$ 间的夹角。
+		由 $\nabla f(x^{(k)})^T d^{(k)} = - \| \nabla f(x^{(k)}) \|^2 < 0$ 可得 $\cos \theta_k = \dfrac{-\nabla f(x^{(k)})^T d^{(k)}}{\| \nabla f(x^{(k)}) \| \| d^{(k)} \|} = \dfrac{\| \nabla f(x^{(k)}) \|}{\| d^{(k)} \|}$ 
+		上式代入 $\dfrac{\| d^{(k+1)} \|^2}{\| \nabla f(x^{(k+1)}) \|^4} = \sum\limits_{i=0}^{k+1} \dfrac{1}{\| \nabla f(x^{(i)}) \|^2}$ 得 $\dfrac{1}{\| \nabla f(x^{(k+1)}) \|^2 \cos^2 \theta_{k+1}} = \sum\limits_{i=0}^{k+1} \dfrac{1}{\| \nabla f(x^{(i)}) \|^2}$ 
+		若 $\lim\limits_{k \to \infty} \inf \| \nabla f(x^{(k)}) \| = 0$ 不成立，则存在常数 $\eta > 0$ 使得 $\|\nabla f(x^{(k)})\| \geqslant \eta, (\forall\ k)$ 
+		由上式得 $\dfrac{1}{\|\nabla f(x^{(k+1)})\|^2 \cos^2 \theta_{k+1}} \leqslant \eta^{-2}(k + 2)$，或等价地 $\|\nabla f(x^{(k+1)})\|^2 \cos^2 \theta_{k+1} \geqslant \dfrac{\eta^2}{k + 2}$ 
+		因此 $\sum\limits_{k=0}^{\infty} \|\nabla f(x^{(k+1)})\|^2 \cos^2 \theta_{k+1} = +\infty$
+		这与**定理 2.4.1** 矛盾．从而式 $\lim\limits_{k \to \infty} \inf \| \nabla f(x^{(k)}) \| = 0$ 成立，证毕  ！
+	- 该定理为：采用精确线性搜索的 FR 算法的全局收敛性定理
+- **定理 5.2.4**：设*假设条件*成立，且由采用精确线性搜索的 PRP 算法产生的点列 $\{x^{(k)}\}$ 满足 $\{x^{(k+1)} - x^{(k)}\} \to 0$，则 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+	- 类似于上面的定理，可以建立采用精确线性搜索的 PRP 算法的全局收敛性定理，如上。
+	- 当 $f$ 是一致凸函数时，上面定理中的条件 $\{x^{(k+1)} - x^{(k)}\} \to 0$ 可以去掉，即下面的定理成立
+- **定理 5.2.5**：设函数 $f$ 是连续可微的一致凸函数且 $\nabla f$ Lipschitz 连续．则由采用精确线性搜索的 PRP 算法产生的点列 $\{x^{(k)}\}$ 满足 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+---
+- 下面介绍采用非精确线性搜索时 FR 算法的收敛性
+- *前置分析* 
+	注意到当采用精确线性搜索时，我们有 $\nabla f(x^{(k)})^T d^{(k-1)} = 0$ 
+	因此，由 $d^{(k)} = \begin{cases}  -\nabla f(x^{(0)}), & \text{若 } k = 0 \\ -\nabla f(x^{(k)}) + \beta_k d^{(k-1)}, & \text{若 } k \geqslant 1  \end{cases}$ 知 $\nabla f(x^{(k)})^\top d^{(k)} = -\|\nabla f(x^{(k)})\|^2 < 0$ 
+	此时，$d^{(k)}$ 是 $f$ 在 $x^{(k)}$ 处的下降方向，相应的算法为下降算法。
+	当采用非精确线性搜索时，$\nabla f(x^{(k)})^T d^{(k)} = -\|\nabla f(x^{(k)})\|^2 + \beta_k \nabla f(x^{(k)})^T d^{(k-1)}$ 
+	由于 $\nabla f(x^{(k)})^\top d^{(k-1)}$ 非零，此时 $d^{(k)}$ 可能不是 $f$ 在 $x^{(k)}$ 处的下降方向。
+	下面的引理表明，采用强 Wolfe 线性搜索的 FR 算法也具有下降性。
+- **引理 5.2.1**：设 $\{x^{(k)}\}$ 由 FR 算法产生，其中步长 $\alpha_k$ 满足强 Wolfe 线性搜索条件 $\begin{cases} f(x^{(k)} + \alpha_k d^{(k)}) \le f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)}) d^{(k)} \\ | \nabla f(x^{(k)} + \alpha_k d^{(k)})^T d^{(k)} | \le \sigma_2 |\nabla f(x^{(k)})^T d^{(k)} | \end{cases}$ 且 $\sigma_2 \in (0, 1/2)$。则对所有的 $k$，有 $\dfrac{1 - 2\sigma_2 + \sigma_2^{k+1}}{1 - \sigma_2} \leqslant \dfrac{-\nabla f(x^{(k)})^T d^{(k)}}{\|\nabla f(x^{(k)})\|^2} \leqslant \dfrac{1 - \sigma_2^{k+1}}{1 - \sigma_2}$ 
+	- *证明过程* 
+		我们对 $k$ 用归纳法证明引理
+		当 $k = 0$ 时，由于 $d^{(0)} = -\nabla f(x^{(0)})$，因此 $\dfrac{1 - 2\sigma_2 + \sigma_2^{k+1}}{1 - \sigma_2} \leqslant \dfrac{-\nabla f(x^{(k)})^T d^{(k)}}{\|\nabla f(x^{(k)})\|^2} \leqslant \dfrac{1 - \sigma_2^{k+1}}{1 - \sigma_2}$ 显然成立
+		设 $\dfrac{1 - 2\sigma_2 + \sigma_2^{k+1}}{1 - \sigma_2} \leqslant \dfrac{-\nabla f(x^{(k)})^T d^{(k)}}{\|\nabla f(x^{(k)})\|^2} \leqslant \dfrac{1 - \sigma_2^{k+1}}{1 - \sigma_2}$ 对 $k - 1$ 成立
+		由 $d^{(k)} = \begin{cases}  -\nabla f(x^{(0)}), & \text{若 } k = 0, \\ -\nabla f(x^{(k)}) + \beta_k d^{(k-1)}, & \text{若 } k \geqslant 1  \end{cases}$ 以及 $\beta_k$ 的定义得 $\dfrac{-\nabla f(x^{(k)})^T d^{(k)}}{\|\nabla f(x^{(k)})\|^2} = 1 + \dfrac{-\nabla f(x^{(k)})^T d^{(k-1)}}{\|\nabla f(x^{(k-1)})\|^2}$ 
+		由归纳假设以及 $\begin{cases} f(x^{(k)} + \alpha_k d^{(k)}) \le f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)}) d^{(k)} \\ | \nabla f(x^{(k)} + \alpha_k d^{(k)})^T d^{(k)} | \le \sigma_2 |\nabla f(x^{(k)})^T d^{(k)} | \end{cases}$ 得 $\dfrac{-\nabla f(x^{(k)})^T d^{(k)}}{\|\nabla f(x^{(k)})\|^2} \leqslant 1 + \sigma_2 \dfrac{-\nabla f(x^{(k-1)})^T d^{(k-1)}}{\|\nabla f(x^{(k-1)})\|^2} \leqslant 1 + \sigma_2 \dfrac{1 - \sigma_2^k}{1 - \sigma_2} = \dfrac{1 - \sigma_2^{k+1}}{1 - \sigma_2}$ 
+		同理，$\dfrac{-\nabla f(x^{(k)})^T d^{(k)}}{\|\nabla f(x^{(k)})\|^2} \geqslant 1 - \sigma_2 \dfrac{-\nabla f(x^{(k-1)})^T d^{(k-1)}}{\|\nabla f(x^{(k-1)})\|^2} \geqslant 1 - \sigma_2 \dfrac{1 - \sigma_2^k}{1 - \sigma_2} = \dfrac{1 - 2\sigma_2 + \sigma_2^{k+1}}{1 - \sigma_2}$ 
+		由归纳原理，$\dfrac{1 - 2\sigma_2 + \sigma_2^{k+1}}{1 - \sigma_2} \leqslant \dfrac{-\nabla f(x^{(k)})^T d^{(k)}}{\|\nabla f(x^{(k)})\|^2} \leqslant \dfrac{1 - \sigma_2^{k+1}}{1 - \sigma_2}$ 成立
+		证毕！
+	- 该引理说明：采用强 Wolfe 型线性搜索的 FR 算法产生的方向是 $f$ 在 $x^{(k)}$ 处的下降方向
+- **定理 5.2.6**：设*假设条件*成立，则采用强 Wolfe 型线性搜索 $\begin{cases} f(x^{(k)} + \alpha_k d^{(k)}) \le f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)}) d^{(k)} \\ | \nabla f(x^{(k)} + \alpha_k d^{(k)})^T d^{(k)} | \le \sigma_2 |\nabla f(x^{(k)})^T d^{(k)} | \end{cases}$ ($\sigma_2 < 1/2$) 的 FR 算法产生的点列 $\{x^{(k)}\}$ 满足 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+	- *证明过程* 
+		令 $\theta_k$ 表示 $d^{(k)}$ 与 $-\nabla f(x^{(k)})$ 间的夹角。
+		由 $\dfrac{1 - 2\sigma_2 + \sigma_2^{k+1}}{1 - \sigma_2} \leqslant \dfrac{-\nabla f(x^{(k)})^T d^{(k)}}{\|\nabla f(x^{(k)})\|^2} \leqslant \dfrac{1 - \sigma_2^{k+1}}{1 - \sigma_2}$ 得  
+		$$
+		\begin{aligned}
+		\|\nabla f(x^{(k)})\| \|d^{(k)}\| \cos \theta_k =& -\nabla f(x^{(k)})^T d^{(k)} \geqslant \frac{1 - 2\sigma_2 + \sigma_2^{k+1}}{1 - \sigma_2} \|\nabla f(x^{(k)})\|^2 \\ 
+		\geqslant & \frac{1 - 2\sigma_2}{1 - \sigma_2} \|\nabla f(x^{(k)})\|^2 \triangleq \mu \|\nabla f(x^{(k)})\|^2
+		\end{aligned}
+		$$
+		因此 $\|d^{(k)}\| \cos \theta_k \geqslant \mu \|\nabla f(x^{(k)})\|$ 
+		再由 $d^{(k)} = \begin{cases}  -\nabla f(x^{(0)}), & \text{若 } k = 0 \\ -\nabla f(x^{(k)}) + \beta_k d^{(k-1)}, & \text{若 } k \geqslant 1  \end{cases}$，$\begin{cases} f(x^{(k)} + \alpha_k d^{(k)}) \le f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)}) d^{(k)} \\ | \nabla f(x^{(k)} + \alpha_k d^{(k)})^T d^{(k)} | \le \sigma_2 |\nabla f(x^{(k)})^T d^{(k)} | \end{cases}$ 和 $\dfrac{1 - 2\sigma_2 + \sigma_2^{k+1}}{1 - \sigma_2} \leqslant \dfrac{-\nabla f(x^{(k)})^T d^{(k)}}{\|\nabla f(x^{(k)})\|^2} \leqslant \dfrac{1 - \sigma_2^{k+1}}{1 - \sigma_2}$ 得
+		$$
+		\begin{aligned}
+		\|d^{(k+1)}\|^2 &= \|\nabla f(x^{(k+1)})\|^2 - 2\beta_{k+1}^{\text{FR}} \nabla f(x^{(k+1)})^\text{T} d^{(k)} + (\beta_{k+1}^{\text{FR}})^2 \|d^{(k)}\|^2 \\
+		&\leqslant \|\nabla f(x^{(k+1)})\|^2 + 2\beta_{k+1}^{\text{FR}} |\nabla f(x^{(k+1)})^\text{T} d^{(k)}| + (\beta_{k+1}^{\text{FR}})^2 \|d^{(k)}\|^2 \\
+		&\leqslant \|\nabla f(x^{(k+1)})\|^2 + 2\beta_{k+1}^{\text{FR}} \sigma_2 \|\nabla f(x^{(k)})\|^\text{T} d^{(k)} + (\beta_{k+1}^{\text{FR}})^2 \|d^{(k)}\|^2 \\
+		&= \|\nabla f(x^{(k+1)})\|^2 - 2\beta_{k+1}^{\text{FR}} \sigma_2 \nabla f(x^{(k)})^\text{T} d^{(k)} + (\beta_{k+1}^{\text{FR}})^2 \|d^{(k)}\|^2 \\
+		&\leqslant \|\nabla f(x^{(k+1)})\|^2 + 2\beta_{k+1}^{\text{FR}} \frac{\sigma_2}{1 - \sigma_2} \|\nabla f(x^{(k)})\|^2 + (\beta_{k+1}^{\text{FR}})^2 \|d^{(k)}\|^2 \\
+		&= \|\nabla f(x^{(k+1)})\|^2 + 2\frac{\sigma_2}{1 - \sigma_2} \|\nabla f(x^{(k+1)})\|^2 + \frac{\|\nabla f(x^{(k+1)})\|^4}{\|\nabla f(x^{(k)})\|^4} \|d^{(k)}\|^2 \\
+		&= \frac{1 + \sigma_2}{1 - \sigma_2} \|\nabla f(x^{(k+1)})\|^2 + \frac{\|\nabla f(x^{(k+1)})\|^4}{\|\nabla f(x^{(k)})\|^4} \|d^{(k)}\|^2
+		\end{aligned}
+		$$
+		上式两端同除以 $\|\nabla f(x^{(k+1)})\|^4$ 得
+		$$
+		\begin{aligned}
+		\dfrac{\|d^{(k+1)}\|^2}{\|\nabla f(x^{(k+1)})\|^4} \leqslant& \dfrac{1 + \sigma_2}{1 - \sigma_2} \cdot \dfrac{1}{\|\nabla f(x^{(k+1)})\|^2} + \dfrac{\|d^{(k)}\|^2}{\|\nabla f(x^{(k)})\|^4} \\
+		\leqslant& \frac{\|d^{(0)}\|^2}{\|\nabla f(x^{(0)})\|^4} + \frac{1 + \sigma_2}{1 - \sigma_2} \sum_{i=1}^{k+1} \frac{1}{\|\nabla f(x^{(i)})\|^2} \\
+		\leqslant& \frac{1 + \sigma_2}{1 - \sigma_2} \sum_{i=0}^{k+1} \frac{1}{\|\nabla f(x^{(i)})\|^2}
+		\end{aligned}	
+		$$
+		利用 $\|d^{(k)}\| \cos \theta_k \geqslant \mu \|\nabla f(x^{(k)})\|$，类似于**定理 5.2.3** 的证明可得式 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+		证毕！
+	- 该定理建立了采用强 Wolfe 型线性搜索的 FR 算法的全局收敛性。  
+## 5-3 下降共轭梯度法
+### 5-3-0 前言
+上一节介绍的非线性共轭梯度法的下降性依赖于算法所采用的线性搜索。
+特别地，当采用 Armijo 型线性搜索时，共轭梯度法的下降性得不到保证。
+本节，我们介绍几个具有下降性的共轭梯度法。
+### 5-3-1 修正 FR (MFR) 算法  
+- **修正 FR (MFR) 算法**的*基本过程* 
+	设 $x^{(k)}$ 是当前迭代点，MFR 算法中 $d^{(k)}$ 由下面的方式确定：  
+	$$
+	d^{(k)} = 
+	\begin{cases} 
+	-\nabla f(x^{(0)}), & \text{若 } k = 0 \\[6pt]
+	-(1 + \theta_k)\nabla f(x^{(k)}) + \beta_k^{\text{FR}} d^{(k-1)}, & \text{若 } k \geqslant 1 
+	\end{cases}
+	$$
+	其中，$\beta_k^{\text{FR}}$ 由 FR 算法确定，$\theta_k = \dfrac{\nabla f(x^{(k)})^\text{T} d^{(k-1)}}{\|\nabla f(x^{(k)})\|^2} \beta_k^{\text{FR}} = \dfrac{\nabla f(x^{(k)})^\text{T} d^{(k-1)}}{\|\nabla f(x^{(k-1)})\|^2}$ 
+	MFR 算法与 FR 算法的区别在于系数 $\theta_k$ 
+	若 $\theta_k = 0$，则 MFR 算法与 FR 算法一致
+	特别地，若采用精确线性搜索，则 $\theta_k = 0$，此时 MFR 算法与 FR 算法是同一算法
+- **定理 5.3.1**：设函数 $f: \mathbb{R}^n \to \mathbb{R}$ 连续可微，则对任何 $k \geqslant 0$，由式 $d^{(k)} = \begin{cases} -\nabla f(x^{(0)}), & \text{若 } k = 0 \\ -(1 + \theta_k)\nabla f(x^{(k)}) + \beta_k^{\text{FR}} d^{(k-1)}, & \text{若 } k \geqslant 1 \end{cases}$ 确定的方向 $d^{(k)}$ 具有如下性质：  
+	(1) $d^{(k)}$ 是函数 $f$ 在 $x^{(k)}$ 处的充分下降方向，而且 $\nabla f(x^{(k)})^\text{T} d^{(k)} = -\|\nabla f(x^{(k)})\|^2$ 
+	(2) 若采用精确线性搜索，则 $\theta_k = 0$，此时 MFR 算法还原为 FR 算法。特别地，MFR 算法具有二次终止性
+	- 该定理表明：由 MFR 算法产生的方向 $d^{(k)}$ 是函数 $f$ 在 $x^{(k)}$ 处的充分下降方向
+	- 由于 $d^{(k)}$ 是函数 $f$ 在 $x^{(k)}$ 处的下降方向，因此下面的不等式对所有充分小的 $\alpha_k > 0$ 均成立：$f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} - \sigma_2 \alpha_k \|d^{(k)}\|^2$，其中 $\sigma_1 \in (0,1)$，$\sigma_2 > 0$ 为常数。
+- **修正的 Armijo 型线性搜索条件**：不等式 $f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} - \sigma_2 \alpha_k \|d^{(k)}\|^2$ 与 Armijo 型线性搜索条件 $f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^{\mathrm{T}} d^{(k)}$ 的形式相似，称为**修正的 Armijo 型线性搜索条件** 
+	- 满足 $f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} - \sigma_2 \alpha_k \|d^{(k)}\|^2$ 的步长 $\alpha_k$ 可采用与 Armijo 型线性搜索类似的**算法 2.3** 确定，即：给定 $\rho \in (0,1)$，令 $\alpha_k$ 是 $\{\rho^i \mid i = 0,1,\cdots\}$ 中使得 $f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} - \sigma_2 \alpha_k \|d^{(k)}\|^2$ 成立的最大者
+---
+- 下面我们分析 MFR 算法的全局收敛性
+- *假设条件* 
+	(1) 水平集 $\Omega = \{ x \in \mathbb{R}^n \mid f(x) \leqslant f(x^{(0)}) \}$ 有界。  
+	(2) 存在 $\Omega$ 的某个邻域 $N$，使得 $f$ 在该邻域上连续可微且 $\nabla f$ 满足 Lipschitz 条件，即存在常数 $L > 0$ 使得 $\| \nabla f(x) - \nabla f(y) \| \leqslant L \| x - y \|,\ (\forall\ x, y \in N)$ 
+- 由*假设条件*容易得到，存在正数 $\gamma_1 > 0$ 使得 $\|\nabla f(x)\| \leqslant \gamma_1,\ (\forall\ x \in \Omega)$，而且由 $\nabla f(x^{(k)})^\text{T} d^{(k)} = -\|\nabla f(x^{(k)})\|^2$ 可得 $\|\nabla f(x^{(k)})\|^2 = -\nabla f(x^{(k)})^\text{T} d^{(k)} \leqslant \|\nabla f(x^{(k)})\| \cdot \|d^{(k)}\|$，因此 $\|\nabla f(x^{(k)})\| \leqslant \|d^{(k)}\|$ 
+- **引理 5.3.1**：设*假设条件*成立，则存在常数 $c_1 > 0$，使得下面的不等式成立：$\alpha_k \geqslant c_1 \dfrac{\|\nabla f(x^{(k)})\|^2}{\|d^{(k)}\|^2},\ (\forall\ k \geqslant 0)$，$\sum\limits_{k \geqslant 0} \alpha_k^2 \|d^{(k)}\|^2 < \infty,\ \sum\limits_{k \geqslant 0} \alpha_k \|\nabla f(x^{(k)})\|^2 = -\sum\limits_{k \geqslant 0} \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} < \infty$。特别地，我们有 $\lim\limits_{k \to \infty} \alpha_k \|d^{(k)}\| = 0,\ \lim\limits_{k \to \infty} \alpha_k \|\nabla f(x^{(k)})\|^2 = 0$ 
+	- *证明过程* 
+		不等式 $\sum\limits_{k \geqslant 0} \alpha_k^2 \|d^{(k)}\|^2 < \infty,\ \sum\limits_{k \geqslant 0} \alpha_k \|\nabla f(x^{(k)})\|^2 = -\sum\limits_{k \geqslant 0} \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} < \infty$ 可由 $f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} - \sigma_2 \alpha_k \|d^{(k)}\|^2$ 及*假设条件*直接推得
+		$\lim\limits_{k \to \infty} \alpha_k \|d^{(k)}\| = 0,\ \lim\limits_{k \to \infty} \alpha_k \|\nabla f(x^{(k)})\|^2 = 0$ 是 $\sum\limits_{k \geqslant 0} \alpha_k^2 \|d^{(k)}\|^2 < \infty,\ \sum\limits_{k \geqslant 0} \alpha_k \|\nabla f(x^{(k)})\|^2 = -\sum\limits_{k \geqslant 0} \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} < \infty$ 的直接推论。
+		下面我们分两种情形证明 $\alpha_k \geqslant c_1 \dfrac{\|\nabla f(x^{(k)})\|^2}{\|d^{(k)}\|^2},\ (\forall\ k \geqslant 0)$ 成立。  
+		*情形 1* 
+		当 $\alpha_k = 1$，由于 $\|\nabla f(x^{(k)})\| \leqslant \|d^{(k)}\|$，令 $c_1 = 1$，则 $\alpha_k \geqslant c_1 \dfrac{\|\nabla f(x^{(k)})\|^2}{\|d^{(k)}\|^2},\ (\forall\ k \geqslant 0)$ 成立等式
+		*情形 2* 
+		当 $\alpha_k < 1$，则 $\rho^{-1}\alpha_k$ 不满足不等式 $f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} - \sigma_2 \alpha_k \|d^{(k)}\|^2$ 
+		这意味着下面的不等式成立：$f(x^{(k)} + \rho^{-1}\alpha_k d^{(k)}) - f(x^{(k)}) > \sigma_1 \alpha_k \rho^{-1} \nabla f(x^{(k)})^\text{T} d^{(k)} - \sigma_2 \rho^{-2} \alpha_k^2 \|d^{(k)}\|^2$ 
+		由中值定理及 Lipschitz 条件 $\| \nabla f(x) - \nabla f(y) \| \leqslant L \| x - y \|,\ (\forall\ x, y \in N)$，存在 $t_k \in (0,1)$ 使得  
+		$$
+		\begin{aligned}
+		&f(x^{(k)} + \rho^{-1}\alpha_k d^{(k)}) - f(x^{(k)}) \\
+		=& \rho^{-1}\alpha_k \nabla f(x^{(k)} + t_k \rho^{-1}\alpha_k d^{(k)})^\text{T} d^{(k)} \\
+		=& \rho^{-1}\alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} + \rho^{-1}\alpha_k \left[ \nabla f(x^{(k)} + t_k \rho^{-1}\alpha_k d^{(k)}) - \nabla f(x^{(k)}) \right]^\text{T} d^{(k)} \\
+		\leqslant& \rho^{-1}\alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} + L \rho^{-2} \alpha_k^2 \|d^{(k)}\|^2
+		\end{aligned}
+		$$
+		将最后一个不等式代入 $f(x^{(k)} + \rho^{-1}\alpha_k d^{(k)}) - f(x^{(k)}) > \sigma_1 \alpha_k \rho^{-1} \nabla f(x^{(k)})^\text{T} d^{(k)} - \sigma_2 \rho^{-2} \alpha_k^2 \|d^{(k)}\|^2$，我们得到 $\alpha_k > \dfrac{(1 - \sigma_1)\rho \|\nabla f(x^{(k)})\|^2}{(L + \sigma_2)\|d^{(k)}\|^2}$ 
+		令 $c_1 = \min\left\{ 1, \frac{1 - \sigma_1}{L + \sigma_2} \rho \right\}$，我们得到不等式 $\alpha_k \geqslant c_1 \dfrac{\|\nabla f(x^{(k)})\|^2}{\|d^{(k)}\|^2},\ (\forall\ k \geqslant 0)$ 
+		证毕！
+- **定理 5.3.2**：设**定理 5.2.2** 的条件成立，则采用线性搜索 $f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} - \sigma_2 \alpha_k \|d^{(k)}\|^2$ 的 MFR 算法产生的 $\{x^{(k)}\}$ 满足 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+	- *证明过程* 
+		为方便起见，我们简记 $\beta_k^{\text{FR}}$ 为 $\beta_k$ 
+		由 $d^{(k)} = \begin{cases} -\nabla f(x^{(0)}), & \text{若 } k = 0 \\ -(1 + \theta_k)\nabla f(x^{(k)}) + \beta_k^{\text{FR}} d^{(k-1)}, & \text{若 } k \geqslant 1 \end{cases}$，我们有 $\beta_k d^{(k-1)} = d^{(k)} + (1 + \theta_k) \nabla f(x^{(k)})$ 
+		上式两端取范数，利用 $\nabla f(x^{(k)})^\text{T} d^{(k)} = -\|\nabla f(x^{(k)})\|^2$ 得 
+		$$
+		\begin{aligned}
+		\|d^{(k)}\|^2 &= \beta_k^2 \|d^{(k-1)}\|^2 - 2(1 + \theta_k) d^{(k)\text{T}} \nabla f(x^{(k)}) - (1 + \theta_k)^2 \|\nabla f(x^{(k)})\|^2 \\ 
+		&= \beta_k^2 \|d^{(k-1)}\|^2 + \left[ 2(1 + \theta_k) - (1 + \theta_k)^2 \right] \|\nabla f(x^{(k)})\|^2 \\ 
+		&= \beta_k^2 \|d^{(k-1)}\|^2 + (1 - \theta_k^2) \|\nabla f(x^{(k)})\|^2 \\ &\leqslant \beta_k^2 \|d^{(k-1)}\|^2 + \|\nabla f(x^{(k)})\|^2
+		\end{aligned}
+		$$
+		类似于**定理 5.2.3** 的证明可得 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$，证毕！
+	- 该定理给出了 MFR 方法的全局收敛性
+### 5-3-2 一种三项共轭梯度法——修正 PRP (MPRP) 算法
+- **修正 PRP (MPRP) 算法**的*基本思想* 
+	MPRP算法中 $d^{(k)}$ 由下面的方式确定：
+	$$
+	d^{(k)} = 
+	\begin{cases} 
+	-\nabla f(x^{(0)}), & \text{若 } k = 0 \\
+	-\nabla f(x^{(k)}) +\beta_k^{\text{PRP}} d^{(k-1)} - \theta_k y^{(k-1)}, & \text{若 } k \geqslant 1 
+	\end{cases}
+	$$
+	其中，$\beta_k^{\text{PRP}}$ 由 PRP 算法确定，$y^{(k-1)} = \nabla f(x^{(k)}) - \nabla f(x^{(k-1)})$，$\theta_k = \dfrac{\nabla f(x^{(k)})^\text{T} d^{(k-1)}}{\nabla f(x^{(k)})^\text{T} y^{(k-1)}} \beta_k^{\text{PRP}} = \dfrac{\nabla f(x^{(k)})^\text{T} d^{(k-1)}}{\|\nabla f(x^{(k-1)})\|^2}$ 
+	修正 PRP 算法与 PRP 算法的区别在于表达式中的第三项。
+	若 $\theta_k = 0$，则 MFR 算法与 FR 算法一致。
+	特别地，若采用精确线性搜索，则 $\theta_k = 0$，此时 MPRP 算法与 PRP 算法是同一算法。  
+- **定理 5.3.3**：设函数 $f: \mathbb{R}^n \to \mathbb{R}$ 连续可微，则对任何 $k \geqslant 0$，由 $d^{(k)} = \begin{cases} -\nabla f(x^{(0)}), & \text{若 } k = 0 \\ -\nabla f(x^{(k)}) +\beta_k^{\text{PRP}} d^{(k-1)} - \theta_k y^{(k-1)}, & \text{若 } k  \geqslant 1 \end{cases}$ 确定的方向 $d^{(k)}$ 具有如下性质：
+	(1) $d^{(k)}$ 是函数 $f$ 在 $x^{(k)}$ 处的充分下降方向，而且 $\nabla f(x^{(k)})^\text{T} d^{(k)} = -\|\nabla f(x^{(k)})\|^2$ 
+	(2) 若采用精确线性搜索，则 $\theta_k = 0$，此时 MPRP 算法还原为 PRP 算法。特别地，MPRP 算法具有二次终止性。  
+	- 该定理表明：由 MPRP 算法产生的方向 $d^{(k)}$ 具有 MFR 算法产生的方向同样的性质
+- *假设条件* 
+	(1) 水平集 $\Omega = \{ x \in \mathbb{R}^n \mid f(x) \leqslant f(x^{(0)}) \}$ 有界。  
+	(2) 存在 $\Omega$ 的某个邻域 $N$，使得 $f$ 在该邻域上连续可微且 $\nabla f$ 满足 Lipschitz 条件，即存在常数 $L > 0$ 使得 $\| \nabla f(x) - \nabla f(y) \| \leqslant L \| x - y \|,\ (\forall\ x, y \in N)$ 
+- **定理 5.3.4**：设*假设条件*成立，则采用线性搜索 $f(x^{(k)} + \alpha_k d^{(k)}) \leqslant f(x^{(k)}) + \sigma_1 \alpha_k \nabla f(x^{(k)})^\text{T} d^{(k)} - \sigma_2 \alpha_k \|d^{(k)}\|^2$ 的 MPRP 算法产生的 $\{x^{(k)}\}$ 满足 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+	- 该定理为 MPRP 算法的收敛性定理
+### 5-3-3 CG_Descent 算法
+- **CG_Descent 算法**的*基本思想* 
+	CG_Descent算法中 $d^{(k)}$ 由下面的方式确定：  
+	$$
+	d^{(k)} = 
+	\begin{cases} 
+	-\nabla f(x^{(0)}), & \text{若 } k = 0 \\
+	-\nabla f(x^{(k)}) + \beta_k^{\text{HZ}^+} d^{(k-1)}, & \text{若 } k \geqslant 1 
+	\end{cases}
+	$$
+	其中 $\beta_k^{\text{HZ}^+} = \max\{\beta_k^{\text{HZ}}, \eta_k\},\ \eta_k = \dfrac{-1}{\|d^{(k-1)}\| \min\{\eta, \|\nabla f(x^{(k-1)})\|\}}$ 
+	其中 $\eta > 0$ 是常数，$s^{(k-1)} = x^{(k)} - x^{(k-1)}$，$\beta_k^{\text{HZ}} = \dfrac{1}{d^{(k-1)\text{T}} y^{(k-1)}} \left( y^{(k-1)} - 2 \dfrac{\|y^{(k-1)}\|^2}{s^{(k-1)\text{T}} y^{(k-1)}} s^{(k-1)} \right)^{\text{T}} \nabla f(x^{(k)})$ 
+	容易看出，若采用精确线性搜索，则 $\beta_k^{\text{HZ}} = \beta_k^{\text{HS}}$ 
+- **定理 5.3.5**：设函数 $f: \mathbb{R}^n \to \mathbb{R}$ 连续可微，则对任何 $k \geqslant 0$，由 $d^{(k)} = \begin{cases} -\nabla f(x^{(0)}), & \text{若 } k = 0 \\ -\nabla f(x^{(k)}) + \beta_k^{\text{HZ}^+} d^{(k-1)}, & \text{若 } k \geqslant 1 \end{cases}$ 确定的方向 $d^{(k)}$ 满足 $\nabla f(x^{(k)})^\text{T} d^{(k)} \leqslant - \dfrac{7}{8} \|\nabla f(x^{(k)})\|^2$ 
+	- 该定理表明：不论采用何种线性搜索，由 $d^{(k)} = \begin{cases} -\nabla f(x^{(0)}), & \text{若 } k = 0 \\ -\nabla f(x^{(k)}) + \beta_k^{\text{HZ}^+} d^{(k-1)}, & \text{若 } k \geqslant 1 \end{cases}$ 产生的方向 $d^{(k)}$ 是函数 $f$ 在 $x^{(k)}$ 处的一个下降方向
+	- *证明过程* 
+		不等式 $\nabla f(x^{(k)})^\text{T} d^{(k)} \leqslant - \dfrac{7}{8} \|\nabla f(x^{(k)})\|^2$ 对 $k=0$ 显然成立
+		对 $k \geqslant 1$，我们有 $\nabla f(x^{(k)})^\text{T} d^{(k)} = -\|\nabla f(x^{(k)})\|^2 + \beta_k^{\text{HZ}^+} \nabla f(x^{(k)})^\text{T} d^{(k-1)}$ 
+		若 $\nabla f(x^{(k)})^\text{T} d^{(k-1)} \geqslant 0$ 且 $\beta_k^{\text{HZ}^+} = \eta_k < 0$，则由上式不难得到 $\nabla f(x^{(k)})^\text{T} d^{(k)} \leqslant -\|\nabla f(x^{(k)})\|^2$，此时 $\nabla f(x^{(k)})^\text{T} d^{(k)} \leqslant - \dfrac{7}{8} \|\nabla f(x^{(k)})\|^2$ 成立
+		若 $\nabla f(x^{(k)})^\text{T} d^{(k-1)} \geqslant 0$ 且 $\beta_k^{\text{HZ}^+} = \beta_k^{\text{HZ}}$，我们有 $\nabla f(x^{(k)})^\text{T} d^{(k)} = -\|\nabla f(x^{(k)})\|^2 + \beta_k^{\text{HZ}} \nabla f(x^{(k)})^\text{T} d^{(k-1)}$ 
+		若 $\nabla f(x^{(k)})^\text{T} d^{(k-1)} < 0$，注意到 $\beta_k^{\text{HZ}^+} \geqslant \beta_k^{\text{HZ}}$，我们有 $\nabla f(x^{(k)})^\text{T} d^{(k)} \leqslant -\|\nabla f(x^{(k)})\|^2 + \beta_k^{\text{HZ}} \nabla f(x^{(k)})^\text{T} d^{(k-1)}$ 
+		因此，我们只需证明 $-\|\nabla f(x^{(k)})\|^2 + \beta_k^{\text{HZ}} \nabla f(x^{(k)})^\text{T} d^{(k-1)} \leqslant - \dfrac{7}{8} \|\nabla f(x^{(k)})\|^2$ 
+		或等价地 $\beta_k^{\text{HZ}} \nabla f(x^{(k)})^\text{T} d^{(k-1)} \leqslant \dfrac{1}{8} \|\nabla f(x^{(k)})\|^2$ 
+		由 $\beta_k^{\text{HZ}}$ 的定义以及不等式 $u^\text{T} v \leqslant \dfrac{1}{2}\left(\|u\|^2 + \|v\|^2\right)$ 
+		可得
+		$$
+		\begin{aligned}
+		&\beta_k^{\text{HZ}} \nabla f(x^{(k)})^\text{T} d^{(k-1)} \\
+		=& \frac{\nabla f(x^{(k)})^\text{T} \left( y^{(k-1)} - 2 \frac{\|y^{(k-1)}\|^2}{d^{(k-1)\text{T}} y^{(k-1)}} d^{(k-1)} \right)}{d^{(k-1)\text{T}} y^{(k-1)}} \nabla f(x^{(k)})^\text{T} d^{(k-1)} \\
+		=& \frac{\nabla f(x^{(k)})^\text{T} y^{(k-1)} \left( d^{(k-1)\text{T}} y^{(k-1)} \right) \nabla f(x^{(k)})^\text{T} d^{(k-1)}}{\left( d^{(k-1)\text{T}} y^{(k-1)} \right)^2} - 2 \frac{\|y^{(k-1)}\|^2 \left( \nabla f(x^{(k)})^\text{T} d^{(k-1)} \right)^2}{\left( d^{(k-1)\text{T}} y^{(k-1)} \right)^2} \\
+		=& \frac{[\frac{1}{2} \left( d^{(k-1)\text{T}} y^{(k-1)} \right) \nabla f(x^{(k)})]^\text{T} \left[ 2 \left( \nabla f(x^{(k)})^\text{T} d^{(k-1)} \right) y^{(k-1)} \right]}{\left( d^{(k-1)\text{T}} y^{(k-1)} \right)^2} - 2 \frac{\|y^{(k-1)}\|^2 \left( \nabla f(x^{(k)})^\text{T} d^{(k-1)} \right)^2}{\left( d^{(k-1)\text{T}} y^{(k-1)} \right)^2} \\
+		\leqslant& \frac{1}{8} \|\nabla f(x^{(k)})\|^2
+		\end{aligned}
+		$$
+		即 $\beta_k^{\text{HZ}^+} \nabla f(x^{(k)})^\text{T} d^{(k-1)} \leqslant \dfrac{1}{8} \|\nabla f(x^{(k)})\|^2$ 成立。  
+		证毕！
+- **定理 5.3.6**：设*假设条件*成立，则采用 Wolfe-Powell 型线性搜索的 CG_Descent 算法产生的点列 $\{x^{(k)}\}$ 满足   $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+	- 该定理为 CG_Descent算法的收敛性定理
+## 5-4 共轭梯度法的收敛速度
+- 本节介绍采用精确线性搜索的 PRP 共轭梯度法的收敛速度估计
+- *假设条件*：设函数 $f: \mathbb{R}^n \to \mathbb{R}$ 二次连续可微，由 PRP 共轭梯度法产生的点列 $\{x^{(k)}\}$ 收敛于 $x^*$ 且 $\nabla f(x^*) = 0$，$\nabla^2 f(x^*)$ 正定。
+- **定理 5.4.1**：设*假设条件*成立，则存在常数 $b > 0$，$r \in (0,1)$ 使得当 $k$ 充分大时，采用精确线性搜索的 PRP 算法产生的点列 $\{x^{(k)}\}$ 满足 $\|x^{(k+1)} - x^*\| \leqslant b r^k$ 
+	- *证明过程* 
+		由*假设条件*，存在 $x^*$ 的邻域 $U(x^*)$ 和常数 $M \geqslant m > 0$ 使得 $m\|d\|^2 \leqslant d^T \nabla^2 f(x) d \leqslant M\|d\|^2,\ (\forall\ x \in U(x^*),\ \forall\ d \in \mathbb{R}^n)$ 
+		利用中值定理，对任何 $k$，我们有 $\displaystyle \nabla f(x^{(k)}) - \nabla f(x^{(k-1)}) = \int_0^1 \nabla^2 f(x^{(k-1)} + \tau s^{(k-1)}) d\tau \cdot s^{(k-1)} \triangleq A_{k-1} s^{(k-1)}$，其中 $s^{(k-1)} = x^{(k)} - x^{(k-1)} = \alpha_{k-1} d^{(k-1)}$ 
+		由此及精确线性搜索条件得
+		$$
+		\begin{aligned}
+		\|\nabla f(x^{(k-1)})\|^2 &= -\nabla f(x^{(k-1)})^T d^{(k-1)} \\
+		&= [\nabla f(x^{(k)}) - \nabla f(x^{(k-1)})]^T d^{(k-1)} \\
+		&= \alpha_{k-1} d^{(k-1)T} A_{k-1} d^{(k-1)}
+		\end{aligned}
+		$$
+		因此，当 $k$ 充分大时，我们有 $\|\nabla f(x^{(k-1)})\|^2 \geqslant m \alpha_{k-1} \|d^{(k-1)}\|^2$ 
+		由 $\beta_k$ 的定义不难推得存在常数 $C > 0$ 使得 $|\beta_k^{\text{PRP}}| \leqslant C \dfrac{\|\nabla f(x^{(k)})\|}{\|d^{(k-1)}\|}$ 
+		利用 $d^{(k)}$ 的定义可得 $\|d^{(k)}\| \leqslant \|\nabla f(x^{(k)})\| + |\beta_k^{\text{PRP}}| \|d^{(k-1)}\| \leqslant (1 + C)\|\nabla f(x^{(k)})\|$ 
+		令 $\theta_k$ 表示 $d^{(k)}$ 与 $-\nabla f(x^{(k)})$ 间的夹角，则有 $\cos \theta_k = \dfrac{-\nabla f(x^{(k)})^\text{T} d^{(k)}}{\|\nabla f(x^{(k)})\| \|d^{(k)}\|} = \dfrac{\|\nabla f(x^{(k)})\|}{\|d^{(k)}\|} \geqslant (1 + C)^{-1}$ 
+		于是，由**定理 2.5.1** 可知该定理成立！证毕！
+	- 该定理为关于 PRP 算法的线性收敛性定理
+	- 该定理表明了 PRP 算法至少具有线性收敛速度
+- *算法改进思路* 
+	为了进一步研究共轭梯度法的收敛速度，我们对算法做适当改进。
+	由前面的介绍我们知道共轭梯度法具有二次终止性，即用于求解严格凸二次函数极小化问题时算法经有限次 (最多 $n$ 次) 迭代后终止于问题的最优解。
+	由于一般的非线性函数 $f$ 在任何点的附近均可以用二次函数近似，因此我们可以粗略地认为，共轭梯度法经过连续 $n$ 次迭代后产生的点是 $f$ 的某个二次近似函数的一个近似解。
+	基于这种观察，我们可设计重新开始共轭梯度法，即算法每经过 $n$ 次迭代后，将当前迭代点作为新的初始点重新开始共轭梯度法。
+	算法的具体步骤如下
+- **算法 5.3** (**$n$ 步重新开始共轭梯度法**)  
+	- *第 1 步*：取初始点 $x^{(0)} \in \mathbb{R}^n$，$d^{(0)} = -\nabla f(x^{(0)})$，精度 $\varepsilon > 0$，令 $k := 0$ 
+	- *第 2 步*：若 $\|\nabla f(x^{(k)})\| \leqslant \varepsilon$，则算法终止，得问题的解 $x^{(k)}$。否则，转*第 3 步* 
+	- *第 3 步*：由线性搜索确定步长 $\alpha_k$ 
+	- *第 4 步*：令 $x^{(k+1)} = x^{(k)} + \alpha_k d^{(k)}$ 
+	- *第 5 步*：由某个共轭梯度法确定 $d^{(k+1)}$ 
+	- *第 6 步*：若 $k < n$，令 $k := k + 1$，转*第 2 步*；若 $k = n$，令 $x^{(0)} := x^{(k)}$，$k := 0$，转*第 1 步* 
+- *注*：类似于**定理 5.2.3** 的证明，我们可以建立 $n$ 步重新开始的 FR 算法的全局收敛性定理
+- **定理 5.4.2**：设 $f: \mathbb{R}^n \to \mathbb{R}$ 是三次连续可微的一致凸函数，$\{x^{(k)}\}$ 是由采用精确线性搜索的 $n$ 步重新开始的 PRP 共轭梯度法产生的点列，则存在常数 $C > 0$ 使得 $\lim\limits_{k \to \infty} \sup \dfrac{\|x^{(k+n)} - x^*\|}{\|x^{(k)} - x^*\|^2} \leqslant C$，其中 $x^*$ 是 $f$ 的唯一极小值点。
+	- 该定理描述了关于 $n$ 步重新开始共轭梯度法的收敛速度
