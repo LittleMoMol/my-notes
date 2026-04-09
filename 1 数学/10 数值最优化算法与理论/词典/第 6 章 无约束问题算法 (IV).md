@@ -158,3 +158,101 @@
 	- *第 3 步* (**下降测试和线性搜索**)：若 $f(x^{(k)} + d^{(k)}) < f(x^{(k)})$，令 $x^{(k+1)} = x^{(k)} + d^{(k)}$，转*第 4 步*。否则，令 $\alpha_k$ 是 $\{\rho^i \mid i = 0,1,\cdots\}$ 中使得 $f(x^{(k)} + \rho^i d^{(k)}) < f(x^{(k)})$ 成立的最大者。令 $x^{(k+1)} = x^{(k)} + \alpha_k d^{(k)}$，取 $\Delta_{k+1} \in \{\|x^{(k+1)} - x^{(k)}\|, c_3 \Delta_k\}$，转*第 5 步* 
 	- *第 4 步* (**信赖域修正**)：计算 $r_k = \dfrac{f(x^{(k)}) - f(x^{(k+1)})}{q_k(0) - q_k(d^{(k)})}$，若 $r_k > \eta$ 且 $\|d^{(k)}\| < \Delta_k$，令 $\Delta_{k+1} = \Delta_k$。否则定义 $\Delta_{k+1} = \begin{cases} c_2 \|d^{(k)}\|, & c_3 \Delta_k, & \text{若 } r_k < \eta \\ [\Delta_k, c_1 \Delta_k], & \text{若 } r_k > \eta \text{ 且 } \|d^{(k)}\| = \Delta_k \end{cases}$ 
 	- *第 5 步* (**循环**)：确定 $B_{k+1}$，令 $k := k + 1$，转*第 1 步* 
+	- *注*：*第 2 步*的子问题可采用非精确求解，其近似解 $d^{(k)}$ 满足：存在正常数 $\tau > 0$，使得 $q_k(0) - q_k(d^{(k)}) \geqslant \tau \|\nabla f(x^{(k)})\| \min\left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{\|B_k\|} \right\}$ 和 $\nabla f(x^{(k)})^\mathrm{T} d^{(k)} \leqslant -\tau \|\nabla f(x^{(k)})\| \min\left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{\|B_k\|} \right\}$ 
+- **定理 6.3.1**：设函数 $f$ 二次连续可微且 $\|\nabla^2 f(x)\|$ 有界。若**算法 6.2** 产生的点列有界，且 $B_k$ 满足 $\sum\limits_{k=1}^{\infty} \dfrac{1}{1 + \max\limits_{1 \leqslant i \leqslant k} \|B_i\|} = \infty$，则有 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
+	- 该定理给出**算法 6.2** 的全局收敛性
+## 6-4 信赖域子问题的求解
+### 6-4-0 前言
+- 信赖域算法中子问题的求解是算法实现的关键。
+- 子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_d \end{aligned}$  是一个目标为二次函数的约束优化问题。当采用 $\|\cdot\|_\infty$ 范数时，可利用第 11 章介绍的有效集算法求解。
+- 下面介绍采用 Euclid 范数时，精确求解与非精确求解子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_d \end{aligned}$ 的特殊算法。
+- 为方便起见，省略迭代指标，用 $x \in \mathbb{R}^n$ 表示当前迭代点，此时信赖域子问题为
+	$$
+	\begin{aligned}
+	\min \quad & f(x) + \nabla f(x)^\mathrm{T} d + \frac{1}{2} d^\mathrm{T} B d \triangleq q(d) \\
+	\text{s.t.} \quad & \|d\| \leqslant \Delta
+	\end{aligned} \tag{question}
+	$$
+### 6-4-1 精确求解方法
+- 不难发现，若 $B$ 正定且 $\bar{d} \triangleq -B^{-1} \nabla f(x)$ 满足 $\|\bar{d}\| \leqslant \Delta$，即无约束问题 $\min f(x) + \nabla f(x)^\mathrm{T} d + \dfrac{1}{2} d^\mathrm{T} B d$ 的解是问题 $(question)$ 的可行点，则 $\bar{d}$ 是问题 $(question)$ 的解
+- **定理 6.4.1**：$d^*$ 是子问题 $(question)$ 的全局最优解当且仅当 $d^*$ 可行，存在常数 $\lambda^* \geqslant 0$ 满足 $B + \lambda^* I$ 半正定，且有 $\begin{cases} (B + \lambda^* I) d^* = -\nabla f(x) \\ \lambda^* (\Delta - \|d^*\|) = 0 \end{cases}$ 
+	- 该定理给出了：一般情况下子问题 $(question)$ 的解的相关结论，其证明留作练习。
+	- 该定理给出了信赖域子问题 $(question)$ 解的一个等价性条件。
+- **子问题的精确解法**的*理论基础* 
+	利用**定理 6.4.1**，我们可构造求解子问题算法。
+	设矩阵 $B + \lambda^* I$ 正定，若线性方程组 $B d + \nabla f(x) = 0$ 的解 $\bar{d}$ 满足 $\|\bar{d}\| \leqslant \Delta$，则 $d^* = \bar{d}$。此情形对应于 $\lambda^* = 0$ 且 $B$ 正定。否则，必有 $\lambda^* > 0$。
+	此时求解信赖域子问题 $(question)$ 等价于解如下方程组
+	$$
+	\begin{cases}
+	(B + \lambda I) d = -\nabla f(x) \\
+	\|d\| = \Delta
+	\end{cases}
+	$$
+	取 $\lambda > 0$ 充分大使得 $B + \lambda I$ 正定，由式 $\begin{cases} (B + \lambda I) d = -\nabla f(x) \\ \|d\| = \Delta \end{cases}$ 可知：
+	求 $(question)$ 的解可通过解如下关于 $\lambda$ 的一元非线性方程 $\phi_1(\lambda) = \|(B + \lambda I)^{-1} \nabla f(x)\| - \Delta = 0$ 得到解 $\lambda^*$，然后由 $(B + \lambda I) d = -\nabla f(x)$ 得子问题的解 $d^* = d(\lambda^*) = -(B + \lambda^* I)^{-1} \nabla f(x)$ 
+	基于非线性方程 $\phi_1(\lambda) = \|(B + \lambda I)^{-1} \nabla f(x)\| - \Delta = 0$ 求信赖域子问题的方法称为**子问题的精确解法** 
+	利用矩阵的对角化分解可知，$\phi_1(\lambda)$ 是一非线性程度高的系统。为了简化方程的计算，定义 $\phi_2(\lambda) = \dfrac{1}{\Delta} - \dfrac{1}{\|d(\lambda)\|}$ 
+	$\phi_2(\lambda)$ 近似为线性方程系统，且方程组 $\phi_1(\lambda) = \|(B + \lambda I)^{-1} \nabla f(x)\| - \Delta = 0$ 等价于方程 $\phi_2(\lambda) = 0$ 
+	该方程系统可应用牛顿迭代法建立其迭代计算式为 $\lambda_{l+1} = \lambda_l - \dfrac{\phi_2(\lambda_l)}{\phi_2'(\lambda_l)} = \lambda_l + \left( \dfrac{\|d_l\|}{\|q_l\|} \right)^2 \left( \dfrac{\|d_l\| - \Delta}{\Delta} \right)$ 
+	根据如上分析可建立信赖域子问题精确求解的计算步骤如下
+- **算法 6.3** (**信赖域子问题的精确算法**)
+	- *第 0 步*：给定 $\lambda_0 > 0$，$\Delta > 0$。令 $l := 0$ 
+	- *第 1 步*：若 $\lambda_l$ 是问题 $\phi_2(\lambda) = \dfrac{1}{\Delta} - \dfrac{1}{\|d(\lambda)\|}$ 的解，则解线性问题 $\begin{cases} (B + \lambda I) d = -\nabla f(x) \\ \|d\| = \Delta \end{cases}$ 得解 $d^{(l)}$。否则，转*第 2 步* 
+	- *第 2 步*：作 Cholesky 分解 $B + \lambda^{(l)} I = R^\mathrm{T} R$。解方程组 $R^\mathrm{T} R d_l = -\nabla f(x),\ R^\mathrm{T} q_l = d_l$，得解 $d_l, q_l$ 
+	- *第 3 步*：$\lambda_{l+1} = \lambda_l + \left( \dfrac{\|d_l\|}{\|q_l\|} \right)^2 \left( \dfrac{\|d_l\| - \Delta}{\Delta} \right)$ 
+	- *第 4 步*：令 $l := l + 1$，转*第 1 步* 
+	- *注*：上面的算法只适合于矩阵 $B + \lambda^* I$ 正定时的情况。当 $B + \lambda^* I$ 非正定时，子问题 $(question)$ 的求解较为复杂。
+### 6-4-2 折线方法 (Dogleg Method)
+- *前置分析* 
+	上小节介绍的信赖域子问题精确求解计算量较大，而且当 $B + \lambda^* I$ 非正定时，子问题 $(question)$ 的求解较为复杂。
+	另一方面，从**定理 6.2.1** 的证明可见，**算法 6.1** 全局收敛的关键是柯西下降性条件 $f(x^{(k)}) - q_k(p_k^\mathrm{c}) \geqslant \dfrac{1}{2}\|\nabla f(x^{(k)})\| \min \left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{\|B_k\|} \right\}$ 
+	此条件为保证算法的全局收敛性提供了非精确解的一个标准。
+	因此，我们可以考虑非精确求解子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_d \end{aligned}$，获得其近似解 $d^{(k)}$ 满足部分柯西下降量
+	即求 $d^{(k)} \in D$ 使得对某个 $c \in (0,1]$，$f(x^{(k)}) - f(x^{(k)} + d^{(k)}) \geqslant c \left[ f(x^{(k)}) - f(x^{(k)} + p_k^C) \right]$，其中 $p_k^C$ 为由式 $p_k^c = -\tau_k \dfrac{\Delta_k}{\|\nabla f(x^{(k)})\|} \nabla f(x^{(k)})$ 定义的柯西点
+- **折线方法** 
+	下面我们介绍非精确求解信赖域子问题的**折线方法** 
+	由信赖域子问题 $(question)$ 知其解 $d^*$ 是信赖域半径 $\Delta$ 的函数，记为 $d^*(\Delta)$，几何上为一条曲线，称其为**最优解曲线**，见下图
+	![[Pasted image 20260409221113.png|350]]
+	折线法的思想是用一条折线代替精确解曲线 $d^*(\Delta)$ 
+	为了构造合适的折线，首先分析子问题解的特性
+	若 $B$ 正定且 $\| -B^{-1} \nabla f(x) \| \leqslant \Delta$，则 $(question)$ 的精确解为 $d^*(\Delta) = -B^{-1} \nabla f(x) \triangleq d^B$ 
+	否则，我们可作如下分析：
+	当 $\Delta$ 很小时，信赖域子问题中目标函数的二次项的作用不大。
+	因此，可用函数 $f(x)$ 的一次（线性）近似，此时在约束 $\|d\| \leqslant \Delta$ 下，子问题的近似解为 $d^*(\Delta) \approx -\Delta \dfrac{\nabla f(x)}{\|\nabla f(x)\|}$。
+	这显示可采用最速下降方向作为解曲线的近似。
+	基于最速下降方向的考虑和省略信赖域约束，我们取子问题解的形式为 $d = -\tau \nabla f(x)$。
+	通过目标函数极小化可确定子问题沿最速下降方向的解为 $d^U = -\dfrac{\nabla f(x)^\mathrm{T} \nabla f(x)}{\nabla f(x)^\mathrm{T} B \nabla f(x)} \nabla f(x)$ 
+	另一方面，为了得到收敛性能更好的搜索方向，我们可选择牛顿方向 $d^B$ 
+	由两方向 $d^U$ 和 $d^B$ 可分段构造折线搜索方向 (见上图)
+	记由上图方式构造出的折线为 $\tilde{d}(\tau)$，数学上的定义式为
+	$$
+	\tilde{d}(\tau) = \begin{cases} 
+	\tau d^U, & 0 \leqslant \tau \leqslant 1 \\
+	d^U + (\tau - 1)(d^B - d^U), & 1 \leqslant \tau \leqslant 2 
+	\end{cases}
+	$$
+	上式说明当 $\tau$ 较小时方向选用最速下降方向 $d^U$，否则取 $d^U$ 和 $d^B$ 的组合方向。
+	沿如上构造的折线方向 $\tilde{d}(\tau)$，在信赖域约束下求子问题 $(question)$ 的解。
+	理论上可证明 $\tilde{d}(\tau) = \begin{cases} \tau d^U, & 0 \leqslant \tau \leqslant 1 \\d^U + (\tau - 1)(d^B - d^U), & 1 \leqslant \tau \leqslant 2 \end{cases}$ 构造的折线具有如下性质。
+- **引理 6.4.1**：设 $B$ 对称正定，则  
+	(1) $\|\tilde{d}(\tau)\|$ 关于 $\tau$ 为单调增函数。  
+	(2) $q[\tilde{d}(\tau)]$ 关于 $\tau$ 为单调减函数。  
+	- 该引理说明，当沿 $\tilde{d}(\tau)$ 求子问题的极小点时，解在信赖域边界上达到，即 $\tau$ 满足 $\|d^U + (\tau - 1)(d^B - d^U)\|^2 = \Delta^2$，上式为关于 $\tau$ 的二次代数方程，求解此方程可得到折线法的解。
+	- 性质 (2) 说明按折线方向所求出的近似解满足下降性条件 $f(x^{(k)}) - f(x^{(k)} + d^{(k)}) \geqslant c \left[ f(x^{(k)}) - f(x^{(k)} + p_k^C) \right]$，从而可保证信赖域算法的全局收敛性。
+### 6-4-3 截断共轭梯度法
+- 前面介绍的精确方法和折线近似方法能保证信赖域算法的全局收敛性，然而实际计算过程中涉及以 $B$ 或 $B + \lambda I$ 为系数阵的线性方程组的求解。当 $B \in \mathbb{R}^{n \times n}$ 的维数较高时，这些方法可导致计算上的高消费。
+- **截断共轭梯度法**：本小节介绍非精确求解子问题的另一种方法——**截断共轭梯度法** 
+	- 它可用于求解大规模信赖域子问题。
+	- 该算法是解线性方程组共轭梯度法的一种变形，其计算步骤如下：
+- **算法 6.4** (**截断共轭梯度法**)
+	- *第 0 步*：给定 $\varepsilon > 0$。设 $d_0 = 0$，$r_0 = \nabla f(x)$，$p_0 = -r_0$。令 $j := 0$ 
+	- *第 1 步*：若 $\|r_j\| \leqslant \varepsilon$，取 $d = d_j$ 为问题 (6.24) 的解，算法终止。否则，转*第 2 步* 
+	- *第 2 步*：若 $p_j^\mathrm{T} B p_j \leqslant 0$，确定 $\tau \geqslant 0$ 使得 $d = d_j + \tau p_j$ 满足 $\|d\| = \Delta$，$d$ 作为子问题的近似解，停止计算。否则，计算 $\alpha_j = \dfrac{r_j^\mathrm{T} r_j}{p_j^\mathrm{T} B p_j},\ d_{j+1} = d_j + \alpha_j p_j$ 
+	- *第 3 步*：若 $\|d_{j+1}\| \geqslant \Delta$，确定 $\tau \geqslant 0$ 使得 $d = d_j + \tau p_j$ 满足 $\|d\| = \Delta$，取 $d$ 为子问题的近似解，停止计算。否则设 $r_{j+1} = r_j + \alpha_j B p_j$ 
+	- *第 4 步*：若 $\|r_{j+1}\| < \varepsilon \|r_0\|$，设 $d = d_{j+1}$ 为子问题的近似解，停止计算；否则设 $\beta_{j+1} = \dfrac{r_{j+1}^\mathrm{T} r_{j+1}}{r_j^\mathrm{T} r_j},\ p_{j+1} = r_{j+1} + \beta_{j+1} p_j$ 
+	- *第 5 步*：设 $j := j + 1$，转*第 1 步* 
+- 与传统的共轭梯度方法比较，截断共轭梯度法增加了两个出口，其一是搜索方向 $p_j$ 为零方向或沿 $B$ 的负曲率方向时 (*第 2 步*)；其二是 $d_{j+1}$ 破坏了信赖域约束时 (*第 3 步*)。两种情况下近似解均在约束的边界上达到。  
+- 保证信赖域算法收敛的条件是信赖域子问题 $(question)$ 的近似解满足条件 $f(x^{(k)}) - f(x^{(k)} + d^{(k)}) \geqslant c \left[ f(x^{(k)}) - f(x^{(k)} + p_k^C) \right]$ 
+- 从**算法 6.4** *步 2* 对 $j=0$ 直接计算有 $d_1 = \begin{cases} -\dfrac{\Delta}{\|\nabla f(x)\|} \nabla f(x), & \text{若 } p_0^\mathrm{T} B p_0 \leqslant 0 \\ -\dfrac{r_0^\mathrm{T} r_0}{p_0^\mathrm{T} B p_0} p_0 = -\dfrac{\nabla f(x)^\mathrm{T} \nabla f(x)}{\nabla f(x)^\mathrm{T} B \nabla f(x)} \nabla f(x), & \text{其他} \end{cases}$ 
+	- 上式表示 $d_1$ 为精确的柯西点，则 $d_1$ 满足子问题近似解的条件 $f(x^{(k)}) - f(x^{(k)} + d^{(k)}) \geqslant c \left[ f(x^{(k)}) - f(x^{(k)} + p_k^C) \right]$ 
+	- 另一方面，共轭梯度法具有逐步减少 $q(d)$ 值的性质，因此，**算法 6.4** 所求子问题的近似解满足信赖域算法的收敛性要求。
