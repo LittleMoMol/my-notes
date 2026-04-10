@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 数学/10 数值最优化算法与理论/词典/第 7 章 无约束问题算法 (V).md",
+                "file": "第 8 章 非线性方程组与最小二乘问题.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 7 章 无约束问题算法 (V)"
+              "title": "第 8 章 非线性方程组与最小二乘问题"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "0ec3758fbffb8fbe",
@@ -174,8 +173,11 @@
   },
   "active": "34ee527e3caa67fb",
   "lastOpenFiles": [
-    "1 数学/10 数值最优化算法与理论/词典/第 6 章 无约束问题算法 (IV).md",
     "1 数学/10 数值最优化算法与理论/词典/第 7 章 无约束问题算法 (V).md",
+    "第 8 章 非线性方程组与最小二乘问题.md",
+    "attachment/Pasted image 20260410101316.png",
+    "attachment/Pasted image 20260410100041.png",
+    "1 数学/10 数值最优化算法与理论/词典/第 6 章 无约束问题算法 (IV).md",
     "attachment/Pasted image 20260409221113.png",
     "1 数学/7 数值计算方法/词典/第 2 章 函数基本逼近（一）——插值逼近.md",
     "1 数学/6 实变函数与泛函分析基础/词典/第 5 章 积分论.md",
