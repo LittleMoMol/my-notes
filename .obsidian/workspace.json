@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "第 12 章 约束问题算法 (I)"
             }
+          },
+          {
+            "id": "e2c0977e4069cc33",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 数学/10 数值最优化算法与理论/词典/第 13 章 约束问题算法 (II).md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "第 13 章 约束问题算法 (II)"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -172,12 +187,13 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "e7955aa769afd19e",
+  "active": "e2c0977e4069cc33",
   "lastOpenFiles": [
+    "1 数学/10 数值最优化算法与理论/词典/第 12 章 约束问题算法 (I).md",
+    "1 数学/10 数值最优化算法与理论/词典/第 13 章 约束问题算法 (II).md",
     "attachment/Pasted image 20260415173609.png",
     "attachment/Pasted image 20260415164155.png",
     "attachment/Pasted image 20260415163409.png",
-    "1 数学/10 数值最优化算法与理论/词典/第 12 章 约束问题算法 (I).md",
     "1 数学/7 数值计算方法/词典/第 5 章 非线性方程的数值解法.md",
     "1 数学/10 数值最优化算法与理论/词典/第 1 章 引言.md",
     "1 数学/10 数值最优化算法与理论/词典/第 11 章 二次规划.md",
@@ -208,7 +224,6 @@
     "1 数学/6 实变函数与泛函分析基础/词典/第 5 章 积分论.md",
     "1 数学/6 实变函数与泛函分析基础/词典/第 4 章 可测函数.md",
     "attachment/Pasted image 20260408172725.png",
-    "1 数学/10 数值最优化算法与理论/词典/第 5 章 无约束问题算法 (III).md",
-    "attachment/Pasted image 20260408092326.png"
+    "1 数学/10 数值最优化算法与理论/词典/第 5 章 无约束问题算法 (III).md"
   ]
 }
