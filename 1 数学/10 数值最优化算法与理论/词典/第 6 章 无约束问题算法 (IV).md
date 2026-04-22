@@ -55,8 +55,9 @@
 		- 若 $\eta < r_k < \dfrac{1}{4}$, 则令 $\Delta_{k+1} = \frac{1}{2}\Delta_k$ 
 		- 若 $\dfrac{1}{4} \leqslant r_k \leqslant \dfrac{3}{4}$, 则令 $\Delta_{k+1} = \Delta_k$ 
 	- *第 4 步* (**可接受检测**)：若 $r_k \leqslant \eta$，令 $x^{(k+1)} = x^{(k)}$，$k := k+1$，转*第 2 步*；否则令 $x^{(k+1)} = x^{(k)} + d^{(k)}$，$k := k+1$，转*第 1 步* 
-	- *注*：**算法 6.1** 的*第 3 步*中的常数 $\dfrac{1}{4}, \dfrac{3}{4}, 2$ 是根据经验选取的。实际计算时，可根据问题对它们进行调整。  
-	- *注*：由于子问题 $\min f(x),\ (x\in\mathbb R^n)$ 的可行域有界，因此**算法 6.1**的*第 2 步*中的 $d^{(k)}$ 存在。
+- *算法 6.1 注释* 
+	1. **算法 6.1** 的*第 3 步*中的常数 $\dfrac{1}{4}, \dfrac{3}{4}, 2$ 是根据经验选取的。实际计算时，可根据问题对它们进行调整。  
+	2. 由于子问题 $\min f(x),\ (x\in\mathbb R^n)$ 的可行域有界，因此**算法 6.1**的*第 2 步*中的 $d^{(k)}$ 存在。
 - **定理 6.1.1**：设 $d^{(k)}$ 是问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_d \end{aligned} \quad (temp)$ 的解，若 $\nabla f(x^{(k)}) \neq 0$，则 $\Delta q_k(d^{(k)}) = f(x^{(k)}) - q_k(d^{(k)}) > 0$ 
 	- *证明过程* 
 		注意到 $d = 0$ 是子问题 $(temp)$ 的可行点，因此 $q_k(d^{(k)}) \leqslant q_k(0) = f(x^{(k)})$，即 $\Delta q_k(d^{(k)}) \geqslant 0$ 
@@ -158,7 +159,7 @@
 	- *第 3 步* (**下降测试和线性搜索**)：若 $f(x^{(k)} + d^{(k)}) < f(x^{(k)})$，令 $x^{(k+1)} = x^{(k)} + d^{(k)}$，转*第 4 步*。否则，令 $\alpha_k$ 是 $\{\rho^i \mid i = 0,1,\cdots\}$ 中使得 $f(x^{(k)} + \rho^i d^{(k)}) < f(x^{(k)})$ 成立的最大者。令 $x^{(k+1)} = x^{(k)} + \alpha_k d^{(k)}$，取 $\Delta_{k+1} \in \{\|x^{(k+1)} - x^{(k)}\|, c_3 \Delta_k\}$，转*第 5 步* 
 	- *第 4 步* (**信赖域修正**)：计算 $r_k = \dfrac{f(x^{(k)}) - f(x^{(k+1)})}{q_k(0) - q_k(d^{(k)})}$，若 $r_k > \eta$ 且 $\|d^{(k)}\| < \Delta_k$，令 $\Delta_{k+1} = \Delta_k$。否则定义 $\Delta_{k+1} = \begin{cases} c_2 \|d^{(k)}\|, & c_3 \Delta_k, & \text{若 } r_k < \eta \\ [\Delta_k, c_1 \Delta_k], & \text{若 } r_k > \eta \text{ 且 } \|d^{(k)}\| = \Delta_k \end{cases}$ 
 	- *第 5 步* (**循环**)：确定 $B_{k+1}$，令 $k := k + 1$，转*第 1 步* 
-	- *注*：*第 2 步*的子问题可采用非精确求解，其近似解 $d^{(k)}$ 满足：存在正常数 $\tau > 0$，使得 $q_k(0) - q_k(d^{(k)}) \geqslant \tau \|\nabla f(x^{(k)})\| \min\left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{\|B_k\|} \right\}$ 和 $\nabla f(x^{(k)})^\mathrm{T} d^{(k)} \leqslant -\tau \|\nabla f(x^{(k)})\| \min\left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{\|B_k\|} \right\}$ 
+- *算法 6.2 注释*：*第 2 步*的子问题可采用非精确求解，其近似解 $d^{(k)}$ 满足：存在正常数 $\tau > 0$，使得 $q_k(0) - q_k(d^{(k)}) \geqslant \tau \|\nabla f(x^{(k)})\| \min\left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{\|B_k\|} \right\}$ 和 $\nabla f(x^{(k)})^\mathrm{T} d^{(k)} \leqslant -\tau \|\nabla f(x^{(k)})\| \min\left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{\|B_k\|} \right\}$ 
 - **定理 6.3.1**：设函数 $f$ 二次连续可微且 $\|\nabla^2 f(x)\|$ 有界。若**算法 6.2** 产生的点列有界，且 $B_k$ 满足 $\sum\limits_{k=1}^{\infty} \dfrac{1}{1 + \max\limits_{1 \leqslant i \leqslant k} \|B_i\|} = \infty$，则有 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
 	- 该定理给出**算法 6.2** 的全局收敛性
 ## 6-4 信赖域子问题的求解
@@ -201,7 +202,7 @@
 	- *第 2 步*：作 Cholesky 分解 $B + \lambda^{(l)} I = R^\mathrm{T} R$。解方程组 $R^\mathrm{T} R d_l = -\nabla f(x),\ R^\mathrm{T} q_l = d_l$，得解 $d_l, q_l$ 
 	- *第 3 步*：$\lambda_{l+1} = \lambda_l + \left( \dfrac{\|d_l\|}{\|q_l\|} \right)^2 \left( \dfrac{\|d_l\| - \Delta}{\Delta} \right)$ 
 	- *第 4 步*：令 $l := l + 1$，转*第 1 步* 
-	- *注*：上面的算法只适合于矩阵 $B + \lambda^* I$ 正定时的情况。当 $B + \lambda^* I$ 非正定时，子问题 $(question)$ 的求解较为复杂。
+- *算法 6.3 注*：上面的算法只适合于矩阵 $B + \lambda^* I$ 正定时的情况。当 $B + \lambda^* I$ 非正定时，子问题 $(question)$ 的求解较为复杂。
 ### 6-4-2 折线方法 (Dogleg Method)
 - *前置分析* 
 	上小节介绍的信赖域子问题精确求解计算量较大，而且当 $B + \lambda^* I$ 非正定时，子问题 $(question)$ 的求解较为复杂。

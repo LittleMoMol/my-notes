@@ -101,7 +101,7 @@
 	- *第 4 步*：由线性搜索确定步长 $\alpha_k$ 
 	- *第 5 步*：令 $x^{(k+1)} = x^{(k)} + \alpha_k d^{(k)}$。若 $\|\nabla f(x^{(k+1)})\| \leqslant \varepsilon$，则得解 $x^{(k+1)}$。否则，由 BFGS 修正公式 $B_{k+1} = B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}$  确定 $B_{k+1}$ 
 	- *第 6 步*：令 $k := k + 1$，转*第 3 步* 
-	- *注*：若在**算法 4.1** 的*第 4 步* 中采用 Armijo 型线性搜索，由于不能保证 $y^{(k)\mathrm{T}} s^{(k)} > 0$，此时，$B_k$ 的正定性不能由线性搜索保证。为了保证采用 Armijo 型线性搜索时矩阵 $B_k$ 的对称正定性，可采用如下的修正方式：$B_{k+1} = \begin{cases} B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}, & \text{若 } y^{(k)\mathrm{T}} s^{(k)} > 0 \\ B_k, & \text{若 } y^{(k)\mathrm{T}} s^{(k)} \leqslant 0 \end{cases}$，不难看出，只要 $B_0$ 对称正定，上述修正方式可保证矩阵序列 $\{ B_k \}$ 为对称正定矩阵序列。
+- *算法 4.1 注释*：若在**算法 4.1** 的*第 4 步* 中采用 Armijo 型线性搜索，由于不能保证 $y^{(k)\mathrm{T}} s^{(k)} > 0$，此时，$B_k$ 的正定性不能由线性搜索保证。为了保证采用 Armijo 型线性搜索时矩阵 $B_k$ 的对称正定性，可采用如下的修正方式：$B_{k+1} = \begin{cases} B_k - \dfrac{B_k s^{(k)} s^{(k)\mathrm{T}} B_k}{s^{(k)\mathrm{T}} B_k s^{(k)}} + \dfrac{y^{(k)} y^{(k)\mathrm{T}}}{y^{(k)\mathrm{T}} s^{(k)}}, & \text{若 } y^{(k)\mathrm{T}} s^{(k)} > 0 \\ B_k, & \text{若 } y^{(k)\mathrm{T}} s^{(k)} \leqslant 0 \end{cases}$，不难看出，只要 $B_0$ 对称正定，上述修正方式可保证矩阵序列 $\{ B_k \}$ 为对称正定矩阵序列。
 - *补充* 
 	利用**定理 1.2.8** 中 **Sherman-Morrison 公式** $(A + uv^{\mathrm{T}})^{-1} = A^{-1} - \dfrac{A^{-1} uv^{\mathrm{T}} A^{-1}}{1 + v^{\mathrm{T}} A^{-1} u}$，不难导出 BFGS 修正公式的逆修正公式如下：
 	$$
