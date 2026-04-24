@@ -1,7 +1,9 @@
 {
-  "textFontFamily": "仓耳玄三M",
+  "textFontFamily": "Arial,仓耳玄三M,华文宋体",
   "interfaceFontFamily": "仓耳玄三M",
   "cssTheme": "Border",
-  "accentColor": "#2f8de4",
-  "baseFontSize": 17
+  "accentColor": "#835be1",
+  "baseFontSize": 15,
+  "baseFontSizeAction": true,
+  "enabledCssSnippets": []
 }
