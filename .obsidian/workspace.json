@@ -8,20 +8,49 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5c2ea3a0bad573c8",
+            "id": "4d7a1999963a7eed",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 数学/6 实变函数与泛函分析基础/词典/第 6 章 微分与不定积分.md",
+                "file": "1 数学/8 数学建模/词典/第 6 章 多元统计分析.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 6 章 微分与不定积分"
+              "title": "第 6 章 多元统计分析"
+            }
+          },
+          {
+            "id": "6bc46f47bac0b76f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 数学/7 数值计算方法/词典/第 4 章 线性代数方程组求解.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "第 4 章 线性代数方程组求解"
+            }
+          },
+          {
+            "id": "c109474b03d02c24",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 数学/7 数值计算方法/专题/专题 1 背诵文档.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "专题 1 背诵文档"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -172,10 +201,17 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "5c2ea3a0bad573c8",
+  "active": "c109474b03d02c24",
   "lastOpenFiles": [
-    "未命名.md",
+    "1 数学/7 数值计算方法/词典/第 4 章 线性代数方程组求解.md",
+    "1 数学/7 数值计算方法/专题/专题 1 背诵文档.md",
+    "1 数学/8 数学建模/词典/第 6 章 多元统计分析.md",
+    "1 数学/8 数学建模/词典/第 9 章 层次分析法.md",
+    "1 数学/7 数值计算方法/词典/第 5 章 非线性方程的数值解法.md",
+    "1 数学/2 高等代数/词典/第 8 章 二次型.md",
+    "1 数学/6 实变函数与泛函分析基础/词典/第 3 章 测度论.md",
     "1 数学/6 实变函数与泛函分析基础/词典/第 6 章 微分与不定积分.md",
+    "未命名.md",
     "杂/python 第 8 周作业.md",
     "杂/python 第 7 周作业.md",
     "作业.md",
@@ -184,9 +220,6 @@
     "1 数学/7 数值计算方法/词典/第 3 章 函数基本逼近（二）——最佳逼近.md",
     "1 数学/7 数值计算方法/实验报告/实验报告 2.md",
     "1 数学/7 数值计算方法/实验报告/实验报告 1.md",
-    "1 数学/7 数值计算方法/专题/专题 1 背诵文档.md",
-    "1 数学/7 数值计算方法/词典/第 4 章 线性代数方程组求解.md",
-    "1 数学/7 数值计算方法/词典/第 5 章 非线性方程的数值解法.md",
     "算海事务/meeting_template.md",
     "1 数学/7 数值计算方法/词典/第 1 章 引论.md",
     "算海事务/宣传.md",
@@ -202,12 +235,8 @@
     "attachment/Pasted image 20260424103316.png",
     "杂/python 第 4 周作业.md",
     "杂/python 第 3 周作业.md",
-    "杂/python 第 2 周作业.md",
-    "1 数学/10 数值最优化算法与理论/词典/第 15 章 全局最优化方法简介.md",
-    "1 数学/10 数值最优化算法与理论/词典/第 14 章 约束问题算法 (III).md",
     "attachment/T3 1.png",
     "attachment/T3.png",
-    "算海事务/zhao_mo_han_mathematical_analysis_Chapter_1_research.md",
     "1 数学/6 实变函数与泛函分析基础/专题",
     "attachment/T2-2.png",
     "attachment/T2-1.png",
