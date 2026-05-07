@@ -1,9 +1,11 @@
 {
-  "textFontFamily": "Arial,仓耳玄三M,华文宋体",
+  "textFontFamily": "Arial,华文宋体,仓耳玄三M",
   "interfaceFontFamily": "仓耳玄三M",
-  "cssTheme": "Border",
+  "cssTheme": "GitHub Theme",
   "accentColor": "#835be1",
   "baseFontSize": 15,
   "baseFontSizeAction": true,
-  "enabledCssSnippets": []
+  "enabledCssSnippets": [
+    "temp"
+  ]
 }

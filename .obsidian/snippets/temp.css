@@ -1,14 +1,5 @@
-.cm-line {
-  line-height: 2;
+.mermaid {
+  display: flex !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
 }
-
-.markdown-preview-view p {
-  line-height: 2;
-}
-
-.cm-header-1 {color: #1e3a8a}
-.cm-header-2 {color: #1e3a8a}
-.cm-header-3 {color: #1e3a8a}
-.cm-header-4 {color: #1e3a8a}
-.cm-header-5 {color: #1e3a8a}
-.cm-header-6 {color: #1e3a8a}
