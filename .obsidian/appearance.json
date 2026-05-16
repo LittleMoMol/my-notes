@@ -1,7 +1,7 @@
 {
-  "textFontFamily": "Arial,华文宋体,仓耳玄三M",
+  "textFontFamily": "Arial,仓耳玄三M,华文宋体",
   "interfaceFontFamily": "仓耳玄三M",
-  "cssTheme": "GitHub Theme",
+  "cssTheme": "Border",
   "accentColor": "#835be1",
   "baseFontSize": 15,
   "baseFontSizeAction": true,
