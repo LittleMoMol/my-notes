@@ -8,31 +8,31 @@
         "type": "tabs",
         "children": [
           {
-            "id": "12967a8be3739254",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "1 数学/9 运筹学基础/词典/第 3 章 非线性规划.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "第 3 章 非线性规划"
-            }
-          },
-          {
             "id": "5671e7350492018c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 数学/7 数值计算方法/词典/第 7 章 常微分方程数值解法.md",
+                "file": "第 4 章 运输问题和分配问题.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 7 章 常微分方程数值解法"
+              "title": "第 4 章 运输问题和分配问题"
+            }
+          },
+          {
+            "id": "ed833bd6e7835801",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 数学/8 数学建模/专题/简化版讲义.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "简化版讲义"
             }
           }
         ]
@@ -186,27 +186,31 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "12967a8be3739254",
+  "active": "5671e7350492018c",
   "lastOpenFiles": [
+    "attachment/Pasted image 20260528092002.png",
+    "attachment/Pasted image 20260528091403.png",
+    "attachment/Pasted image 20260528090004.png",
+    "attachment/Pasted image 20260528084410.png",
+    "attachment/Pasted image 20260528084239.png",
+    "attachment/Pasted image 20260528083836.png",
+    "attachment/Pasted image 20260528082351.png",
+    "attachment/Pasted image 20260528081813.png",
+    "attachment/Pasted image 20260528081537.png",
     "1 数学/7 数值计算方法/词典/第 7 章 常微分方程数值解法.md",
     "1 数学/9 运筹学基础/词典/第 3 章 非线性规划.md",
+    "1 数学/8 数学建模/专题/简化版讲义.md",
+    "1 数学/4 常微分方程/词典/第 2 章 一阶微分方程的初等解法.md",
+    "1 数学/4 常微分方程/词典/第 4 章 高阶微分方程.md",
+    "1 数学/4 常微分方程/词典/第 1 章 绪论.md",
     "未命名 1.md",
     "attachment/Pasted image 20260527144434.png",
-    "1 数学/8 数学建模/专题/简化版讲义.md",
     "attachment/Pasted image 20260525141432.png",
-    "attachment/Pasted image 20260525140410.png",
-    "attachment/Pasted image 20260525092024.png",
-    "attachment/Pasted image 20260525090834.png",
-    "attachment/Pasted image 20260525083423.png",
-    "未命名.md",
-    "attachment/Pasted image 20260525082507.png",
+    "第 4 章 运输问题和分配问题.md",
     "1 数学/7 数值计算方法/词典/第 4 章 线性代数方程组求解.md",
     "1 数学/9 运筹学基础/词典/第 2 章 线性规划的对偶理论与对偶单纯形法.md",
     "1 数学/6 实变函数与泛函分析基础/词典/第 3 章 测度论.md",
     "1 数学/7 数值计算方法/实验报告/实验报告 3.md",
-    "attachment/SOR_6.jpg",
-    "attachment/SOR_5.jpg",
-    "attachment/SOR_4.jpg",
     "1 数学/6 实变函数与泛函分析基础/专题/专题 1 背诵合集.md",
     "杂/python 大作业.md",
     "1 数学/6 实变函数与泛函分析基础/词典/第 4 章 可测函数.md",
@@ -220,10 +224,6 @@
     "杂/202405755526_郑舒文_202405755529_盛文琼_202405755504_赵默涵_基于多方法融合的城市共享单车动态调度优化与需求预测研究.md",
     "杂/202405755526郑舒文离散大作业.md",
     "杂/离散数学大作业_赵默涵_202405755504.md",
-    "杂/数学建模概论.md",
-    "杂/三神谜题——简要分析报告.md",
-    "杂/python 小作业.md",
-    "杂/python 第 2 周作业.md",
     "1 数学/8 数学建模/专题",
     "1 数学/7 数值计算方法/专题",
     "1 数学/6 实变函数与泛函分析基础/专题",
