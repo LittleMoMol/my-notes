@@ -3,9 +3,10 @@
   "interfaceFontFamily": "仓耳玄三M",
   "cssTheme": "Border",
   "accentColor": "#835be1",
-  "baseFontSize": 17,
+  "baseFontSize": 16,
   "baseFontSizeAction": true,
   "enabledCssSnippets": [
     "temp"
-  ]
+  ],
+  "nativeMenus": false
 }
