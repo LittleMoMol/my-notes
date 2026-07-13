@@ -12,7 +12,7 @@
     "margin": "0",
     "downscalePercent": 100
   },
-  "strictLineBreaks": false,
+  "strictLineBreaks": true,
   "tabSize": 3,
   "smartIndentList": true
 }

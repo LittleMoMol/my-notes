@@ -24,7 +24,6 @@
 		方程 $B_{k+1} s^{(k)} = y^{(k)}$ 称为**拟 Newton 方程**或**割线方程** 
 	- 若令 $H_{k+1} = B_{k+1}^{-1}$，则拟 Newton 方程 $B_{k+1} s^{(k)} = y^{(k)}$ 可等价地写成 $H_{k+1} y^{(k)} = s^{(k)}$ 
 	- 注意到 $s^{(k)} = x^{(k+1)} - x^{(k)} = \alpha_k d^{(k)}$，拟 Newton 方程 $B_{k+1} s^{(k)} = y^{(k)}$ 表明矩阵 $B_{k+1}$ 与 $\nabla^2 f(x^{(k+1)})$ 沿方向 $d^{(k)}$ 近似相等。因而，拟 Newton 方向是 Newton 方向在某种意义上的一个近似。
-- 下面的定理说明，当 $B_k$ 满足一定的条件时，拟 Newton 法具有超线性收敛性
 - **定理 4.1.1**：设函数 $f: \mathbb{R}^n \to \mathbb{R}$ 二次连续可微，考察如下迭代过程 $x^{(k+1)} = x^{(k)} + d^{(k)},\ (k = 0,1,\cdots)$，其中 $d^{(k)}$ 是线性方程组 $B_k d + \nabla f(x^{(k)}) = 0$ 的解。设 $\{x^{(k)}\}$ 收敛于 $x^*$ 且 $\nabla f(x^*) = 0$，$\nabla^2 f(x^*)$ 正定。则 $\{x^{(k)}\}$ 超线性收敛当且仅当 $\lim\limits_{k \to \infty} \dfrac{\|(B_k - \nabla^2 f(x^*)) d^{(k)}\|}{\|d^{(k)}\|} = 0$ 
 	- *证明过程* 
 		由于 $\{x^{(k)}\} \to x^*$，因此 $\lim\limits_{k \to \infty} \dfrac{\|(B_k - \nabla^2 f(x^*)) d^{(k)}\|}{\|d^{(k)}\|} = 0$ 等价于 $\lim\limits_{k \to \infty} \dfrac{\|(B_k - \nabla^2 f(x^*)) d^{(k)}\|}{\|d^{(k)}\|} = 0$ 
@@ -42,6 +41,7 @@
 		\end{aligned}
 		$$
 		利用 $f$ 的二次连续可微性，并由上式及 $\lim\limits_{k \to \infty} \dfrac{\|x^{(k)} - x^*\|}{\|d^{(k)}\|} = 1$，不难推得 $\lim\limits_{k \to \infty} \dfrac{\|(B_k - \nabla^2 f(x^*)) d^{(k)}\|}{\|d^{(k)}\|} = 0$，证毕！
+	- 该定理说明，当 $B_k$ 满足一定的条件时，拟 Newton 法具有超线性收敛性
 - **Dennis-More 条件**：注意到 $s^{(k)} = x^{(k+1)} - x^{(k)} = d^{(k)}$，条件 $\lim\limits_{k \to \infty} \dfrac{\|(B_k - \nabla^2 f(x^*)) d^{(k)}\|}{\|d^{(k)}\|} = 0$ 可等价地写成 $\lim\limits_{k \to \infty} \dfrac{\|(B_k - \nabla^2 f(x^*)) s^{(k)}\|}{\|s^{(k)}\|} = 0$，这两个式子都可以称为 **Dennis-More 条件** 
 - 当 $n > 1$ 时，满足拟 Newton 方程 $B_{k+1} s^{(k)} = y^{(k)}$ 的矩阵 $B_{k+1}$ 有很多。确定 $B_{k+1}$ 的原则之一是使其在计算上容易实现。已有的拟 Newton 法通过对 $B_k$ 进行低秩修正产生 $B_{k+1}$，即令 $B_{k+1} = B_k + \Delta_k$，其中矩阵 $\Delta_k$ 是秩为 1 或 2 的矩阵。
 - 下面给出几种常用的拟 Newton 修正公式。
