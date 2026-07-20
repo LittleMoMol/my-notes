@@ -7,5 +7,6 @@
   "baseFontSizeAction": true,
   "enabledCssSnippets": [
     "temp"
-  ]
+  ],
+  "nativeMenus": false
 }

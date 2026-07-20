@@ -1,7 +1,7 @@
 {
   "alwaysUpdateLinks": true,
   "readableLineLength": false,
-  "showLineNumber": false,
+  "showLineNumber": true,
   "showIndentGuide": true,
   "rightToLeft": false,
   "attachmentFolderPath": "attachment",
@@ -12,7 +12,7 @@
     "margin": "0",
     "downscalePercent": 100
   },
-  "strictLineBreaks": false,
+  "strictLineBreaks": true,
   "tabSize": 3,
   "smartIndentList": true
 }

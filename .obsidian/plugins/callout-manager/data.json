@@ -1,0 +1,22 @@
+{
+  "callouts": {
+    "custom": [
+      "theorem"
+    ],
+    "settings": {
+      "theorem": [
+        {
+          "changes": {
+            "icon": "lucide-pencil",
+            "color": "82, 139, 212"
+          }
+        }
+      ]
+    }
+  },
+  "calloutDetection": {
+    "obsidian": true,
+    "theme": true,
+    "snippet": true
+  }
+}

@@ -1,4 +1,6 @@
 [
   "obsidian-excalidraw-plugin",
-  "obsidian-pandoc"
+  "obsidian-pandoc",
+  "templater-obsidian",
+  "callout-manager"
 ]

@@ -49,11 +49,11 @@
 - **算法 6.1** (**信赖域算法**)
 	- *第 0 步* (**初始化**)：取初始点 $x^{(0)} \in \mathbb{R}^n$，$\bar{\Delta} > 0$，$\Delta_0 \in (0, \bar{\Delta})$，$\eta \in \left[0, \dfrac{1}{4}\right)$，精度 $\varepsilon > 0$，令 $k := 0$ 
 	- *第 1 步* (**收敛性检测**)：若 $\|\nabla f(x^{(k)})\| \leqslant \varepsilon$，则算法终止，得问题的解 $x^{(k)}$，否则转*第 2 步* 
-	- *第 2 步* (**子问题求解**)：解信赖域子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_d \end{aligned}$ 得 $d^{(k)}$ 
-	- *第 3 步* (**信赖域修正**)：由信赖与子问题、$\Delta q_k = f(x^{(k)}) - q_k(d^{(k)})$ 和 $r_k = \dfrac{\Delta f_k}{\Delta q_k}$ 计算 $r_k$ 
-		- 若 $r_k > \dfrac{3}{4}$，则令 $\Delta_{k+1} = \min\{2\Delta_k, \bar{\Delta}\}$ 
-		- 若 $\eta < r_k < \dfrac{1}{4}$, 则令 $\Delta_{k+1} = \frac{1}{2}\Delta_k$ 
-		- 若 $\dfrac{1}{4} \leqslant r_k \leqslant \dfrac{3}{4}$, 则令 $\Delta_{k+1} = \Delta_k$ 
+	- *第 2 步* (**子问题求解**)：解信赖域子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_k \end{aligned}$ 得 $d^{(k)}$ 
+	- *第 3 步* (**信赖域修正**)：由 $\Delta f_k = f(x^{(k)}) - f(x^{(k)} + d^{(k)})$、$\Delta q_k = f(x^{(k)}) - q_k(d^{(k)})$ 和 $r_k = \dfrac{\Delta f_k}{\Delta q_k}$ 计算 $r_k$ 
+		- 若 $r_k > \dfrac{3}{4}$，则令 $\Delta_{k+1} = \min\{2\Delta_k, \bar{\Delta}\}$ (模型很好，放大信赖域)
+		- 若 $r_k < \dfrac{1}{4}$，则令 $\Delta_{k+1} = \frac{1}{2}\Delta_k$ (模型较差，缩小信赖域)
+		- 若 $\dfrac{1}{4} \leqslant r_k \leqslant \dfrac{3}{4}$，则令 $\Delta_{k+1} = \Delta_k$ (尚可，保持)
 	- *第 4 步* (**可接受检测**)：若 $r_k \leqslant \eta$，令 $x^{(k+1)} = x^{(k)}$，$k := k+1$，转*第 2 步*；否则令 $x^{(k+1)} = x^{(k)} + d^{(k)}$，$k := k+1$，转*第 1 步* 
 - *算法 6.1 注释* 
 	1. **算法 6.1** 的*第 3 步*中的常数 $\dfrac{1}{4}, \dfrac{3}{4}, 2$ 是根据经验选取的。实际计算时，可根据问题对它们进行调整。  
@@ -148,16 +148,16 @@
 - *信赖域算法的缺点*：在每次迭代时信赖域算法可能需要求解多次子问题才能获得成功迭代点。由于信赖域子问题是一个约束问题，求解相对复杂。另一方面，线性搜索型算法无需多次求解子问题即可产生一个使得目标函数下降的点。
 - **信赖域—线性搜索型算法**：为了保持信赖域算法的优点，同时减少计算量，可采用信赖域和线性搜索型算法相结合的方式，即**信赖域—线性搜索型算法**求解 $\min f(x),\ (x\in\mathbb R^n)$ 
 - **信赖域—线性搜索型算法**的*基本思想*
-	在当前迭代点 $x^{(k)}$ 处，求解信赖域子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_d \end{aligned}$ 得方向 $d^{(k)}$ 
+	在当前迭代点 $x^{(k)}$ 处，求解信赖域子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_k \end{aligned}$ 得方向 $d^{(k)}$ 
 	然后利用线性搜索确定步长 $\alpha_k$，并令 $x^{(k+1)} = x^{(k)} + \alpha_k d^{(k)}$ 
-	下**引理 6.3.1** 说明信赖域子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_d \end{aligned}$ 的解是 $f$ 在 $x^{(k)}$ 处的一个下降方向
-- **引理 6.3.1**：设 $f$ 连续可微，则信赖域子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_d \end{aligned}$ 的解 $d^{(k)}$ 满足 $\nabla f(x^{(k)})^\mathrm{T} d^{(k)} \leqslant -\frac{1}{2} \|\nabla f(x^{(k)})\| \min\left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{2\|B_k\|} \right\}$ 
+	下**引理 6.3.1** 说明信赖域子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_k \end{aligned}$ 的解是 $f$ 在 $x^{(k)}$ 处的一个下降方向
+- **引理 6.3.1**：设 $f$ 连续可微，则信赖域子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_k \end{aligned}$ 的解 $d^{(k)}$ 满足 $\nabla f(x^{(k)})^\mathrm{T} d^{(k)} \leqslant -\dfrac{1}{2} \|\nabla f(x^{(k)})\| \min\left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{2\|B_k\|} \right\}$ 
 - **算法 6.2** (**信赖域—线性搜索组合算法**)
 	- *第 0 步* (**初始化**)：取初始点 $x^{(0)} \in \mathbb{R}^n$，$\Delta_0 > 0$，$\eta \in (0,1)$，选取常数 $0 < c_2 < c_3 < 1 < c_1$，$\rho \in (0,1)$；令 $k := 0$ 
 	- *第 1 步* (**收敛性检测**)：若 $\|\nabla f(x^{(k)})\| \leqslant \varepsilon$，则算法终止，得问题的解 $x^{(k)}$ 
-	- *第 2 步* (**子问题求解**)：解信赖域子问题 (6.2) 得解 $d^{(k)}$ 
+	- *第 2 步* (**子问题求解**)：解信赖域子问题 $\begin{aligned} \min \quad & f(x^{(k)}) + \nabla f(x^{(k)})^\text{T} d + \frac{1}{2} d^\text{T} B_k d \triangleq q_k(d) \\ \text{s.t.} \quad & \|d\| \leqslant \Delta_k \end{aligned}$ 得解 $d^{(k)}$ 
 	- *第 3 步* (**下降测试和线性搜索**)：若 $f(x^{(k)} + d^{(k)}) < f(x^{(k)})$，令 $x^{(k+1)} = x^{(k)} + d^{(k)}$，转*第 4 步*。否则，令 $\alpha_k$ 是 $\{\rho^i \mid i = 0,1,\cdots\}$ 中使得 $f(x^{(k)} + \rho^i d^{(k)}) < f(x^{(k)})$ 成立的最大者。令 $x^{(k+1)} = x^{(k)} + \alpha_k d^{(k)}$，取 $\Delta_{k+1} \in \{\|x^{(k+1)} - x^{(k)}\|, c_3 \Delta_k\}$，转*第 5 步* 
-	- *第 4 步* (**信赖域修正**)：计算 $r_k = \dfrac{f(x^{(k)}) - f(x^{(k+1)})}{q_k(0) - q_k(d^{(k)})}$，若 $r_k > \eta$ 且 $\|d^{(k)}\| < \Delta_k$，令 $\Delta_{k+1} = \Delta_k$。否则定义 $\Delta_{k+1} = \begin{cases} c_2 \|d^{(k)}\|, & c_3 \Delta_k, & \text{若 } r_k < \eta \\ [\Delta_k, c_1 \Delta_k], & \text{若 } r_k > \eta \text{ 且 } \|d^{(k)}\| = \Delta_k \end{cases}$ 
+	- *第 4 步* (**信赖域修正**)：计算 $r_k = \dfrac{f(x^{(k)}) - f(x^{(k+1)})}{f(x^{(k)}) - q_k(d^{(k)})}$，若 $r_k > \eta$ 且 $\|d^{(k)}\| < \Delta_k$，令 $\Delta_{k+1} = \Delta_k$。否则定义 $\Delta_{k+1} = \begin{cases} [c_2 \|d^{(k)}\|,  c_3 \Delta_k], & \text{若 } r_k < \eta \\ [\Delta_k, c_1 \Delta_k], & \text{若 } r_k > \eta \text{ 且 } \|d^{(k)}\| = \Delta_k \end{cases}$ 
 	- *第 5 步* (**循环**)：确定 $B_{k+1}$，令 $k := k + 1$，转*第 1 步* 
 - *算法 6.2 注释*：*第 2 步*的子问题可采用非精确求解，其近似解 $d^{(k)}$ 满足：存在正常数 $\tau > 0$，使得 $q_k(0) - q_k(d^{(k)}) \geqslant \tau \|\nabla f(x^{(k)})\| \min\left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{\|B_k\|} \right\}$ 和 $\nabla f(x^{(k)})^\mathrm{T} d^{(k)} \leqslant -\tau \|\nabla f(x^{(k)})\| \min\left\{ \Delta_k, \dfrac{\|\nabla f(x^{(k)})\|}{\|B_k\|} \right\}$ 
 - **定理 6.3.1**：设函数 $f$ 二次连续可微且 $\|\nabla^2 f(x)\|$ 有界。若**算法 6.2** 产生的点列有界，且 $B_k$ 满足 $\sum\limits_{k=1}^{\infty} \dfrac{1}{1 + \max\limits_{1 \leqslant i \leqslant k} \|B_i\|} = \infty$，则有 $\lim\limits_{k \to \infty} \inf \|\nabla f(x^{(k)})\| = 0$ 
