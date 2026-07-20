@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 223.50469589233398,
-    "collapsed": true
+    "width": 223.50469589233398
   },
   "right": {
     "id": "0ec3758fbffb8fbe",
@@ -176,8 +175,9 @@
   },
   "active": "dbf1047b65e11467",
   "lastOpenFiles": [
-    "3.5_forward_and_backward_error_analysis.md",
+    "杂/下学期学分统计.md",
     "2 Bohrium 学习作业/1 计算科学导论/第 3 章 数值计算基础.md",
+    "3.5_forward_and_backward_error_analysis.md",
     "杂/超构透镜.md",
     "2 Bohrium 学习作业/1 计算科学导论/第 1 章计算科学导论/第 1 节 计算科学范式.md",
     "2 Bohrium 学习作业/1 计算科学导论/第 1 章计算科学导论/第 5 节 模型的验证与确认.md",
@@ -186,7 +186,6 @@
     "2 Bohrium 学习作业/1 计算科学导论/第 1 章计算科学导论/第 2 节 量纲分析与无量纲化.md",
     "杂/张量.md",
     "计算机技能库.md",
-    "杂/下学期学分统计.md",
     "1 课本知识文档/7 数值计算方法/章节知识/第 1 章 引论.md",
     "3 算海学习产出/2026年暑假",
     "3 算海学习产出",
