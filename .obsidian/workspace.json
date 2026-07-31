@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/第 5 章 求解线性方程组.md",
+                "file": "1 课本知识文档/15 信息论/章节知识/第 5 章 限失信源编码和率失真函数.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 5 章 求解线性方程组"
+              "title": "第 5 章 限失信源编码和率失真函数"
             }
           }
         ]
@@ -176,18 +176,20 @@
   },
   "active": "cb30fb31503a28d5",
   "lastOpenFiles": [
-    "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/第 5 章 求解线性方程组.md",
+    "未命名.md",
+    "1 课本知识文档/15 信息论/章节知识/第 5 章 限失信源编码和率失真函数.md",
+    "attachment/Pasted image 20260731112143.png",
+    "attachment/Pasted image 20260731110757.png",
+    "attachment/Pasted image 20260731110524.png",
+    "attachment/Pasted image 20260731102307.png",
+    "attachment/Pasted image 20260731101456.png",
+    "attachment/Pasted image 20260731095301.png",
     "1 课本知识文档/15 信息论/章节知识/第 4 章 数据可靠传输和信道编码.md",
+    "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/第 5 章 求解线性方程组.md",
     "attachment/Pasted image 20260730164356.png",
     "attachment/Pasted image 20260730160650.png",
     "attachment/Pasted image 20260730160619.png",
     "attachment/Pasted image 20260730160327.png",
-    "attachment/Pasted image 20260730151535.png",
-    "attachment/Pasted image 20260730151226.png",
-    "attachment/Pasted image 20260730150246.png",
-    "attachment/Pasted image 20260730150109.png",
-    "attachment/Pasted image 20260730145857.png",
-    "attachment/Pasted image 20260730145012.png",
     "1 课本知识文档/15 信息论/章节知识/第 3 章 数据压缩和无失真信源编码.md",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/原文/3 高斯消元法.md",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/learning_note.md",
@@ -213,7 +215,6 @@
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章/新建文件夹/5-4 主元选择策略.md",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章/新建文件夹/5-3 Gaussian_Elimination.md",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章/新建文件夹/5-2 直接法与迭代法求解线性系统.md",
-    "2 Bohrium 学习作业/1 计算科学导论/第 5 章/新建文件夹/5-1 稀疏矩阵存储格式.md",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章/新建文件夹",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章",
     "2 Bohrium 学习作业/1 计算科学导论/新建文件夹",
