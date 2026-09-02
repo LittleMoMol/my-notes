@@ -13,26 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 课本知识文档/18 计算机网络/章节知识/第 4 章 网络层.md",
+                "file": "1 课本知识文档/18 计算机网络/章节知识/第 5 章 运输层.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 4 章 网络层"
-            }
-          },
-          {
-            "id": "528d1523ea33cf13",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "1 课本知识文档/18 计算机网络/章节知识/第 4 章 网络层.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "第 4 章 网络层"
+              "title": "第 5 章 运输层"
             }
           }
         ]
@@ -191,21 +177,25 @@
   },
   "active": "3c71f30b6f5497fa",
   "lastOpenFiles": [
+    "1 课本知识文档/18 计算机网络/章节知识/第 4 章 网络层.md",
+    "未命名 6.md",
+    "attachment/Pasted image 20260903011130.png",
+    "attachment/Pasted image 20260903010802.png",
+    "attachment/Pasted image 20260903010728.png",
+    "attachment/Pasted image 20260903010702.png",
+    "attachment/Pasted image 20260903010540.png",
+    "attachment/Pasted image 20260903010525.png",
+    "attachment/Pasted image 20260903010453.png",
+    "attachment/Pasted image 20260903010359.png",
+    "attachment/Pasted image 20260903010257.png",
+    "attachment/Pasted image 20260903010158.png",
+    "未命名 5.md",
+    "未命名 4.md",
+    "未命名.md",
     "1 课本知识文档/13 复变函数/章节知识/第 6 章 留数定理及其应用.md",
     "1 课本知识文档/13 复变函数/章节知识/第 5 章 解析函数的洛朗 (Laurent) 展式与孤立奇点.md",
-    "attachment/Pasted image 20260902162726.png",
-    "attachment/Pasted image 20260902162237.png",
-    "attachment/Pasted image 20260902162000.png",
-    "attachment/Pasted image 20260902161114.png",
-    "attachment/Pasted image 20260902121402.png",
-    "attachment/Pasted image 20260902115920.png",
-    "attachment/Pasted image 20260902113648.png",
-    "attachment/Pasted image 20260901224829.png",
     "1 课本知识文档/13 复变函数/章节知识/第 4 章 解析函数的幂级数表示法.md",
     "1 课本知识文档/13 复变函数/章节知识/第 3 章 复变函数的积分.md",
-    "1 课本知识文档/18 计算机网络/章节知识/第 4 章 网络层.md",
-    "attachment/Pasted image 20260831093345.png",
-    "attachment/Pasted image 20260831093044.png",
     "1 课本知识文档/18 计算机网络/章节知识/第 3 章 数据链路层.md",
     "未命名 3.md",
     "未命名 1.md",
@@ -223,10 +213,6 @@
     "1 课本知识文档/12 泛函分析基础/章节知识/第 10 章 巴拿赫空间中的基本定理.md",
     "1 课本知识文档/12 泛函分析基础/章节知识/第 9 章 内积空间和希尔伯特空间.md",
     "1 课本知识文档/12 泛函分析基础/章节知识/第 8 章 有界线性算子和连续线性泛函.md",
-    "1 课本知识文档/12 泛函分析基础/章节知识/第 7 章 度量空间和赋范线性空间.md",
-    "1 课本知识文档/12 泛函分析基础/章节知识/第 6.999 章 引言.md",
-    "1 课本知识文档/13 复变函数/章节知识/第 0 章 引言.md",
-    "1 课本知识文档/13 复变函数/章节知识/第 1 章 复数与复变函数.md",
     "~$第1章_引言.pptx",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/原文",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组",
