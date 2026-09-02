@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 课本知识文档/13 复变函数/章节知识/第 5 章 解析函数的洛朗 (Laurent) 展式与孤立奇点.md",
+                "file": "1 课本知识文档/18 计算机网络/章节知识/第 4 章 网络层.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 5 章 解析函数的洛朗 (Laurent) 展式与孤立奇点"
+              "title": "第 4 章 网络层"
             }
           },
           {
@@ -94,8 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "0ec3758fbffb8fbe",
@@ -192,24 +191,24 @@
   },
   "active": "3c71f30b6f5497fa",
   "lastOpenFiles": [
+    "1 课本知识文档/13 复变函数/章节知识/第 6 章 留数定理及其应用.md",
+    "1 课本知识文档/13 复变函数/章节知识/第 5 章 解析函数的洛朗 (Laurent) 展式与孤立奇点.md",
+    "attachment/Pasted image 20260902162726.png",
+    "attachment/Pasted image 20260902162237.png",
+    "attachment/Pasted image 20260902162000.png",
+    "attachment/Pasted image 20260902161114.png",
+    "attachment/Pasted image 20260902121402.png",
+    "attachment/Pasted image 20260902115920.png",
+    "attachment/Pasted image 20260902113648.png",
     "attachment/Pasted image 20260901224829.png",
     "1 课本知识文档/13 复变函数/章节知识/第 4 章 解析函数的幂级数表示法.md",
     "1 课本知识文档/13 复变函数/章节知识/第 3 章 复变函数的积分.md",
     "1 课本知识文档/18 计算机网络/章节知识/第 4 章 网络层.md",
     "attachment/Pasted image 20260831093345.png",
     "attachment/Pasted image 20260831093044.png",
-    "attachment/Pasted image 20260831093018.png",
-    "attachment/Pasted image 20260831092624.png",
-    "attachment/Pasted image 20260831092338.png",
-    "attachment/Pasted image 20260831092134.png",
-    "attachment/Pasted image 20260831092009.png",
-    "attachment/Pasted image 20260831091729.png",
-    "attachment/Pasted image 20260831091714.png",
-    "attachment/Pasted image 20260831091510.png",
     "1 课本知识文档/18 计算机网络/章节知识/第 3 章 数据链路层.md",
     "未命名 3.md",
     "未命名 1.md",
-    "未命名.md",
     "1 课本知识文档/18 计算机网络/章节知识/第 2 章 物理层.md",
     "1 课本知识文档/18 计算机网络/章节知识/第 1 章 概述.md",
     "1 课本知识文档/15 信息论/章节知识/第 8 章 信息论和最优资产组合理论.md",
