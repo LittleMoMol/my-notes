@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 课本知识文档/18 计算机网络/章节知识/第 5 章 运输层.md",
+                "file": "1 课本知识文档/13 复变函数/章节知识/第 6 章 留数定理及其应用.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 5 章 运输层"
+              "title": "第 6 章 留数定理及其应用"
             }
           }
         ]
@@ -80,7 +80,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "0ec3758fbffb8fbe",
@@ -177,6 +178,13 @@
   },
   "active": "3c71f30b6f5497fa",
   "lastOpenFiles": [
+    "attachment/Pasted image 20260903173536.png",
+    "attachment/Pasted image 20260903173141.png",
+    "attachment/Pasted image 20260903173129.png",
+    "attachment/Pasted image 20260903172722.png",
+    "未命名 7.md",
+    "1 课本知识文档/13 复变函数/章节知识/第 6 章 留数定理及其应用.md",
+    "1 课本知识文档/18 计算机网络/章节知识/第 5 章 运输层.md",
     "1 课本知识文档/18 计算机网络/章节知识/第 4 章 网络层.md",
     "未命名 6.md",
     "attachment/Pasted image 20260903011130.png",
@@ -186,13 +194,9 @@
     "attachment/Pasted image 20260903010540.png",
     "attachment/Pasted image 20260903010525.png",
     "attachment/Pasted image 20260903010453.png",
-    "attachment/Pasted image 20260903010359.png",
-    "attachment/Pasted image 20260903010257.png",
-    "attachment/Pasted image 20260903010158.png",
     "未命名 5.md",
     "未命名 4.md",
     "未命名.md",
-    "1 课本知识文档/13 复变函数/章节知识/第 6 章 留数定理及其应用.md",
     "1 课本知识文档/13 复变函数/章节知识/第 5 章 解析函数的洛朗 (Laurent) 展式与孤立奇点.md",
     "1 课本知识文档/13 复变函数/章节知识/第 4 章 解析函数的幂级数表示法.md",
     "1 课本知识文档/13 复变函数/章节知识/第 3 章 复变函数的积分.md",
@@ -210,9 +214,6 @@
     "1 课本知识文档/15 信息论/章节知识/第 2 章 随机过程的信息度量和渐进等分性.md",
     "1 课本知识文档/15 信息论/章节知识/第 1 章 随机变量的信息度量.md",
     "1 课本知识文档/12 泛函分析基础/章节知识/第 11 章 线性算子的谱.md",
-    "1 课本知识文档/12 泛函分析基础/章节知识/第 10 章 巴拿赫空间中的基本定理.md",
-    "1 课本知识文档/12 泛函分析基础/章节知识/第 9 章 内积空间和希尔伯特空间.md",
-    "1 课本知识文档/12 泛函分析基础/章节知识/第 8 章 有界线性算子和连续线性泛函.md",
     "~$第1章_引言.pptx",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/原文",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组",
