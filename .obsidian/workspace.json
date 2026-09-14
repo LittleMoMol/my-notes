@@ -8,7 +8,21 @@
         "type": "tabs",
         "children": [
           {
-            "id": "3c71f30b6f5497fa",
+            "id": "4552ab36a729ad7e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 课本知识文档/14 数学物理方程/章节知识/第 1 章 波动方程.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "第 1 章 波动方程"
+            }
+          },
+          {
+            "id": "e78eaab8593540bd",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,6 +33,20 @@
               },
               "icon": "lucide-file",
               "title": "第 7 章 度量空间和赋范线性空间"
+            }
+          },
+          {
+            "id": "d3faf66545d71b09",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 课本知识文档/15 信息论/章节知识/第 1 章 随机变量的信息度量.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "第 1 章 随机变量的信息度量"
             }
           }
         ]
@@ -176,29 +204,34 @@
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "3c71f30b6f5497fa",
+  "active": "4552ab36a729ad7e",
   "lastOpenFiles": [
-    "1 课本知识文档/18 计算机网络/章节知识/第 9 章 无线网络和移动网络.md",
-    "attachment/Pasted image 20260909180323.png",
-    "attachment/Pasted image 20260909180021.png",
-    "attachment/Pasted image 20260909175845.png",
-    "attachment/Pasted image 20260909175221.png",
-    "attachment/Pasted image 20260909174857.png",
-    "attachment/Pasted image 20260909174831.png",
-    "attachment/Pasted image 20260909174722.png",
-    "attachment/Pasted image 20260909174253.png",
-    "attachment/Pasted image 20260909174033.png",
-    "attachment/Pasted image 20260909173811.png",
-    "1 课本知识文档/18 计算机网络/章节知识/第 8 章 互联网上的音频、视频服务.md",
+    "1 课本知识文档/15 信息论/章节知识/第 1 章 随机变量的信息度量.md",
+    "1 课本知识文档/14 数学物理方程/章节知识/第 1 章 波动方程.md",
     "1 课本知识文档/12 泛函分析基础/章节知识/第 7 章 度量空间和赋范线性空间.md",
+    "题意——我自己的理解与精简.md",
+    "1 课本知识文档/18 计算机网络/章节知识/第 1 章 概述.md",
+    "附件 1——我自己的理解与精简.md",
+    "附件 2——我自己的理解与精简.md",
+    "attachment/Pasted image 20260911082919.png",
+    "attachment/Pasted image 20260911082839.png",
+    "attachment/Pasted image 20260911082642.png",
+    "attachment/Pasted image 20260911082552.png",
+    "attachment/Pasted image 20260911082253.png",
+    "attachment/Pasted image 20260911082142.png",
+    "attachment/Pasted image 20260911082052.png",
+    "attachment/Pasted image 20260911081949.png",
+    "attachment/Pasted image 20260911081304.png",
+    "attachment/Pasted image 20260911081200.png",
+    "1 课本知识文档/6 实变函数基础/章节知识/第 4 章 可测函数.md",
+    "1 课本知识文档/18 计算机网络/章节知识/第 9 章 无线网络和移动网络.md",
+    "1 课本知识文档/18 计算机网络/章节知识/第 8 章 互联网上的音频、视频服务.md",
     "1 课本知识文档/12 泛函分析基础/章节知识/第 6.999 章 引言.md",
     "1 课本知识文档/18 计算机网络/章节知识/第 7 章 网络安全.md",
-    "1 课本知识文档/14 数学物理方程/章节知识/第 1 章 波动方程.md",
     "写作/2026 年写作/2026 年回忆录.md",
     "写作/2026 年写作/13 骤停后的新生.md",
     "杂/14.md",
     "1 课本知识文档/14 数学物理方程/章节知识/第 0 章 引言.md",
-    "1 课本知识文档/15 信息论/章节知识/第 1 章 随机变量的信息度量.md",
     "1 课本知识文档/13 复变函数/章节知识/第 1 章 复数与复变函数.md",
     "1 课本知识文档/18 计算机网络/章节知识/第 6 章 应用层.md",
     "未命名 4.md",
@@ -208,11 +241,6 @@
     "未命名 8.md",
     "未命名 9.md",
     "未命名 11.md",
-    "未命名 10.md",
-    "未命名 12.md",
-    "1 课本知识文档/13 复变函数/章节知识/第 0 章 引言.md",
-    "1 课本知识文档/18 计算机网络/章节知识/第 5 章 运输层.md",
-    "写作/2024 年写作/5 2024 年回忆录.md",
     "~$第1章_引言.pptx",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/原文",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组",
