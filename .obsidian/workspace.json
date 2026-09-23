@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4552ab36a729ad7e",
+            "id": "a3fe971db73fe9df",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 课本知识文档/14 数学物理方程/章节知识/第 1 章 波动方程.md",
+                "file": "1 课本知识文档/14 数学物理方程/章节知识/第 2 章 热传导方程.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 1 章 波动方程"
+              "title": "第 2 章 热传导方程"
             }
           },
           {
@@ -27,30 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "overview.md",
+                "file": "1 课本知识文档/18 计算机网络/章节知识/第 1 章 概述.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "overview"
+              "title": "第 1 章 概述"
             }
           },
           {
             "id": "e78eaab8593540bd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "1 课本知识文档/12 泛函分析基础/章节知识/第 7 章 度量空间和赋范线性空间.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "第 7 章 度量空间和赋范线性空间"
-            }
-          },
-          {
-            "id": "4308729ddeeb942c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -218,29 +204,32 @@
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "4552ab36a729ad7e",
+  "active": "a3fe971db73fe9df",
   "lastOpenFiles": [
+    "题意——我自己的理解与精简.md",
+    "1 课本知识文档/14 数学物理方程/章节知识/第 2 章 热传导方程.md",
+    "附件 2——我自己的理解与精简.md",
+    "附件 1——我自己的理解与精简.md",
+    "1 课本知识文档/14 数学物理方程/章节知识/第 1 章 波动方程.md",
+    "1 课本知识文档/18 计算机网络/章节知识/第 1 章 概述.md",
+    "1 课本知识文档/15 信息论/章节知识/第 1 章 随机变量的信息度量.md",
+    "1 课本知识文档/12 泛函分析基础/章节知识/第 7 章 度量空间和赋范线性空间.md",
+    "1 课本知识文档/13 复变函数/章节知识/第 2 章 解析函数.md",
+    "1 课本知识文档/13 复变函数/章节知识/第 1 章 复数与复变函数.md",
+    "1 课本知识文档/1 数学分析/章节知识/第 2 章 数列极限.md",
+    "overview.md",
     "attachment/Pasted image 20260916180202.png",
     "attachment/Pasted image 20260916165733.png",
     "attachment/Pasted image 20260916164654.png",
     "attachment/Pasted image 20260916164450.png",
-    "overview.md",
-    "1 课本知识文档/12 泛函分析基础/章节知识/第 7 章 度量空间和赋范线性空间.md",
-    "1 课本知识文档/15 信息论/章节知识/第 1 章 随机变量的信息度量.md",
     "杂/下学期学分、学习方式.md",
-    "1 课本知识文档/14 数学物理方程/章节知识/第 1 章 波动方程.md",
     "计算机技能库.md",
     "attachment/Pasted image 20260915092942.png",
     "attachment/Pasted image 20260915082243.png",
-    "题意——我自己的理解与精简.md",
-    "1 课本知识文档/18 计算机网络/章节知识/第 1 章 概述.md",
-    "附件 1——我自己的理解与精简.md",
-    "附件 2——我自己的理解与精简.md",
     "attachment/Pasted image 20260911082919.png",
     "attachment/Pasted image 20260911082839.png",
     "attachment/Pasted image 20260911082642.png",
     "attachment/Pasted image 20260911082552.png",
-    "attachment/Pasted image 20260911082253.png",
     "1 课本知识文档/6 实变函数基础/章节知识/第 4 章 可测函数.md",
     "1 课本知识文档/18 计算机网络/章节知识/第 9 章 无线网络和移动网络.md",
     "1 课本知识文档/18 计算机网络/章节知识/第 8 章 互联网上的音频、视频服务.md",
@@ -250,12 +239,9 @@
     "写作/2026 年写作/13 骤停后的新生.md",
     "杂/14.md",
     "1 课本知识文档/14 数学物理方程/章节知识/第 0 章 引言.md",
-    "1 课本知识文档/13 复变函数/章节知识/第 1 章 复数与复变函数.md",
     "1 课本知识文档/18 计算机网络/章节知识/第 6 章 应用层.md",
     "未命名 4.md",
     "未命名 5.md",
-    "未命名 6.md",
-    "未命名 7.md",
     "~$第1章_引言.pptx",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/原文",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组",
