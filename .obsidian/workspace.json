@@ -4,67 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "82b2aab2f0e60dd7",
+        "id": "19184ace444361cc",
         "type": "tabs",
         "children": [
           {
-            "id": "60f3453640191f04",
+            "id": "cb3fda4090397d5c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 课本知识文档/18 计算机网络/章节知识/第 2 章 物理层.md",
+                "file": "1 课本知识文档/17 数据库原理与技术/章节知识/第 2 章 关系数据库.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 2 章 物理层"
-            }
-          },
-          {
-            "id": "ed86df3289b4368d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "写作/2026 年写作/2026 年回忆录.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026 年回忆录"
-            }
-          },
-          {
-            "id": "eca37547f315364a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "写作/2026 年写作/15 Python 向量化编程入门.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "15 Python 向量化编程入门"
-            }
-          },
-          {
-            "id": "097ab03fbd6ddba8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "写作/2026 年写作/12 奇异值分解 (SVD)——揭示一切线性变换的终极秘密.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "12 奇异值分解 (SVD)——揭示一切线性变换的终极秘密"
+              "title": "第 2 章 关系数据库"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -212,60 +169,59 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "markdown-importer:打开 Markdown 格式转换器": false,
       "bases:新建数据库": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false,
       "templater-obsidian:Templater": false,
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "ed86df3289b4368d",
+  "active": "cb3fda4090397d5c",
   "lastOpenFiles": [
-    "写作/2026 年写作/15 Python 向量化编程入门.md",
-    "1 课本知识文档/18 计算机网络/章节知识/第 2 章 物理层.md",
-    "写作/2026 年写作/2026 年回忆录.md",
+    "attachment/Pasted image 20261008214255.png",
+    "attachment/Pasted image 20261008214114.png",
+    "attachment/Pasted image 20261008213650.png",
+    "attachment/Pasted image 20261008213540.png",
+    "attachment/Pasted image 20261008213013.png",
+    "attachment/Pasted image 20261008211910.png",
+    "attachment/Pasted image 20261008205452.png",
+    "attachment/Pasted image 20261008204936.png",
+    "attachment/Pasted image 20261008203910.png",
+    "attachment/Pasted image 20261008203809.png",
+    "attachment/Pasted image 20261008203130.png",
+    "未命名 2.md",
+    "1 课本知识文档/17 数据库原理与技术/章节知识/第 2 章 关系数据库.md",
+    "未命名 1.md",
+    "未命名.md",
+    "写作/2026 年写作/17.md",
+    "2 科研学习/FEALPy 与超构透镜/1 第一类 Nedelec 元 求解双旋度方程.md",
     "1 课本知识文档/12 泛函分析基础/章节知识/第 8 章 有界线性算子和连续线性泛函.md",
+    "1 课本知识文档/17 数据库原理与技术/章节知识/第 1 章 绪论.md",
+    "写作/2026 年写作/16 数学在做一件什么事情——为直觉立法 (第一次思考).md",
+    "1 课本知识文档/7 数值计算方法/章节知识/第 1 章 引论.md",
+    "2 科研学习/FEALPy 与超构透镜",
+    "2 科研学习",
+    "1 课本知识文档/12 泛函分析基础/章节知识/第 7 章 度量空间和赋范线性空间.md",
+    "杂/下学期学分、学习方式.md",
+    "杂/14.md",
+    "1 课本知识文档/6 实变函数基础/章节知识/第 5 章 积分论.md",
+    "1 课本知识文档/6 实变函数基础/章节知识/第 6 章 微分与不定积分.md",
+    "1 课本知识文档/12 泛函分析基础/章节知识/尹福其补充题.md",
+    "1 课本知识文档/18 计算机网络/章节知识/第 2 章 物理层.md",
     "写作/2026 年写作/12 奇异值分解 (SVD)——揭示一切线性变换的终极秘密.md",
+    "1 课本知识文档/15 信息论/章节知识/第 2 章 随机过程的信息度量和渐进等分性.md",
+    "写作/2026 年写作/15 Python 向量化编程入门.md",
+    "1 课本知识文档/6 实变函数基础/章节知识/第 4 章 可测函数.md",
+    "写作/2026 年写作/2026 年回忆录.md",
     "写作/2026 年写作/11 本科生从向量、矩阵到张量的平滑过渡（基础篇）.md",
     "写作/2026 年写作/14 慢慢地细腻.md",
-    "未命名.md",
-    "杂/14.md",
     "1 课本知识文档/14 数学物理方程/章节知识/第 3 章 调和方程.md",
-    "1 课本知识文档/14 数学物理方程/章节知识/第 2 章 热传导方程.md",
-    "1 课本知识文档/12 泛函分析基础/章节知识/第 7 章 度量空间和赋范线性空间.md",
-    "1 课本知识文档/14 数学物理方程/章节知识/第 1 章 波动方程.md",
-    "1 课本知识文档/15 信息论/章节知识/第 2 章 随机过程的信息度量和渐进等分性.md",
-    "1 课本知识文档/13 复变函数/章节知识/第 2 章 解析函数.md",
-    "1 课本知识文档/18 计算机网络/章节知识/第 1 章 概述.md",
-    "1 课本知识文档/15 信息论/章节知识/第 1 章 随机变量的信息度量.md",
-    "attachment/Pasted image 20260923144646.png",
-    "题意——我自己的理解与精简.md",
-    "附件 2——我自己的理解与精简.md",
-    "附件 1——我自己的理解与精简.md",
-    "1 课本知识文档/13 复变函数/章节知识/第 1 章 复数与复变函数.md",
-    "1 课本知识文档/1 数学分析/章节知识/第 2 章 数列极限.md",
-    "overview.md",
-    "attachment/Pasted image 20260916180202.png",
-    "attachment/Pasted image 20260916165733.png",
-    "attachment/Pasted image 20260916164654.png",
-    "attachment/Pasted image 20260916164450.png",
-    "杂/下学期学分、学习方式.md",
-    "计算机技能库.md",
-    "attachment/Pasted image 20260915092942.png",
-    "attachment/Pasted image 20260915082243.png",
-    "attachment/Pasted image 20260911082919.png",
-    "attachment/Pasted image 20260911082839.png",
-    "attachment/Pasted image 20260911082642.png",
-    "1 课本知识文档/6 实变函数基础/章节知识/第 4 章 可测函数.md",
     "~$第1章_引言.pptx",
-    "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/原文",
-    "2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组",
+    "杂/2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/原文",
+    "杂/2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章/原文",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章/新建文件夹",
     "2 Bohrium 学习作业/1 计算科学导论/第 5 章",
     "2 Bohrium 学习作业/1 计算科学导论/新建文件夹",
-    "1 课本知识文档/15 信息论/章节知识/pdf_images",
-    "1 课本知识文档/15 信息论/章节知识/pdf_output.txt",
-    "1 课本知识文档/15 信息论/章节知识/信息论基础 第3版.pdf"
+    "1 课本知识文档/15 信息论/章节知识/pdf_images"
   ]
 }
