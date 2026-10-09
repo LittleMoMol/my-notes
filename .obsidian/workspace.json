@@ -13,15 +13,44 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "1 课本知识文档/17 数据库原理与技术/章节知识/第 2 章 关系数据库.md",
+                "file": "写作/2026 年写作/17.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "第 2 章 关系数据库"
+              "title": "17"
+            }
+          },
+          {
+            "id": "23c41f2312efabac",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 课本知识文档/13 复变函数/章节知识/第 2 章 解析函数.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "第 2 章 解析函数"
+            }
+          },
+          {
+            "id": "b2abfd2d3f19644b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "1 课本知识文档/1 数学分析/章节知识/第 12 章 多元函数的微分学.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "第 12 章 多元函数的微分学"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -175,8 +204,15 @@
       "callout-manager:Insert Callout": false
     }
   },
-  "active": "cb3fda4090397d5c",
+  "active": "23c41f2312efabac",
   "lastOpenFiles": [
+    "1 课本知识文档/1 数学分析/章节知识/第 12 章 多元函数的微分学.md",
+    "1 课本知识文档/13 复变函数/章节知识/第 2 章 解析函数.md",
+    "写作/2026 年写作/17.md",
+    "1 课本知识文档/13 复变函数/章节知识/第 1 章 复数与复变函数.md",
+    "1 课本知识文档/17 数据库原理与技术/章节知识/第 2 章 关系数据库.md",
+    "attachment/Pasted image 20261008225152.png",
+    "attachment/Pasted image 20261008224937.png",
     "attachment/Pasted image 20261008214255.png",
     "attachment/Pasted image 20261008214114.png",
     "attachment/Pasted image 20261008213650.png",
@@ -185,14 +221,9 @@
     "attachment/Pasted image 20261008211910.png",
     "attachment/Pasted image 20261008205452.png",
     "attachment/Pasted image 20261008204936.png",
-    "attachment/Pasted image 20261008203910.png",
-    "attachment/Pasted image 20261008203809.png",
-    "attachment/Pasted image 20261008203130.png",
     "未命名 2.md",
-    "1 课本知识文档/17 数据库原理与技术/章节知识/第 2 章 关系数据库.md",
     "未命名 1.md",
     "未命名.md",
-    "写作/2026 年写作/17.md",
     "2 科研学习/FEALPy 与超构透镜/1 第一类 Nedelec 元 求解双旋度方程.md",
     "1 课本知识文档/12 泛函分析基础/章节知识/第 8 章 有界线性算子和连续线性泛函.md",
     "1 课本知识文档/17 数据库原理与技术/章节知识/第 1 章 绪论.md",
@@ -213,8 +244,6 @@
     "1 课本知识文档/6 实变函数基础/章节知识/第 4 章 可测函数.md",
     "写作/2026 年写作/2026 年回忆录.md",
     "写作/2026 年写作/11 本科生从向量、矩阵到张量的平滑过渡（基础篇）.md",
-    "写作/2026 年写作/14 慢慢地细腻.md",
-    "1 课本知识文档/14 数学物理方程/章节知识/第 3 章 调和方程.md",
     "~$第1章_引言.pptx",
     "杂/2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组/原文",
     "杂/2 Bohrium 学习作业/1 计算科学导论/第 5 章 求解线性方程组",
