@@ -14,7 +14,7 @@ Python 的 for 循环慢，是因为 Python 是动态类型语言，循环中每
 
 NumPy (Numerical Python) 是 Python 科学计算的基础库，它引入了 ndarray (N 维数组) 这一核心数据结构。
 
-与 Python 原生的 list 不同，ndarray 在内存中连续存储，且所有元素类型相同，这使得它可以调用底层 C 语言实现的函数进行高速运算。
+与 Python 原生的 list 不同，ndarray 通常在内存中连续存储 (未经过步长切片时)，且所有元素类型相同，这使得它可以调用底层 C 语言实现的函数进行高速运算。
 
 ```python
 import numpy as np
@@ -90,7 +90,9 @@ result1 = normalize_forloop(data)
 result2 = normalize_vectorized(data)
 ```
 
-在作者的测试环境中：使用 for 循环方法约 200ms，而使用向量化方法约 5ms，快 40 倍！
+在作者的测试环境 (Python 3.10 + NumPy 2.3 + Windows 11(x64)) 中：使用 for 循环方法约 200ms，而使用向量化方法约 5ms，快 40 倍！
+
+*注*：以上倍数为作者本地 Windows 环境测试结果，仅供参考，实际性能因硬件和 NumPy 版本而异。
 
 ## 3-2 聚合运算 (Reduction Operations)
 
@@ -294,7 +296,7 @@ XQ = x_query[:, None]        # 查询点 shape:(3,1)
 XN = x_nodes[None, :]        # 节点 shape:(1,4)
 
 numer = XQ - XN              # shape:(3,4)
-denom = x_nodes[None, :] - x_nodes[:, None]   # shape:(4,4)
+denom = x_nodes[:, None] - x_nodes[None, :]   # shape:(4,4)
 
 # 对角位置分母为 0, 先填 1 避免除零 (巧妙地通过 bool 数组与 np.where 三目运算符实现)
 denom = np.where(np.eye(4, dtype=bool), 1.0, denom) # shape:(4,4)
@@ -312,9 +314,7 @@ ell = (numer_masked / denom_masked).prod(axis=2)       # (3,4)
 print(ell)
 ```
 
-这里解释一下最后三行，即为什么要新插入一个维度？
-
-因为我们要构造一个三维数组，三个维度的含义分别是：
+这段代码的核心思想是：我们要构造一个三维数组，三个维度的含义分别是
 1. 第 0 维：查询点索引 (3个)
 2. 第 1 维：当前基函数对应的节点 j (4 个)
 3. 第 2 维：参与乘法的其他节点 k (4 个)
@@ -406,12 +406,14 @@ for size in sizes:
     print(f"Size {size:6d}: Loop {time_loop:.6f}s, Vectorized {time_vec:.6f}s, Speedup {time_loop/time_vec:.1f}x")
 ```
 
-从结果可以清晰看到，随着数据量从 100 增长到 100000，向量化的优势显著扩大，在作者的测试环境中：
+从结果可以清晰看到，随着数据量从 100 增长到 100000，向量化的优势显著扩大，在作者的测试环境 (Python 3.10 + NumPy 2.3 + Windows 11(x64)) 中：
 - 小数据量 (100)：向量化仅快 2.9 倍，此时 Python 循环的开销尚不明显。
 - 中等数据量 (1000)：差距拉开至 13.4 倍，NumPy 的 C 语言底层优势开始显现。
 - 大数据量 (10000~100000)：速度提升稳定在 17~21 倍，且趋势仍在上升。
 
 原因很简单：Python 循环逐元素执行，每次迭代都有解释器开销；而 NumPy 将操作下放到预编译的 C/Fortran 层，一次性处理整个数组。
+
+*注*：以上倍数为作者本地 Windows 环境测试结果，仅供参考，实际性能因硬件和 NumPy 版本而异。
 
 ## 5-2 两个优化小技巧
 
@@ -439,25 +441,7 @@ result = vectorized_compute(data)
 2. 无新对象产生：不分配新的内存块，直接在原内存上读写
 3. 副作用：但操作会修改原始对象本身
 
-所以，对于一个数组 `arr`，`arr = arr + 1` 是在创建新数组，`arr` 指向新内存，而 `arr += 1` 却在使用 in-place 操作进行原地修改，内存不变，这两种操作是有区别的。如下例：
-
-```python
-# 不好的写法：每次迭代都创建新数组
-result = np.zeros(1000)
-for i in range(1000):
-    result = result + data[i]   # 每次迭代都创建新数组 (1000次)
-
-# 好的写法：原地累加
-result = np.zeros(1000)
-for i in range(1000):
-    result += data[i]           # 原地修改，不创建新数组
-```
-
-当然这个例子有些不恰当，因为最好的写法 `result = np.sum(data, axis=0)` 就搞定了，这里使用循环只是为了展示 in-place 的优势。
-
-其实 in-place 操作减少的是结果数组的分配，而不是临时数组的分配。所以在实际使用中，它真正的价值是体现在内存而不是速度上的。具体来说：
-
-假设你有一个超级大的 `(10000, 10000)` 的浮点数组 `arr`，占内存约 800 MB。如果你写 `arr = arr + 1`，那么就会创建新数组，内存峰值为 1.6 GB；而写成 `arr += 1` 使用 in-place 操作原地修改，则内存峰值仍为 800 MB。在内存紧张的机器上，前者可能直接 MemoryError，而后者则安然无恙。这时候 in-place 操作便是救命稻草。
+举个例子，假设你有一个超级大的 `(10000, 10000)` 的浮点数组 `arr`，占内存约 800 MB。如果你写 `arr = arr + 1`，那么就会创建新数组，内存峰值为 1.6 GB；而写成 `arr += 1` 使用 in-place 操作原地修改，则内存峰值仍为 800 MB。在内存紧张的机器上，前者可能直接 MemoryError，而后者则安然无恙。这时候 in-place 操作便是救命稻草。
 
 ## 5-3 避免常见的性能陷阱
 
