@@ -184,7 +184,7 @@ alter_option: { table_options
 	修改原有的列定义，会使列中数据做新旧类型的自动转化，有可能会破坏已有数据。
 - *例 3.6*：删除例 3.4 中增加的“入学时间”列。
 	```sql
-	ALTER TABLE S DROP COLUMN SCOME
+		ALTER TABLE S DROP COLUMN SCOME
 	```
 - *例 3.7*：禁用或启用 S 中的`AGE>0`的 CHECK 完整性 (设完整性名称为 `s_chk_2`)。
 	```sql

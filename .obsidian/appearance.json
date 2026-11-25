@@ -8,5 +8,6 @@
   "enabledCssSnippets": [
     "temp"
   ],
-  "nativeMenus": false
+  "nativeMenus": false,
+  "showRibbon": true
 }
